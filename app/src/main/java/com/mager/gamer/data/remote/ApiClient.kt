@@ -1,4 +1,4 @@
-package com.mager.gamer.remote
+package com.mager.gamer.data.remote
 
 import com.skydoves.sandwich.coroutines.CoroutinesResponseCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiClient {
+object ApiClient {
 
     val instance: ApiService by lazy {
     val retrofit = Retrofit.Builder()
