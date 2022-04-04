@@ -3,4 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="marginAppBar">18dp</dimen>
+    <dimen name="profile">42dp</dimen>
+    <dimen name="foto_comment">32dp</dimen>
 </resources>
