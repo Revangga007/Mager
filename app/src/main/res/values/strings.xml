@@ -3,4 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="dummy_content">Jangan lupa nonton Mobile Legends Jogja Tournament Cup nanti malam jam 8 ya Aku bakal bantai tim RRQ !</string>
+    <string name="example_comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis e nim...</string>
 </resources>
