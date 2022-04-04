@@ -9,22 +9,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_marginHorizontal="24dp"
+        android:layout_height="117dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/background_content_post"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardUser"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             app:cardBackgroundColor="#242526"
             app:cardCornerRadius="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/cardPost"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -46,9 +47,7 @@
             android:layout_marginEnd="16dp"
             app:cardBackgroundColor="#3A3B3C"
             app:cardCornerRadius="8dp"
-            app:layout_constraintEnd_toStartOf="@id/cardUpload"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cardUser"
             app:layout_constraintTop_toTopOf="@id/cardUser">
 
@@ -64,43 +63,19 @@
                 android:textSize="16sp" />
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardUpload"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginEnd="16dp"
-            app:cardBackgroundColor="#3A3B3C"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintEnd_toStartOf="@id/cardLive"
-            app:layout_constraintStart_toEndOf="@id/cardPost"
-            app:layout_constraintTop_toTopOf="@id/cardPost">
+        <View
+            android:id="@+id/line39"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#EBF0FF"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@id/cardUser"
+            app:layout_constraintEnd_toEndOf="@id/cardPost"
+            app:layout_constraintTop_toBottomOf="@id/cardUser"/>
 
-            <ImageView
-                android:id="@+id/imgUpload"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_upload" />
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardLive"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginEnd="16dp"
-            app:cardBackgroundColor="#3A3B3C"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/cardUpload"
-            app:layout_constraintTop_toTopOf="@id/cardUser">
 
-            <ImageView
-                android:id="@+id/imgLive"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_live" />
-        </androidx.cardview.widget.CardView>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
