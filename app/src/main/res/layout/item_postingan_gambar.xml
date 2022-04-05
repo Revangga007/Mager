@@ -57,8 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="ganangrz"
             android:fontFamily="@font/nunito"
+            android:text="ganangrz"
             android:textColor="@color/white_inactive"
             app:layout_constraintStart_toEndOf="@id/imgDot"
             app:layout_constraintTop_toTopOf="@id/txtNama" />
@@ -67,8 +67,8 @@
             android:id="@+id/txtWaktu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1 Jam"
             android:fontFamily="@font/nunito"
+            android:text="1 Jam"
             android:textColor="@color/white_inactive"
             app:layout_constraintBottom_toBottomOf="@id/cardFoto"
             app:layout_constraintStart_toStartOf="@id/txtNama"
@@ -91,10 +91,31 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/nunito"
-            android:text="@string/dummy_content"
+            android:text="@string/dummy_content_image"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/cardFoto" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImgPosting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/dark_mode_2"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="@id/btnOption"
+            app:layout_constraintStart_toStartOf="@id/txtPosting"
+            app:layout_constraintTop_toBottomOf="@id/txtPosting">
+
+            <ImageView
+                android:id="@+id/imgPosting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/img_posting" />
+
+        </androidx.cardview.widget.CardView>
+
 
         <ImageView
             android:id="@+id/btnLike"
@@ -103,7 +124,7 @@
             android:layout_marginTop="12dp"
             android:src="@drawable/ic_like"
             app:layout_constraintStart_toStartOf="@id/txtPosting"
-            app:layout_constraintTop_toBottomOf="@id/txtPosting" />
+            app:layout_constraintTop_toBottomOf="@id/cardImgPosting" />
 
         <TextView
             android:id="@+id/txtJmlSuka"
@@ -302,32 +323,35 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:layout_constraintStart_toStartOf="@id/edtKomen"
-            app:layout_constraintEnd_toEndOf="@id/edtKomen"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
             android:background="@drawable/backgrond_comment"
-            app:layout_constraintTop_toTopOf="@id/cardFoto3"
-            android:paddingBottom="4dp"
-            app:layout_constraintBottom_toTopOf="@id/txtSemuaKomen">
+            app:layout_constraintBottom_toTopOf="@id/txtSemuaKomen"
+            app:layout_constraintEnd_toEndOf="@id/edtKomen"
+            app:layout_constraintStart_toStartOf="@id/edtKomen"
+            app:layout_constraintTop_toTopOf="@id/cardFoto3">
+
             <TextView
                 android:id="@+id/txtNamaKomentator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Atthala123"
-                android:fontFamily="@font/nunito_bold"
-                android:textColor="@color/white"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Atthala123"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/txtIsiKomen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/example_comment"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/nunito"
+                android:text="@string/example_comment"
                 android:textColor="@color/white"
-                android:layout_marginHorizontal="8dp"
-                app:layout_constraintTop_toBottomOf="@id/txtNamaKomentator"/>
+                app:layout_constraintTop_toBottomOf="@id/txtNamaKomentator" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -335,13 +359,14 @@
             android:id="@+id/txtSemuaKomen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lihat komentar lainnya"
-            android:fontFamily="@font/nunito_bold"
-            android:textColor="@color/white"
             android:layout_marginBottom="8dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Lihat komentar lainnya"
+            android:textColor="@color/white"
+            android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/layoutKomen"
-            app:layout_constraintStart_toStartOf="@id/layoutKomen"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/layoutKomen" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
