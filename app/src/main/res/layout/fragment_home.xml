@@ -60,7 +60,7 @@
                 android:fontFamily="@font/nunito"
                 android:hint="Buat Post"
                 android:inputType="text"
-                android:textColor="#FAFAFAA3"
+                android:textColor="@color/white_inactive"
                 android:textSize="14sp" />
         </androidx.cardview.widget.CardView>
 
@@ -103,7 +103,6 @@
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@id/cardPost"
             app:layout_constraintTop_toBottomOf="@id/line39" />
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardLive"
