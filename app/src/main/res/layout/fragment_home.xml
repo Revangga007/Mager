@@ -57,8 +57,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:background="@null"
-                android:hint="Buat Post"
                 android:fontFamily="@font/nunito"
+                android:hint="Buat Post"
                 android:inputType="text"
                 android:textColor="#FAFAFAA3"
                 android:textSize="14sp" />
@@ -68,11 +68,11 @@
             android:id="@+id/line39"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="#FAFAFA"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@id/cardUser"
+            android:background="@color/white_inactive"
             app:layout_constraintEnd_toEndOf="@id/cardPost"
-            app:layout_constraintTop_toBottomOf="@id/cardUser"/>
+            app:layout_constraintStart_toStartOf="@id/cardUser"
+            app:layout_constraintTop_toBottomOf="@id/cardUser" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardUpload"
@@ -96,27 +96,26 @@
             android:id="@+id/txtUpload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Foto/Video"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/nunito"
-            android:textSize="14sp"
+            android:text="Foto/Video"
             android:textColor="#FFFFFF"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@id/cardPost"
-            app:layout_constraintTop_toBottomOf="@id/line39"
-            android:layout_marginTop="20dp" />
-
+            app:layout_constraintTop_toBottomOf="@id/line39" />
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardLive"
             android:layout_width="42dp"
             android:layout_height="42dp"
+            android:layout_marginStart="37dp"
             android:layout_marginEnd="16dp"
             app:cardBackgroundColor="#3A3B3C"
             app:cardCornerRadius="8dp"
-            android:layout_marginStart="37dp"
             app:layout_constraintStart_toEndOf="@id/txtUpload"
-            app:layout_constraintTop_toTopOf="@id/cardUpload"
-            app:layout_constraintTop_toBottomOf="@id/line39">
+            app:layout_constraintTop_toBottomOf="@id/line39"
+            app:layout_constraintTop_toTopOf="@id/cardUpload">
 
             <ImageView
                 android:id="@+id/imgLive"
@@ -129,18 +128,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Siaran Langsung"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/nunito"
-            android:textSize="14sp"
+            android:text="Siaran Langsung"
             android:textColor="#FFFFFF"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/cardLive"
             app:layout_constraintTop_toBottomOf="@id/line39"
-            app:layout_constraintTop_toTopOf="@id/txtUpload"
-            android:layout_marginStart="8dp" />
-
-
-
-
+            app:layout_constraintTop_toTopOf="@id/txtUpload" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
