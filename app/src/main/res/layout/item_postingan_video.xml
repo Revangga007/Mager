@@ -113,11 +113,10 @@
                 android:id="@+id/imgPlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_play"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:src="@drawable/ic_play" />
 
         </androidx.cardview.widget.CardView>
-
 
         <ImageView
             android:id="@+id/btnLike"
@@ -325,9 +324,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/backgrond_comment"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
-            android:background="@drawable/backgrond_comment"
             app:layout_constraintBottom_toTopOf="@id/txtSemuaKomen"
             app:layout_constraintEnd_toEndOf="@id/edtKomen"
             app:layout_constraintStart_toStartOf="@id/edtKomen"
@@ -366,9 +365,9 @@
             android:text="Lihat komentar lainnya"
             android:textColor="@color/white"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/layoutKomen"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/layoutKomen" />
+            app:layout_constraintStart_toStartOf="@id/layoutKomen"
+            app:layout_constraintTop_toBottomOf="@id/layoutKomen" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
