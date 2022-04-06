@@ -68,7 +68,7 @@
             android:id="@+id/line39"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="#FAFAFA66"
+            android:background="#FAFAFA"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@id/cardUser"
             app:layout_constraintEnd_toEndOf="@id/cardPost"
@@ -136,7 +136,7 @@
             app:layout_constraintStart_toEndOf="@id/cardLive"
             app:layout_constraintTop_toBottomOf="@id/line39"
             app:layout_constraintTop_toTopOf="@id/txtUpload"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="8dp" />
 
 
 
