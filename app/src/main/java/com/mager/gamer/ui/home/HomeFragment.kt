@@ -31,7 +31,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObserver()
-
     }
 
     private fun setupObserver() {
@@ -42,7 +41,6 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

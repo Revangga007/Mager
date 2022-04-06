@@ -98,7 +98,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardVideoPosting"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/dark_mode_2"
@@ -109,7 +109,7 @@
 
             <ImageView
                 android:id="@+id/imgPosting"
-                android:layout_width="wrap_content"
+                android:layout_width="366dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@drawable/img_posting" />

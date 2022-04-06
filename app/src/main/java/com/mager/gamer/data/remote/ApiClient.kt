@@ -10,7 +10,7 @@ object ApiClient {
 
     val instance: ApiService by lazy {
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://markas-gamer.herokuapp.com")
+        .baseUrl("https://markas-gamer.herokuapp.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutinesResponseCallAdapterFactory.create())
         .client(OkHttpClient.Builder().addInterceptor(logging).build())

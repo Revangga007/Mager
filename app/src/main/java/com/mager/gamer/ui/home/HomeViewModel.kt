@@ -3,11 +3,26 @@ package com.mager.gamer.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.mager.gamer.data.model.remote.postingan.Data
+import com.mager.gamer.repository.MainRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import kotlinx.coroutines.flow.collect
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val mainRepository: MainRepository
+)   : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    val postinganResult = MutableLiveData<List<Data>>()
+
+    suspend fun getAllPost(query: String) {
+        mainRepository.getPostingan(
+            onStart = {},
+            onComplete = {},
+            onError = {}
+        ).collect {
+            postinganResult.postValue(it.data)
+        }
     }
-    val text: LiveData<String> = _text
 }
