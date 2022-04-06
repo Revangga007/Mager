@@ -1,6 +1,5 @@
 package com.mager.gamer.repository
 
-import com.mager.gamer.data.model.remote.postingan.Data
 import com.mager.gamer.data.remote.ApiService
 import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onError
@@ -22,7 +21,7 @@ class MainRepository @Inject constructor(
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
     ) = flow {
-        val response = apiService.getPostingan(false,false)
+        val response = apiService.getPostingan(0,10)
         response.suspendOnSuccess {
             emit(this.data)
         } .onError {
