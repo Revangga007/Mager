@@ -1,6 +1,5 @@
 package com.mager.gamer.data.model.remote.postingan
 
-
 import com.google.gson.annotations.SerializedName
 
 data class Data(
