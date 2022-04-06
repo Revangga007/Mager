@@ -1,6 +1,5 @@
 package com.mager.gamer.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mager.gamer.data.model.remote.postingan.Data
@@ -16,7 +15,7 @@ class HomeViewModel @Inject constructor(
 
     val postinganResult = MutableLiveData<List<Data>>()
 
-    suspend fun getAllPost(query: String) {
+    suspend fun getAllPost() {
         mainRepository.getPostingan(
             onStart = {},
             onComplete = {},

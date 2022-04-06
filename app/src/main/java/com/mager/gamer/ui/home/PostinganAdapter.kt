@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mager.gamer.data.model.remote.postingan.Data
-import com.mager.gamer.data.model.remote.postingan.PostinganResponse
 import com.mager.gamer.databinding.ItemPostinganBinding
 
 class PostinganAdapter (
