@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/backgrond_comment.xml" value="0.2115" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/background_content_post.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/background_image_preview.xml" value="0.143" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/background_post.xml" value="0.2115" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/background_postingan.xml" value="0.1" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/background_select_menu.xml" value="0.1795" />
@@ -31,11 +32,13 @@
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/ic_send.xml" value="0.1" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/ic_upload.xml" value="0.1265" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/font/poppins_semibold.xml" value="0.1" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/fragment_dashboard.xml" value="0.20416666666666666" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/fragment_home.xml" value="0.14343212586900841" />
+        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_post.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_post_gambar.xml" value="0.25" />
+        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_post_text.xml" value="0.25" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_postingan.xml" value="0.33" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_postingan_foto.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_postingan_gambar.xml" value="0.25" />
