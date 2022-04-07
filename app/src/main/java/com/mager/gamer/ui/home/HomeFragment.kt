@@ -1,11 +1,16 @@
 package com.mager.gamer.ui.home
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
@@ -43,7 +48,15 @@ class HomeFragment : Fragment() {
     private fun setupObserver() {
         viewModel.postinganResult.observe(viewLifecycleOwner) {
             binding.recyclerPostingan.apply {
-                adapter = PostinganAdapter(it.toMutableList()){}
+                adapter = PostinganAdapter(it.toMutableList(), onDetailClick = {
+
+                }, onCopyClick = {
+                    val clipboard: ClipboardManager = (requireActivity()).getSystemService(Context.CLIPBOARD_SERVICE)
+                            as ClipboardManager
+                    val clip = ClipData.newPlainText("link berhasil disalin", it)
+                    clipboard.setPrimaryClip(clip)
+                    Toast.makeText(requireContext(), "Link berhasil disalin", Toast.LENGTH_LONG).show()
+                })
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             }
         }

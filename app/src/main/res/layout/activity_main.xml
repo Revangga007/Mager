@@ -26,8 +26,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="@string/app_name"
                 app:titleTextColor="@color/white" />
+            <ImageView
+                android:layout_width="136dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logo_mager_3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <ImageView
                 android:layout_width="19dp"
