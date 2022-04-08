@@ -23,7 +23,6 @@ class PostinganAdapter(
     override fun onBindViewHolder(holder: PostinganAdapter.ViewHolder, position: Int) {
         val post = postingan[position]
         holder.binding.txtPosting.text = post.postText
-        holder.binding.
         holder.binding.btnCopy.setOnClickListener {
             onCopyClick(post.linkPostingan)
         }

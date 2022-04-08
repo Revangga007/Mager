@@ -24,4 +24,5 @@ class HomeViewModel @Inject constructor(
             postinganResult.postValue(it.data)
         }
     }
+
 }
