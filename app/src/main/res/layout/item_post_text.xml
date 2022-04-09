@@ -6,11 +6,58 @@
     android:background="@color/dark_mode_1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutPriority"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/dark_mode_2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgLeft"
+            android:layout_width="19dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="18.4dp"
+            android:layout_marginTop="19.61dp"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtMakePost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18.4dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Buat Postingan"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/imgLeft"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/dark_mode_3"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
+            android:text="Draft"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/dark_mode_1"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/layoutPriority">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardFoto"
@@ -134,14 +181,16 @@
         android:background="@drawable/background_image_preview"
         app:layout_constraintBottom_toTopOf="@id/layoutButton1"
         app:layout_constraintTop_toBottomOf="@id/layoutBox">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_close"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_close"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -155,22 +204,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutLive"
-        android:layout_marginVertical="24dp"
         android:layout_width="match_parent"
-        android:paddingHorizontal="16dp"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="24dp"
+        android:paddingHorizontal="16dp"
         app:layout_constraintBottom_toTopOf="@id/layoutButton1"
         app:layout_constraintTop_toBottomOf="@id/layoutImage">
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/backgrond_comment"
+            android:hint="Link"
             android:minHeight="58dp"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
-            android:hint="Link"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:background="@drawable/backgrond_comment"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
