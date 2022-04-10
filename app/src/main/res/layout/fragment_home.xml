@@ -55,18 +55,27 @@
                 app:layout_constraintStart_toEndOf="@id/cardUser"
                 app:layout_constraintTop_toTopOf="@id/cardUser">
 
-                <EditText
-                    android:id="@+id/txtPost"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <TextView
+                    android:layout_width="303dp"
+                    android:layout_height="37dp"
                     android:layout_marginStart="8dp"
-                    android:background="@null"
                     android:fontFamily="@font/nunito"
+                    android:gravity="center|start"
                     android:hint="Buat Post"
-                    android:inputType="text"
-                    android:focusable="false"
-                    android:textColor="@color/white_inactive"
-                    android:textSize="14sp" />
+                    android:textColorHint="@color/white_inactive" />
+
+<!--                <EditText-->
+<!--                    android:id="@+id/txtPost"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:background="@null"-->
+<!--                    android:fontFamily="@font/nunito"-->
+<!--                    android:hint="Buat Post"-->
+<!--                    android:inputType="text"-->
+<!--                    android:focusable="false"-->
+<!--                    android:textColor="@color/white_inactive"-->
+<!--                    android:textSize="14sp" />-->
             </androidx.cardview.widget.CardView>
 
             <View

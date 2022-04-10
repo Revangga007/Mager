@@ -3,21 +3,19 @@ package com.mager.gamer.ui.home
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mager.gamer.databinding.FragmentHomeBinding
+import com.mager.gamer.ui.postingan.BuatPostinganActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -59,6 +57,23 @@ class HomeFragment : Fragment() {
                 })
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             }
+            binding.cardPost.setOnClickListener {
+                val intent = Intent(activity, BuatPostinganActivity::class.java)
+                startActivity(intent)
+            }
+
+            binding.cardUpload.setOnClickListener {
+                val intent = Intent(activity, BuatPostinganActivity::class.java)
+                intent.putExtra(BuatPostinganActivity.INTENT_IMAGE_MODE, true)
+                startActivity(intent)
+            }
+            binding.cardLive.setOnClickListener {
+                val intent = Intent(activity, BuatPostinganActivity::class.java)
+                intent.putExtra(BuatPostinganActivity.INTENT_LIVE_MODE, true)
+                startActivity(intent)
+            }
+
+
         }
     }
 
