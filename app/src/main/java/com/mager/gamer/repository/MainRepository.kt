@@ -14,21 +14,22 @@ import javax.inject.Inject
 
 class MainRepository @Inject constructor(
     private val apiService: ApiService,
-    private val ioDispatcher:CoroutineDispatcher
+    private val ioDispatcher: CoroutineDispatcher
 ) {
     suspend fun getPostingan(
         onStart: () -> Unit,
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
     ) = flow {
-        val response = apiService.getPostingan(0,10)
+        val response = apiService.getPostingan(0, 10)
         response.suspendOnSuccess {
             emit(this.data)
-        } .onError {
+        }.onError {
             onError(this.message())
-        } .onException { onError(this.message()) }
+        }.onException { onError(this.message()) }
     }
         .onStart { onStart() }
         .onCompletion { onComplete() }
         .flowOn(ioDispatcher)
 }
+
