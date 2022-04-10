@@ -265,6 +265,7 @@
             android:textAllCaps="false"
             android:textSize="12sp"
             app:cardCornerRadius="8dp"
+            android:ellipsize="end"
             app:cornerRadius="8dp"
             app:icon="@drawable/ic_upload"
             app:iconGravity="textTop"

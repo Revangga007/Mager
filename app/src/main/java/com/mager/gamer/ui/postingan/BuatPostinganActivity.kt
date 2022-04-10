@@ -18,6 +18,14 @@ class BuatPostinganActivity : AppCompatActivity() {
         binding = ActivityBuatPostinganBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        intent.extras?.let {
+            val intentImage = it.getBoolean(INTENT_IMAGE_MODE, false)
+            isImageMode = intentImage
+            val intentLive = it.getBoolean(INTENT_LIVE_MODE, false)
+            isLiveMode = intentLive
+            showHideMode()
+        }
+
         binding.cardPhoto.setOnClickListener {
             isImageMode = ! isImageMode
             isLiveMode = false
