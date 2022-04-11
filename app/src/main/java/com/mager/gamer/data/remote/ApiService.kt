@@ -1,11 +1,9 @@
 package com.mager.gamer.data.remote
 
-import com.mager.gamer.data.model.remote.postingan.PostinganResponse
+import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
 import com.skydoves.sandwich.ApiResponse
-import retrofit2.http.GET
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Query
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -15,7 +13,11 @@ interface ApiService {
         @Query("page") page: Int
     ) : ApiResponse<PostinganResponse>
 
-//    @Multipart
-//    @POST
-//    suspend fun ():ApiResponse<PostinganResponse>
+    @Multipart
+    @POST
+    suspend fun createPostingan(
+        @Url url: String,
+        @Part("postingan") postingan: Map<String, String>,
+        @Part uploadFiles: MultipartBody.Part
+    ):ApiResponse<PostinganResponse>
 }
