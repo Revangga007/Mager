@@ -56,7 +56,7 @@ class BuatPostinganActivity : AppCompatActivity() {
         } else if (isLiveMode) {
             binding.layoutImage.visibility = View.GONE
             binding.layoutLive.visibility = View.VISIBLE
-            binding.edtStatus.setLines(12)
+            binding.edtStatus.setLines(11)
         } else {
             binding.layoutImage.visibility = View.GONE
             binding.layoutLive.visibility = View.GONE
