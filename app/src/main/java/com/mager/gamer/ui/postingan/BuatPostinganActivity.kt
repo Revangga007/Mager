@@ -27,12 +27,12 @@ class BuatPostinganActivity : AppCompatActivity() {
         }
 
         binding.cardPhoto.setOnClickListener {
-            isImageMode = ! isImageMode
+            isImageMode = true
             isLiveMode = false
             showHideMode()
         }
         binding.cardLive.setOnClickListener {
-            isLiveMode = ! isLiveMode
+            isLiveMode = true
             isImageMode = false
             showHideMode()
         }
@@ -45,15 +45,22 @@ class BuatPostinganActivity : AppCompatActivity() {
     }
 
     private fun showHideMode() {
+
         if (isImageMode) {
             binding.layoutImage.visibility = View.VISIBLE
+            binding.layoutLive.visibility = View.GONE
+            binding.edtStatus.setLines(10)
+            binding.imgClose.setOnClickListener {
+                binding.layoutImage.visibility = View.GONE
+            }
+        } else if (isLiveMode) {
+            binding.layoutImage.visibility = View.GONE
+            binding.layoutLive.visibility = View.VISIBLE
+            binding.edtStatus.setLines(12)
         } else {
             binding.layoutImage.visibility = View.GONE
-        }
-        if (isLiveMode) {
-            binding.layoutLive.visibility = View.VISIBLE
-        } else {
             binding.layoutLive.visibility = View.GONE
+            binding.edtStatus.setLines(15)
         }
     }
 }
