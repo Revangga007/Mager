@@ -8,7 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/itemPosting"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
         android:background="@drawable/background_content_post"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -111,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="612"
+            android:text="0"
             android:textColor="@color/white_inactive"
             app:layout_constraintStart_toEndOf="@id/btnLike"
             app:layout_constraintTop_toTopOf="@id/btnLike" />
@@ -140,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="321"
+            android:text="0"
             android:textColor="@color/white_inactive"
             app:layout_constraintStart_toEndOf="@id/btnKomen"
             app:layout_constraintTop_toTopOf="@id/btnKomen" />
@@ -181,6 +182,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/icLike"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_like_outline" />
@@ -275,7 +277,6 @@
             android:fontFamily="@font/nunito"
             android:hint="Tulis Komentar"
             android:padding="8dp"
-            android:focusable="false"
             android:textColor="@color/white_inactive"
             android:textColorHint="@color/white_inactive"
             android:textSize="14sp"
