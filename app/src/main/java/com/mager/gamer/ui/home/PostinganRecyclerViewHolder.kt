@@ -67,6 +67,8 @@ sealed class PostinganRecyclerViewHolder(
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan)
             }
+
+//            Glide untuk load gambar
         }
     }
 

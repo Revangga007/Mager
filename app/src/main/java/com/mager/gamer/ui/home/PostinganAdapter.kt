@@ -21,8 +21,6 @@ class PostinganAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostinganRecyclerViewHolder {
-//        val view = ItemPostinganBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//        return ViewHolder(view)
         return when (viewType) {
             POSTINGAN_TEXT -> PostinganRecyclerViewHolder.PostinganTextViewHolder(
                 ItemPostinganBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -70,8 +68,12 @@ class PostinganAdapter(
 
     override fun getItemViewType(position: Int): Int {
         val post = postingan[position]
+        val ext = post.files?.split(".")?.last()
+        val isImage = (ext == "png" || ext == "jpg" || ext == "jpeg")
+        val isVideo = (ext == "mp4")
         return when {
-//            post.files != null -> POSTINGAN_IMAGE
+            isImage -> POSTINGAN_IMAGE
+            isVideo -> POSTINGAN_VIDEO
             else -> POSTINGAN_TEXT
         }
     }
