@@ -1,4 +1,4 @@
-package com.mager.gamer.data.model.remote.postingan
+package com.mager.gamer.data.model.remote.postingan.get
 
 
 import com.google.gson.annotations.SerializedName

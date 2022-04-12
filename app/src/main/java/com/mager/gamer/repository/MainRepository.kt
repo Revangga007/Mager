@@ -21,7 +21,7 @@ class MainRepository @Inject constructor(
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
     ) = flow {
-        val response = apiService.getPostingan(0, 10)
+        val response = apiService.getPostingan(100, 0)
         response.suspendOnSuccess {
             emit(this.data)
         }.onError {
