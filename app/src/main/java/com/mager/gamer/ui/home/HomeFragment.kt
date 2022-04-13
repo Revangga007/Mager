@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mager.gamer.databinding.FragmentHomeBinding
 import com.mager.gamer.ui.postingan.BuatPostinganActivity
+import com.mager.gamer.ui.postingan.DetailPostinganActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -47,7 +48,7 @@ class HomeFragment : Fragment() {
         viewModel.postinganResult.observe(viewLifecycleOwner) {
             binding.recyclerPostingan.apply {
                 adapter = PostinganAdapter(it.toMutableList(), onDetailClick = {
-
+                    startActivity(Intent(requireContext(), DetailPostinganActivity::class.java))
                 }, onCopyClick = {
                     val clipboard: ClipboardManager = (requireActivity()).getSystemService(Context.CLIPBOARD_SERVICE)
                             as ClipboardManager

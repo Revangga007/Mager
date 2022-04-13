@@ -14,7 +14,7 @@ data class Data(
     @SerializedName("draft")
     val draft: Boolean,
     @SerializedName("files")
-    val files: Any,
+    val files: String?,
     @SerializedName("id")
     val id: Int,
     @SerializedName("jumlahKomentar")
