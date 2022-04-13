@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(
@@ -26,7 +27,9 @@ class MainRepository @Inject constructor(
             emit(this.data)
         }.onError {
             onError(this.message())
-        }.onException { onError(this.message()) }
+        }.onException {
+            onError(this.message())
+        }
     }
         .onStart { onStart() }
         .onCompletion { onComplete() }
