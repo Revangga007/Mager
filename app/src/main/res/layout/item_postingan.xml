@@ -9,7 +9,7 @@
         android:id="@+id/itemPosting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
+        android:paddingBottom="12dp"
         android:background="@drawable/background_content_post"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -87,11 +87,13 @@
             app:layout_constraintTop_toTopOf="@id/cardFoto" />
 
         <TextView
+            android:paddingVertical="4dp"
             android:id="@+id/txtPosting"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
+            android:lineHeight="24dp"
             android:fontFamily="@font/nunito"
             android:text="@string/dummy_content"
             android:textColor="@color/white"
@@ -254,7 +256,7 @@
             android:id="@+id/cardFoto2"
             android:layout_width="@dimen/foto_comment"
             android:layout_height="@dimen/foto_comment"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             app:cardCornerRadius="8dp"
             app:layout_constraintStart_toStartOf="@id/cardFoto"
             app:layout_constraintTop_toBottomOf="@id/lineDown">

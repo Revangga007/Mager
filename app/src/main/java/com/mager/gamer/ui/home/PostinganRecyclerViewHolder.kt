@@ -3,6 +3,7 @@ package com.mager.gamer.ui.home
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import com.bumptech.glide.Glide
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.databinding.ItemPostinganBinding
 import com.mager.gamer.databinding.ItemPostinganGambarBinding
@@ -69,6 +70,9 @@ sealed class PostinganRecyclerViewHolder(
             }
 
 //            Glide untuk load gambar
+            Glide.with(binding.imgPosting.context)
+                .load(postingan.files)
+                .into(binding.imgPosting)
         }
     }
 

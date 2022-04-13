@@ -12,11 +12,12 @@ class DetailPostinganActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailPostinganBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        
         binding.imgLeft.setOnClickListener {
             startActivity(
                 Intent(this@DetailPostinganActivity, MainActivity::class.java)
             )
+            finish()
         }
     }
 }
