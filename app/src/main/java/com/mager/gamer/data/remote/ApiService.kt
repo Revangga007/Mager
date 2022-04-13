@@ -24,7 +24,4 @@ interface ApiService {
         @Part uploadFiles: MultipartBody.Part
     ):ApiResponse<PostinganResponse>
 
-    suspend fun getPostinganId(
-
-    ) :ApiResponse<DetailPostingan>
 }
