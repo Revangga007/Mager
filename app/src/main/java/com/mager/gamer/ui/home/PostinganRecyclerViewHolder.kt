@@ -24,8 +24,10 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
-            binding.txtNama.text = postingan.createdBy.nama
-            binding.txtUsername.text = postingan.createdBy.username
+            if (postingan.createdBy != null) {
+                binding.txtNama.text = postingan.createdBy.nama
+                binding.txtUsername.text = postingan.createdBy.username
+            }
             binding.txtWaktu.text = postingan.createdDate.toString()
             if (postingan.jumlahKomentar == 0) {
                 binding.layoutKomen.visibility = View.GONE
@@ -53,8 +55,10 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
-            binding.txtNama.text = postingan.createdBy.nama
-            binding.txtUsername.text = postingan.createdBy.username
+            if (postingan.createdBy != null) {
+                binding.txtNama.text = postingan.createdBy.nama
+                binding.txtUsername.text = postingan.createdBy.username
+            }
             binding.txtWaktu.text = postingan.createdDate.toString()
             if (postingan.jumlahKomentar == 0) {
                 binding.layoutKomen.visibility = View.GONE
@@ -87,8 +91,10 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
-            binding.txtNama.text = postingan.createdBy.nama
-            binding.txtUsername.text = postingan.createdBy.username
+            if (postingan.createdBy != null) {
+                binding.txtNama.text = postingan.createdBy.nama
+                binding.txtUsername.text = postingan.createdBy.username
+            }
             binding.txtWaktu.text = postingan.createdDate.toString()
             if (postingan.jumlahKomentar == 0) {
                 binding.layoutKomen.visibility = View.GONE

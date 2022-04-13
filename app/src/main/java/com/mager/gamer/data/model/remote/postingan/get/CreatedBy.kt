@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 data class CreatedBy(
     @SerializedName("biodata")
-    val biodata: String,
+    val biodata: String?,
     @SerializedName("created_date")
-    val createdDate: String,
+    val createdDate: String?,
     @SerializedName("deleted_date")
     val deletedDate: Any,
     @SerializedName("email")
-    val email: String,
+    val email: String?,
     @SerializedName("fotoHeader")
     val fotoHeader: Any,
     @SerializedName("fotoProfile")
@@ -19,11 +19,11 @@ data class CreatedBy(
     @SerializedName("id")
     val id: Int,
     @SerializedName("nama")
-    val nama: String,
+    val nama: String?,
     @SerializedName("password")
-    val password: String,
+    val password: String?,
     @SerializedName("updated_date")
-    val updatedDate: String,
+    val updatedDate: String?,
     @SerializedName("username")
-    val username: String
+    val username: String?
 )
