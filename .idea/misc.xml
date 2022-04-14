@@ -58,8 +58,11 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/fragment_home.xml" value="0.15598885793871867" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_else.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_komen.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_post_text.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_postingan.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_postingan_gambar.xml" value="0.23262279888785914" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_postingan_video.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/loading_dialog.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

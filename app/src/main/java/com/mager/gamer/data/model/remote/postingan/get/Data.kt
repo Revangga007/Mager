@@ -6,7 +6,7 @@ import java.util.*
 
 data class Data(
     @SerializedName("createdBy")
-    val createdBy: CreatedBy,
+    val createdBy: CreatedBy?,
     @SerializedName("created_date")
     val createdDate: Date,
     @SerializedName("deleted_date")
