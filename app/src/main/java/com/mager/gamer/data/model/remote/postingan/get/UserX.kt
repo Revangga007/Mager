@@ -1,21 +1,25 @@
-package com.mager.gamer.data.model.remote.postingan.post.getId
+package com.mager.gamer.data.model.remote.postingan.get
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import java.util.*
 
+@Parcelize
 data class UserX(
     @SerializedName("biodata")
     val biodata: String,
     @SerializedName("created_date")
-    val createdDate: String,
+    val createdDate: Date,
     @SerializedName("deleted_date")
-    val deletedDate: Any,
+    val deletedDate: Date?,
     @SerializedName("email")
     val email: String,
     @SerializedName("fotoHeader")
-    val fotoHeader: Any,
+    val fotoHeader: String?,
     @SerializedName("fotoProfile")
-    val fotoProfile: Any,
+    val fotoProfile: String?,
     @SerializedName("id")
     val id: Int,
     @SerializedName("nama")
@@ -26,4 +30,4 @@ data class UserX(
     val updatedDate: String,
     @SerializedName("username")
     val username: String
-)
+):Parcelable

@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
         viewModel.postinganResult.observe(viewLifecycleOwner) {
             binding.recyclerPostingan.apply {
                 adapter = PostinganAdapter(it.toMutableList(), onDetailClick = {
-                    startActivity(Intent(requireContext(), DetailPostinganActivity::class.java))
+                    startActivity(Intent(requireContext(), DetailPostinganActivity::class.java).putExtra("post", it))
                 }, onCopyClick = {
                     val clipboard: ClipboardManager = (requireActivity()).getSystemService(Context.CLIPBOARD_SERVICE)
                             as ClipboardManager

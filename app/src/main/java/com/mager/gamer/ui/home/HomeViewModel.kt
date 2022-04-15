@@ -3,11 +3,10 @@ package com.mager.gamer.ui.home
 import androidx.lifecycle.MutableLiveData
 import com.mager.gamer.base.BaseViewModel
 import com.mager.gamer.data.model.remote.postingan.get.Data
-
 import com.mager.gamer.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(

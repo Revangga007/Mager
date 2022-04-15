@@ -9,4 +9,9 @@
     <string name="dummy_content_video">Show me your skill</string>
     <string name="search">Search</string>
     <string name="notification">Notification</string>
+    <string name="komunitas">Komunitas</string>
+    <string name="filter">Filter</string>
+    <string name="nama_game">Nama Game</string>
+    <string name="buat_komunitas">Buat Komunitas</string>
+    <string name="deskripsi_komunitas"><![CDATA[Komunitas Official Mobile Legends Indonesia Sharing info turnamen di seluruh Indonesia ! Sharing info update hero meta Rasis & Sara = Banned]]></string>
 </resources>
