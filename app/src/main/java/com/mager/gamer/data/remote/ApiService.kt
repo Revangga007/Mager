@@ -3,7 +3,6 @@ package com.mager.gamer.data.remote
 
 import com.mager.gamer.data.model.remote.postingan.create.Postingan
 import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
-import com.mager.gamer.data.model.remote.postingan.post.getId.DetailPostingan
 import com.skydoves.sandwich.ApiResponse
 import okhttp3.MultipartBody
 import retrofit2.http.*

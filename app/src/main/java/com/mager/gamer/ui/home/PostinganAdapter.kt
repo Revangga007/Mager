@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mager.gamer.data.model.remote.postingan.get.Data
+
 import com.mager.gamer.databinding.ItemPostinganBinding
 import com.mager.gamer.databinding.ItemPostinganGambarBinding
 import com.mager.gamer.databinding.ItemPostinganVideoBinding
