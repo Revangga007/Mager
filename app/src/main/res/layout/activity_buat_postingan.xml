@@ -141,8 +141,8 @@
         android:id="@+id/scrollBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@id/layoutButton1"
         app:layout_constraintTop_toBottomOf="@id/layoutTop">
 
@@ -176,18 +176,19 @@
                 android:layout_height="wrap_content"
                 android:text="0/300"
                 android:textColor="@color/white_inactive"
-                app:layout_constraintTop_toBottomOf="@id/edtStatus"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edtStatus" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layoutImage"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="250dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/background_image_preview"
-                app:layout_constraintTop_toBottomOf="@id/txtKarakter">
+                android:minHeight="250dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/txtKarakter"
+                tools:layout_editor_absoluteX="16dp">
 
                 <ImageView
                     android:id="@+id/imgClose"
@@ -206,25 +207,36 @@
                     android:scaleType="centerInside"
                     android:src="@drawable/img_upload"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <TextView
+                android:id="@+id/txtLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Link Youtube"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/layoutLive"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layoutLive"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                app:layout_constraintTop_toBottomOf="@id/layoutImage">
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@id/layoutImage"
+                tools:layout_editor_absoluteX="16dp">
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/backgrond_comment"
-                    android:hint="Link"
                     android:minHeight="58dp"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="8dp"
@@ -232,7 +244,20 @@
                     android:textColorHint="@color/white"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/nunito"
+                android:text="Video yang dapat diputar hanya video Youtube"
+                android:textColor="@color/white_inactive"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutLive" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 
 
@@ -312,11 +337,11 @@
             android:layout_height="0dp"
             android:layout_marginStart="17dp"
             android:backgroundTint="@color/dark_mode_3"
+            android:ellipsize="end"
             android:text="Foto/Video"
             android:textAllCaps="false"
             android:textSize="12sp"
             app:cardCornerRadius="8dp"
-            android:ellipsize="end"
             app:cornerRadius="8dp"
             app:icon="@drawable/ic_upload"
             app:iconGravity="textTop"
