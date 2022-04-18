@@ -3,6 +3,7 @@ package com.mager.gamer.data.remote
 
 import com.mager.gamer.data.model.remote.postingan.create.Postingan
 import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
+import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
 import com.skydoves.sandwich.ApiResponse
 import okhttp3.MultipartBody
 import retrofit2.http.*
@@ -22,5 +23,11 @@ interface ApiService {
         @Part("postingan") postingan: Postingan,
         @Part uploadFiles: MultipartBody.Part
     ):ApiResponse<PostinganResponse>
+
+    @POST("mager/like")
+    suspend fun likePostingan(
+        @Query("idPostingan") idPostingan: Int,
+        @Query("idUser") idUser: Int
+    ): ApiResponse<LikePostinganResponse>
 
 }

@@ -25,9 +25,9 @@ data class Data(
     @SerializedName("jumlahLike")
     val jumlahLike: Int,
     @SerializedName("komentarBy")
-    val komentarBy: List<KomentarBy>?,
+    val komentarBy: List<KomentarBy>,
     @SerializedName("likedBy")
-    val likedBy: List<LikedBy>?,
+    val likedBy: List<LikedBy>,
     @SerializedName("linkLivestream")
     val linkLivestream: String?,
     @SerializedName("linkPostingan")
