@@ -4,6 +4,7 @@ package com.mager.gamer.data.model.remote.postingan.get
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+
 import java.util.*
 
 @Parcelize
@@ -11,7 +12,7 @@ data class Data(
     @SerializedName("createdBy")
     val createdBy: CreatedBy,
     @SerializedName("created_date")
-    val createdDate: Date,
+    val createdDate: String,
     @SerializedName("deleted_date")
     val deletedDate: Date?,
     @SerializedName("draft")
@@ -31,13 +32,15 @@ data class Data(
     @SerializedName("linkLivestream")
     val linkLivestream: String?,
     @SerializedName("linkPostingan")
-    val linkPostingan: String,
+    val linkPostingan: String?,
     @SerializedName("postText")
     val postText: String,
     @SerializedName("postedIn")
-    val postedIn: PostedIn,
+    val postedIn: String?,
+    @SerializedName("tipePost")
+    val tipePost: String?,
     @SerializedName("updated_date")
-    val updatedDate: Date,
+    val updatedDate: String,
     @SerializedName("visibility")
     val visibility: Boolean
-):Parcelable
+) : Parcelable

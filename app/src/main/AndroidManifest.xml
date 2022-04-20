@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mager">
         <activity
+            android:name=".ui.draft.DraftActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.postingan.DetailPostinganActivity"
             android:exported="false" />
         <activity

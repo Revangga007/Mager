@@ -1,10 +1,9 @@
 package com.mager.gamer.ui.postingan
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.mager.gamer.base.BaseViewModel
-import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
+//import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
 import com.mager.gamer.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
