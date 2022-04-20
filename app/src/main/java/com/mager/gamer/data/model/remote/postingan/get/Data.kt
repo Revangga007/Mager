@@ -24,7 +24,7 @@ data class Data(
     @SerializedName("jumlahKomentar")
     val jumlahKomentar: Int,
     @SerializedName("jumlahLike")
-    val jumlahLike: Int,
+    var jumlahLike: Int,
     @SerializedName("komentarBy")
     val komentarBy: List<KomentarBy>,
     @SerializedName("likedBy")

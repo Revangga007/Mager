@@ -18,7 +18,7 @@ sealed class PostinganRecyclerViewHolder(
         PostinganRecyclerViewHolder(binding) {
         fun bind(
             postingan: Data,
-            onDetailClick: (Data) -> Unit,
+            onDetailClick: (Data, Int) -> Unit,
             onCopyClick: (String) -> Unit
         ) {
             binding.txtPosting.text = postingan.postText
@@ -40,7 +40,7 @@ sealed class PostinganRecyclerViewHolder(
 //                onCopyClick(postingan.linkPostingan)
 //            }
             binding.itemPosting.setOnClickListener {
-                onDetailClick(postingan)
+                onDetailClick(postingan, adapterPosition)
             }
         }
     }
@@ -49,7 +49,7 @@ sealed class PostinganRecyclerViewHolder(
         PostinganRecyclerViewHolder(binding) {
         fun bind(
             postingan: Data,
-            onDetailClick: (Data) -> Unit,
+            onDetailClick: (Data, Int) -> Unit,
             onCopyClick: (String) -> Unit
         ) {
             binding.txtPosting.text = postingan.postText
@@ -71,7 +71,7 @@ sealed class PostinganRecyclerViewHolder(
 //                onCopyClick(postingan.linkPostingan)
 //            }
             binding.itemPosting.setOnClickListener {
-                onDetailClick(postingan)
+                onDetailClick(postingan, adapterPosition)
             }
 
 //            Glide untuk load gambar
@@ -93,7 +93,7 @@ sealed class PostinganRecyclerViewHolder(
         PostinganRecyclerViewHolder(binding) {
         fun bind(
             postingan: Data,
-            onDetailClick: (Data) -> Unit,
+            onDetailClick: (Data, Int) -> Unit,
             onCopyClick: (String) -> Unit
         ) {
             binding.txtPosting.text = postingan.postText
@@ -114,7 +114,7 @@ sealed class PostinganRecyclerViewHolder(
 //                onCopyClick(postingan.linkPostingan)
 //            }
             binding.itemPosting.setOnClickListener {
-                onDetailClick(postingan)
+                onDetailClick(postingan, adapterPosition)
             }
         }
     }
