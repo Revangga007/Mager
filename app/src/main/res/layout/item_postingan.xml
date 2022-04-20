@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp">
@@ -257,39 +258,6 @@
             app:layout_constraintEnd_toEndOf="@id/lineUp"
             app:layout_constraintTop_toBottomOf="@id/linearBtn" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardFoto2"
-            android:layout_width="@dimen/foto_comment"
-            android:layout_height="@dimen/foto_comment"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintStart_toStartOf="@id/cardFoto"
-            app:layout_constraintTop_toBottomOf="@id/lineDown">
-
-            <ImageView
-                android:id="@+id/imgFoto2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/img_user" />
-
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/edtKomen"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="8dp"
-            android:background="@drawable/backgrond_comment"
-            android:drawableEnd="@drawable/ic_send"
-            android:fontFamily="@font/nunito"
-            android:hint="Tulis Komentar"
-            android:padding="8dp"
-            android:textColor="@color/white_inactive"
-            android:textColorHint="@color/white_inactive"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/cardFoto2"
-            app:layout_constraintTop_toTopOf="@id/cardFoto2" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardFoto3"
@@ -297,8 +265,8 @@
             android:layout_height="@dimen/foto_comment"
             android:layout_marginTop="8dp"
             app:cardCornerRadius="8dp"
-            app:layout_constraintStart_toStartOf="@id/cardFoto2"
-            app:layout_constraintTop_toBottomOf="@id/edtKomen">
+            app:layout_constraintStart_toStartOf="@id/lineDown"
+            app:layout_constraintTop_toBottomOf="@id/lineDown">
 
             <ImageView
                 android:id="@+id/imgFoto3"
@@ -315,10 +283,11 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/backgrond_comment"
             android:paddingBottom="4dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintBottom_toTopOf="@id/txtSemuaKomen"
-            app:layout_constraintEnd_toEndOf="@id/edtKomen"
-            app:layout_constraintStart_toStartOf="@id/edtKomen"
-            app:layout_constraintTop_toTopOf="@id/cardFoto3">
+            app:layout_constraintStart_toEndOf="@id/cardFoto3"
+            app:layout_constraintTop_toTopOf="@id/cardFoto3"
+            app:layout_constraintEnd_toEndOf="@id/lineDown">
 
             <TextView
                 android:id="@+id/txtNamaKomentator"
@@ -340,7 +309,8 @@
                 android:fontFamily="@font/nunito"
                 android:text="@string/example_comment"
                 android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/txtNamaKomentator" />
+                app:layout_constraintTop_toBottomOf="@id/txtNamaKomentator"
+                tools:layout_editor_absoluteX="0dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
