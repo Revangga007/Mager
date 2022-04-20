@@ -3,7 +3,7 @@ package com.mager.gamer.data.model.remote.postingan.get
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import java.util.*
 
 @Parcelize
@@ -20,4 +20,4 @@ data class LikedBy(
     val updatedDate: Date,
     @SerializedName("user")
     val user: UserX
-): Parcelable
+) : Parcelable

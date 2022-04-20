@@ -1,22 +1,17 @@
 package com.mager.gamer.ui.postingan
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.mager.gamer.MainActivity
 import com.mager.gamer.R
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.databinding.ActivityDetailPostinganBinding
 import com.mager.gamer.databinding.ItemSheetBinding
-import com.mager.gamer.ui.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 @AndroidEntryPoint

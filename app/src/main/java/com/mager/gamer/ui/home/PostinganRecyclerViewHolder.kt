@@ -36,9 +36,9 @@ sealed class PostinganRecyclerViewHolder(
                 binding.txtSemuaKomen.visibility = View.GONE
             }
 
-            binding.btnCopy.setOnClickListener {
-                onCopyClick(postingan.linkPostingan)
-            }
+//            binding.btnCopy.setOnClickListener {
+//                onCopyClick(postingan.linkPostingan)
+//            }
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan)
             }
@@ -67,18 +67,25 @@ sealed class PostinganRecyclerViewHolder(
                 binding.txtSemuaKomen.visibility = View.GONE
             }
 
-            binding.btnCopy.setOnClickListener {
-                onCopyClick(postingan.linkPostingan)
-            }
+//            binding.btnCopy.setOnClickListener {
+//                onCopyClick(postingan.linkPostingan)
+//            }
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan)
             }
 
 //            Glide untuk load gambar
+            if(postingan.files != null) {
             Glide.with(binding.imgPosting.context)
                 .load(postingan.files)
                 .error(R.drawable.logo_mager_1)
                 .into(binding.imgPosting)
+            } else if (postingan.linkLivestream != null) {
+                Glide.with(binding.imgPosting.context)
+                    .load(postingan.linkLivestream)
+                    .error(R.drawable.logo_mager_1)
+                    .into(binding.imgPosting)
+            }
         }
     }
 
@@ -103,9 +110,9 @@ sealed class PostinganRecyclerViewHolder(
                 binding.cardFoto3.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
             }
-            binding.btnCopy.setOnClickListener {
-                onCopyClick(postingan.linkPostingan)
-            }
+//            binding.btnCopy.setOnClickListener {
+//                onCopyClick(postingan.linkPostingan)
+//            }
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan)
             }

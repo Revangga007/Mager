@@ -22,7 +22,7 @@ class MainRepository @Inject constructor(
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
     ) = flow {
-        val response = apiService.getPostingan(100, 0)
+        val response = apiService.getPostingan(100, 0, null, null, null, null)
         response.suspendOnSuccess {
             emit(this.data)
         }.onError {

@@ -14,9 +14,8 @@
             android:id="@+id/layoutPost"
             android:layout_width="match_parent"
             android:layout_height="101dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/background_content_post"
+            android:layout_marginTop="12dp"
+            android:background="@color/dark_mode_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -57,7 +56,7 @@
 
                 <TextView
                     android:layout_width="303dp"
-                    android:layout_height="37dp"
+                    android:layout_height="41dp"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/nunito"
                     android:gravity="center|start"
@@ -150,7 +149,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            android:paddingHorizontal="16dp"
             app:layout_constraintTop_toBottomOf="@id/layoutPost"
             tools:listitem="@layout/item_postingan" />
     </androidx.constraintlayout.widget.ConstraintLayout>

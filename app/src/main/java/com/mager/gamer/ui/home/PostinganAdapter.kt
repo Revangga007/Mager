@@ -19,6 +19,7 @@ class PostinganAdapter(
         const val POSTINGAN_TEXT = 1
         const val POSTINGAN_IMAGE = 2
         const val POSTINGAN_VIDEO = 3
+        const val POSTINGAN_LIVESTREAM = 4
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostinganRecyclerViewHolder {
@@ -26,7 +27,7 @@ class PostinganAdapter(
             POSTINGAN_TEXT -> PostinganRecyclerViewHolder.PostinganTextViewHolder(
                 ItemPostinganBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-            POSTINGAN_IMAGE -> PostinganRecyclerViewHolder.PostinganImageViewHolder(
+            POSTINGAN_IMAGE, POSTINGAN_LIVESTREAM  -> PostinganRecyclerViewHolder.PostinganImageViewHolder(
                 ItemPostinganGambarBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -69,12 +70,14 @@ class PostinganAdapter(
 
     override fun getItemViewType(position: Int): Int {
         val post = postingan[position]
-        val ext = post.files?.split(".")?.last()
-        val isImage = (ext == "png" || ext == "jpg" || ext == "jpeg")
-        val isVideo = (ext == "mp4")
-        return when {
-            isImage -> POSTINGAN_IMAGE
-            isVideo -> POSTINGAN_VIDEO
+//teks
+//foto
+//livestream
+//video
+        return when (post.tipePost) {
+            "foto" -> POSTINGAN_IMAGE
+            "video" -> POSTINGAN_VIDEO
+            "livestream" -> POSTINGAN_LIVESTREAM
             else -> POSTINGAN_TEXT
         }
     }
