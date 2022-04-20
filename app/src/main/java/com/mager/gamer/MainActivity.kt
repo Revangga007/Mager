@@ -1,25 +1,32 @@
 package com.mager.gamer
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.mager.gamer.base.BaseActivity
 import com.mager.gamer.databinding.ActivityMainBinding
+import com.mager.gamer.dialog.CustomLoadingDialog
+import com.mager.gamer.ui.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val homeViewModel : HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        loadingUI = CustomLoadingDialog(this)
 
         val navView: BottomNavigationView = binding.navView
 
@@ -33,5 +40,14 @@ class MainActivity : AppCompatActivity() {
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun setupObserver() {
+        homeViewModel.message.observe(this) {
+            showMessageToast(it)
+        }
+        homeViewModel.loading.observe(this) {
+            if (it) showLoading() else hideLoading()
+        }
     }
 }

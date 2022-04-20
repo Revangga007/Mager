@@ -5,7 +5,9 @@ import com.mager.gamer.base.BaseViewModel
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,10 +20,10 @@ class HomeViewModel @Inject constructor(
     suspend fun getAllPost() {
         mainRepository.getPostingan(
             onStart = {
-                showLoading()
+                _loading.postValue(true)
             },
             onComplete = {
-                hideLoading()
+                _loading.postValue(false)
             },
             onError = {
                 _message.postValue(it)

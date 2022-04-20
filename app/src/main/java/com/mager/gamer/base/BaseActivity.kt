@@ -12,7 +12,7 @@ import com.mager.gamer.dialog.CustomLoadingDialog
 abstract class BaseActivity : AppCompatActivity() {
 
     private var isAlertShow = false
-    private lateinit var loadingUI: CustomLoadingDialog
+    lateinit var loadingUI: CustomLoadingDialog
 
     override fun onStart() {
         super.onStart()
@@ -24,17 +24,17 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
-        loadingUI = CustomLoadingDialog(this)
+        //loadingUI = CustomLoadingDialog(this)
 
         setupObserver()
     }
 
-    protected fun showLoading() {
+    fun showLoading() {
         loadingUI.show()
     }
 
-    protected fun hideLoading() {
-        loadingUI.hide()
+    fun hideLoading() {
+        loadingUI.dismiss()
     }
 
     protected fun showMessage(message: Message) {

@@ -10,6 +10,7 @@ import com.mager.gamer.databinding.ItemKomenBinding
 
 class KomentarAdapter(
     var comments: MutableList<KomentarBy>,
+    var onLong: () -> Unit
 ): RecyclerView.Adapter<KomentarAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemKomenBinding) :
@@ -33,6 +34,10 @@ class KomentarAdapter(
         }
         holder.binding.txtNamaKomentator.setOnClickListener {
 
+        }
+        holder.binding.root.setOnLongClickListener {
+            onLong()
+            true
         }
     }
 
