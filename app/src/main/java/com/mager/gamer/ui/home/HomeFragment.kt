@@ -34,6 +34,12 @@ class HomeFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if ( it.resultCode == Activity.RESULT_OK ) {
                 println("Result OK")
+                val like = it.data?.getIntExtra("like", 0)!!
+                val position = it.data?.getIntExtra("position", 0)!!
+                (binding.recyclerPostingan.adapter as PostinganAdapter?)?.let {
+                    it.postingan[position].jumlahLike = like
+                    it.notifyItemChanged(position)
+                }
             }
         }
     override fun onCreateView(
@@ -63,9 +69,10 @@ class HomeFragment : Fragment() {
         }
         viewModel.postinganResult.observe(viewLifecycleOwner) {
             binding.recyclerPostingan.apply {
-                adapter = PostinganAdapter(it.toMutableList(), onDetailClick = {
+                adapter = PostinganAdapter(it.toMutableList(), onDetailClick = { data, position ->
                     val intent = Intent(requireContext(), DetailPostinganActivity::class.java)
-                    intent.putExtra("post", it)
+                    intent.putExtra("post", data)
+                    intent.putExtra("position", position)
                     intentWithResult.launch(intent)
                 }, onCopyClick = {
                     val clipboard: ClipboardManager = (requireActivity()).getSystemService(Context.CLIPBOARD_SERVICE)

@@ -1,5 +1,7 @@
 package com.mager.gamer.ui.postingan
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -20,6 +22,7 @@ class DetailPostinganActivity : AppCompatActivity() {
     private val viewModel : DetailPostinganViewModel by viewModels()
     private lateinit var postingan : Data
     private lateinit var sheetBinding: ItemSheetBinding
+    private var like = 0
 
     private lateinit var binding: ActivityDetailPostinganBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +36,7 @@ class DetailPostinganActivity : AppCompatActivity() {
 
         intent.extras?.getParcelable<Data>("post")?.let {
             postingan = it
+            like = it.jumlahLike
             binding.txtPosting.text = it.postText
             binding.recyclerKomen.apply {
                 layoutManager = LinearLayoutManager(
@@ -59,11 +63,21 @@ class DetailPostinganActivity : AppCompatActivity() {
     private fun setupObserver(){
         viewModel.likeResult.observe(this) {
             if (it.data.reaction) {
+                like++
                 binding.icLike.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_liked))
             } else {
+                like--
                 binding.icLike.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_like_outline))
             }
         }
+    }
+
+    override fun onDestroy() {
+        val i = Intent()
+        i.putExtra("like", like)
+        i.putExtra("position", intent.getIntExtra("position", 0))
+        setResult(Activity.RESULT_OK, i)
+        super.onDestroy()
     }
 
 
