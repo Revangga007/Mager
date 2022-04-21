@@ -6,11 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.mager.gamer.databinding.FragmentHomeBinding
 import com.mager.gamer.databinding.FragmentKomunitasBinding
+import com.mager.gamer.ui.home.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class KomunitasFragment : Fragment() {
 
-    private val viewModel: KomunitasViewModel by activityViewModels()
+    private val viewModel : KomunitasViewModel by activityViewModels()
     private var _binding: FragmentKomunitasBinding? = null
     private val binding get() = _binding!!
 

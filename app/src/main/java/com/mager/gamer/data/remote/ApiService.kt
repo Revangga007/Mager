@@ -2,6 +2,7 @@ package com.mager.gamer.data.remote
 
 
 
+import com.mager.gamer.data.model.remote.komunitas.get.KomunitasResponse
 import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
 import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
 import com.skydoves.sandwich.ApiResponse
@@ -33,9 +34,9 @@ interface ApiService {
         @Query("idUser") idUser: Int
     ): ApiResponse<LikePostinganResponse>
 
-//    @GET("mager/komunitas")
-//    suspend fun getKomunitas(
-//        @Query("size") size: Int,
-//        @Query("page") page: Int
-//    ) : ApiResponse<KomunitasResponse>
+    @GET("mager/komunitas")
+    suspend fun getKomunitas(
+        @Query("size") size: Int,
+        @Query("page") page: Int
+    ) : ApiResponse<KomunitasResponse>
 }
