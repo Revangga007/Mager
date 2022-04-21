@@ -36,7 +36,7 @@ data class Data(
     @SerializedName("postText")
     val postText: String,
     @SerializedName("postedIn")
-    val postedIn: String?,
+    val postedIn: List<PostedIn>,
     @SerializedName("tipePost")
     val tipePost: String?,
     @SerializedName("updated_date")
