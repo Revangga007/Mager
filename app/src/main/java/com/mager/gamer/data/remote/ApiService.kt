@@ -17,7 +17,8 @@ interface ApiService {
         @Query("sort") sort: String?,
         @Query("tipeSort") tipeSort: String?,
         @Query("tipeData") tipeData: String?,
-        @Query("idKomunitas") idKomunitas: Int?
+        @Query("idKomunitas") idKomunitas: Int?,
+        @Header("Authorization") token: String?
     ) : ApiResponse<PostinganResponse>
 
 //    @Multipart
@@ -31,7 +32,9 @@ interface ApiService {
     @POST("mager/like")
     suspend fun likePostingan(
         @Query("idPostingan") idPostingan: Int,
-        @Query("idUser") idUser: Int
+        @Query("idUser") idUser: Int,
+        @Header("Authorization") token: String?
+
     ): ApiResponse<LikePostinganResponse>
 
     @GET("mager/komunitas")
