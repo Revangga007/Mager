@@ -22,7 +22,8 @@ class MainRepository @Inject constructor(
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
     ) = flow {
-        val response = apiService.getPostingan(100, 0, null, null, null, null)
+        val token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0eWFoIiwicm9sZXMiOltdLCJpc3MiOiJodHRwczovL21hcmthcy1nYW1lci5oZXJva3VhcHAuY29tL21hZ2VyL2xvZ2luIiwiZXhwIjoxNjUwNzI5NDYwfQ.TILffytmrTuzBAxTpiKweajZEtqWksKt1mOzw7RnNrc"
+        val response = apiService.getPostingan(100, 0, null, null, null, null, token)
         response.suspendOnSuccess {
             emit(this.data)
         }.onError {
@@ -41,7 +42,8 @@ class MainRepository @Inject constructor(
         onError: (String?) -> Unit,
         idPost: Int
     ) = flow {
-        val response = apiService.likePostingan(idPost,1)
+        val token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0eWFoIiwicm9sZXMiOltdLCJpc3MiOiJodHRwczovL21hcmthcy1nYW1lci5oZXJva3VhcHAuY29tL21hZ2VyL2xvZ2luIiwiZXhwIjoxNjUwNzI5NDYwfQ.TILffytmrTuzBAxTpiKweajZEtqWksKt1mOzw7RnNrc"
+        val response = apiService.likePostingan(idPost,1, token)
         response.suspendOnSuccess {
             emit(data)
         }.onError {
