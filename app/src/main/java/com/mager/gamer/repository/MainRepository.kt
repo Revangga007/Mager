@@ -22,7 +22,7 @@ class MainRepository @Inject constructor(
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
     ) = flow {
-        val token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0eWFoIiwicm9sZXMiOltdLCJpc3MiOiJodHRwczovL21hcmthcy1nYW1lci5oZXJva3VhcHAuY29tL21hZ2VyL2xvZ2luIiwiZXhwIjoxNjUwNzI5NDYwfQ.TILffytmrTuzBAxTpiKweajZEtqWksKt1mOzw7RnNrc"
+        val token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjZWx6YSIsInJvbGVzIjpbXSwiaXNzIjoiaHR0cHM6Ly9tYXJrYXMtZ2FtZXIuaGVyb2t1YXBwLmNvbS9tYWdlci9sb2dpbiIsImV4cCI6MTY1MDg0NDIwMX0.Q0ct2wnPLJ--Bc-in6Gp4N9bMH4RxiNhUXOFF7CZ7Hs"
         val response = apiService.getPostingan(100, 0, null, null, null, null, token)
         response.suspendOnSuccess {
             emit(this.data)

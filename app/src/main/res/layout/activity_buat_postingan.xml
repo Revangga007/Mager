@@ -205,18 +205,46 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imgPreview"
+                    android:id="@+id/imgUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="69dp"
+                    android:layout_marginEnd="8dp"
+                    android:maxHeight="579dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_upload"
+                    app:layout_constraintEnd_toStartOf="@id/txtUpload"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Upload Foto/Video"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/imgUpload"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/imgUpload" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/img_upload"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/upload_deskripsi"
+                    android:textColor="@color/white_inactive"
+                    android:paddingBottom="69dp"
+                    app:layout_constraintTop_toBottomOf="@id/imgUpload"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/txtLink"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -224,7 +252,6 @@
                 android:text="Link Youtube"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/layoutLive"
                 app:layout_constraintStart_toStartOf="parent" />
 

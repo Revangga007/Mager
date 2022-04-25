@@ -60,6 +60,22 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupObserver() {
+        binding.cardPost.setOnClickListener {
+            val intent = Intent(requireContext(), BuatPostinganActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.cardUpload.setOnClickListener {
+            val intent = Intent(requireContext(), BuatPostinganActivity::class.java)
+            intent.putExtra(BuatPostinganActivity.INTENT_IMAGE_MODE, true)
+            startActivity(intent)
+        }
+        binding.cardLive.setOnClickListener {
+            val intent = Intent(requireContext(), BuatPostinganActivity::class.java)
+            intent.putExtra(BuatPostinganActivity.INTENT_LIVE_MODE, true)
+            startActivity(intent)
+        }
+
         viewModel.loading.observe(viewLifecycleOwner) {
             if (it) {
                 (requireActivity() as MainActivity).showLoading()
@@ -83,22 +99,6 @@ class HomeFragment : Fragment() {
                 })
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             }
-            binding.cardPost.setOnClickListener {
-                val intent = Intent(activity, BuatPostinganActivity::class.java)
-                startActivity(intent)
-            }
-
-            binding.cardUpload.setOnClickListener {
-                val intent = Intent(activity, BuatPostinganActivity::class.java)
-                intent.putExtra(BuatPostinganActivity.INTENT_IMAGE_MODE, true)
-                startActivity(intent)
-            }
-            binding.cardLive.setOnClickListener {
-                val intent = Intent(activity, BuatPostinganActivity::class.java)
-                intent.putExtra(BuatPostinganActivity.INTENT_LIVE_MODE, true)
-                startActivity(intent)
-            }
-
 
         }
     }

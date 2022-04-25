@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_mode_1"
+    tools:context=".ui.login.LoginActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/dark_mode_2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgLeft"
+            android:layout_width="19dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="18.4dp"
+            android:layout_marginTop="19.61dp"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtMakePost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18.4dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/masuk"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/imgLeft"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/txtSelamatDatang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Selamat Datang"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@id/layoutHeader"
+        app:layout_constraintStart_toStartOf="@id/layoutHeader"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+
+    <TextView
+        android:id="@+id/txtDeskripsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Isi data berikut untuk masuk ke akunmu"
+        android:textColor="@color/white_inactive"
+        app:layout_constraintEnd_toEndOf="@id/txtSelamatDatang"
+        app:layout_constraintStart_toStartOf="@id/txtSelamatDatang"
+        app:layout_constraintTop_toBottomOf="@id/txtSelamatDatang"/>
+
+    <EditText
+        android:id="@+id/txtUsername"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintStart_toStartOf="@id/btnMasuk"
+        app:layout_constraintEnd_toEndOf="@id/btnMasuk"
+        app:layout_constraintTop_toBottomOf="@id/txtDeskripsi"
+        android:layout_marginTop="32dp"
+        android:paddingStart="16dp"
+        android:hint="Email atau username"
+        android:textColorHint="@color/white"
+        style="@style/input_data"/>
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintStart_toStartOf="@id/btnMasuk"
+        app:layout_constraintEnd_toEndOf="@id/btnMasuk"
+        app:layout_constraintTop_toBottomOf="@id/txtUsername"
+        android:layout_marginTop="32dp"
+        android:paddingHorizontal="16dp"
+        android:hint="Katasandi"
+        android:inputType="textPassword"
+        android:drawableEnd="@drawable/ic_eye_inactive"
+        android:textColorHint="@color/white"
+        style="@style/input_data"/>
+
+    <CheckBox
+        android:id="@+id/cbIngatSaya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ingat saya"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/txtPassword"
+        app:layout_constraintTop_toBottomOf="@id/txtPassword" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMasuk"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cbIngatSaya"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Masuk"
+        style="@style/button_gradient_primary"/>
+
+    <TextView
+        android:id="@+id/txtLupaPassword"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnMasuk"
+        android:text="Lupa katasandi?"
+        android:textColor="@color/primary_400"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/txtBelumPunyaAkun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Belum punya akun?"
+        app:layout_constraintTop_toBottomOf="@id/txtLupaPassword"
+        android:gravity="center"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="16sp"
+        android:textColor="@color/white_inactive"
+        android:layout_marginTop="64dp"/>
+
+    <TextView
+        android:id="@+id/txtDaftarDisini"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Daftar disini"
+        android:textColor="@color/primary_400"
+        app:layout_constraintTop_toBottomOf="@id/txtBelumPunyaAkun"
+        android:gravity="center"
+        android:layout_marginTop="4dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

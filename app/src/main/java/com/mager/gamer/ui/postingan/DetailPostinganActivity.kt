@@ -4,11 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mager.gamer.R
 import com.mager.gamer.data.model.remote.postingan.get.Data
@@ -37,6 +39,13 @@ class DetailPostinganActivity : AppCompatActivity() {
         intent.extras?.getParcelable<Data>("post")?.let {
             postingan = it
             like = it.jumlahLike
+            if(it.files != null) {
+                Glide.with(binding.imgPosting.context)
+                    .load(it.files)
+                    .error(R.drawable.logo_mager_1)
+                    .into(binding.imgPosting)
+                binding.imgPosting.visibility = View.VISIBLE
+            }
             binding.txtPosting.text = it.postText
             binding.recyclerKomen.apply {
                 layoutManager = LinearLayoutManager(
