@@ -126,6 +126,17 @@
         app:layout_constraintStart_toStartOf="@id/cardFoto"
         app:layout_constraintTop_toBottomOf="@id/cardFoto" />
 
+    <ImageView
+        android:id="@+id/imgPosting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="200dp"
+        android:visibility="gone"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_posting"
+        app:layout_constraintTop_toBottomOf="@id/txtPosting" />
+
     <View
         android:id="@+id/lineUp"
         android:layout_width="0dp"
@@ -134,7 +145,7 @@
         android:background="#66FAFAFA"
         app:layout_constraintEnd_toEndOf="@id/txtPosting"
         app:layout_constraintStart_toStartOf="@id/txtPosting"
-        app:layout_constraintTop_toBottomOf="@id/txtPosting" />
+        app:layout_constraintTop_toBottomOf="@id/imgPosting" />
 
     <LinearLayout
         android:id="@+id/linearBtn"

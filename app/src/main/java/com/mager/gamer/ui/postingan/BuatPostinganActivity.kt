@@ -49,6 +49,7 @@ class BuatPostinganActivity : AppCompatActivity() {
         if (isImageMode) {
             binding.layoutImage.visibility = View.VISIBLE
             binding.layoutLive.visibility = View.GONE
+            binding.txtLink.visibility = View.GONE
             binding.edtStatus.setLines(10)
             binding.imgClose.setOnClickListener {
                 binding.layoutImage.visibility = View.GONE
@@ -56,9 +57,11 @@ class BuatPostinganActivity : AppCompatActivity() {
         } else if (isLiveMode) {
             binding.layoutImage.visibility = View.GONE
             binding.layoutLive.visibility = View.VISIBLE
+            binding.txtLink.visibility = View.VISIBLE
             binding.edtStatus.setLines(11)
         } else {
             binding.layoutImage.visibility = View.GONE
+            binding.txtLink.visibility = View.GONE
             binding.layoutLive.visibility = View.GONE
             binding.edtStatus.setLines(15)
         }
