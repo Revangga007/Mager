@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mager.gamer.MainActivity
 import com.mager.gamer.base.BaseActivity
 import com.mager.gamer.databinding.FragmentHomeBinding
+import com.mager.gamer.ui.login.LoginActivity
 import com.mager.gamer.ui.postingan.BuatPostinganActivity
 import com.mager.gamer.ui.postingan.DetailPostinganActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,6 +58,8 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.getAllPost()
         }
+        val i = Intent(requireContext(), LoginActivity::class.java)
+        startActivity(i)
     }
 
     private fun setupObserver() {

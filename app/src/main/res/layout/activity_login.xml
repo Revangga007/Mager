@@ -62,41 +62,75 @@
         android:textColor="@color/white_inactive"
         app:layout_constraintEnd_toEndOf="@id/txtSelamatDatang"
         app:layout_constraintStart_toStartOf="@id/txtSelamatDatang"
-        app:layout_constraintTop_toBottomOf="@id/txtSelamatDatang"/>
+        app:layout_constraintTop_toBottomOf="@id/txtSelamatDatang" />
 
-    <EditText
-        android:id="@+id/txtUsername"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        app:layout_constraintStart_toStartOf="@id/btnMasuk"
-        app:layout_constraintEnd_toEndOf="@id/btnMasuk"
-        app:layout_constraintTop_toBottomOf="@id/txtDeskripsi"
         android:layout_marginTop="32dp"
-        android:paddingStart="16dp"
+        app:hintEnabled="true"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:errorEnabled="true"
+        app:hintTextColor="#AFB9FF"
+        android:textColorHint="@color/white_inactive"
         android:hint="Email atau username"
-        android:textColorHint="@color/white"
-        style="@style/input_data"/>
+        app:boxBackgroundColor="@color/dark_mode_3"
+        app:errorTextColor="@color/dangers_red"
+        app:layout_constraintEnd_toEndOf="@id/btnMasuk"
+        app:layout_constraintStart_toStartOf="@id/btnMasuk"
+        app:layout_constraintTop_toBottomOf="@id/txtDeskripsi">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:hintTextColor="@color/white"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtPassword"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        app:layout_constraintStart_toStartOf="@id/btnMasuk"
-        app:layout_constraintEnd_toEndOf="@id/btnMasuk"
-        app:layout_constraintTop_toBottomOf="@id/txtUsername"
         android:layout_marginTop="32dp"
-        android:paddingHorizontal="16dp"
-        android:hint="Katasandi"
-        android:inputType="textPassword"
-        android:drawableEnd="@drawable/ic_eye_inactive"
-        android:textColorHint="@color/white"
-        style="@style/input_data"/>
+        app:hintEnabled="true"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/white_inactive"
+        app:hintTextColor="#AFB9FF"
+        android:textColorHint="@color/white_inactive"
+        android:hint="Kata sandi"
+        app:boxBackgroundColor="@color/dark_mode_3"
+        app:errorTextColor="@color/dangers_red"
+        app:layout_constraintEnd_toEndOf="@id/btnMasuk"
+        app:layout_constraintStart_toStartOf="@id/btnMasuk"
+        app:layout_constraintTop_toBottomOf="@id/textField">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtPw"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:hintTextColor="@color/white"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <CheckBox
         android:id="@+id/cbIngatSaya"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:text="Ingat saya"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@id/txtPassword"
@@ -104,48 +138,47 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnMasuk"
+        style="@style/button_gradient_primary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cbIngatSaya"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:text="Masuk"
-        style="@style/button_gradient_primary"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cbIngatSaya" />
 
     <TextView
         android:id="@+id/txtLupaPassword"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btnMasuk"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
         android:text="Lupa katasandi?"
         android:textColor="@color/primary_400"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintTop_toBottomOf="@id/btnMasuk" />
 
     <TextView
         android:id="@+id/txtBelumPunyaAkun"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Belum punya akun?"
-        app:layout_constraintTop_toBottomOf="@id/txtLupaPassword"
-        android:gravity="center"
+        android:layout_marginTop="64dp"
         android:fontFamily="@font/nunito_bold"
-        android:textSize="16sp"
+        android:gravity="center"
+        android:text="Belum punya akun?"
         android:textColor="@color/white_inactive"
-        android:layout_marginTop="64dp"/>
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/txtLupaPassword" />
 
     <TextView
         android:id="@+id/txtDaftarDisini"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="Daftar disini"
         android:textColor="@color/primary_400"
-        app:layout_constraintTop_toBottomOf="@id/txtBelumPunyaAkun"
-        android:gravity="center"
-        android:layout_marginTop="4dp"/>
-
+        app:layout_constraintTop_toBottomOf="@id/txtBelumPunyaAkun" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

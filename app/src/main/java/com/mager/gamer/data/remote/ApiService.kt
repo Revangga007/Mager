@@ -3,6 +3,8 @@ package com.mager.gamer.data.remote
 
 
 import com.mager.gamer.data.model.remote.komunitas.get.KomunitasResponse
+import com.mager.gamer.data.model.remote.login.LoginBody
+import com.mager.gamer.data.model.remote.login.LoginResponse
 import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
 import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
 import com.skydoves.sandwich.ApiResponse
@@ -42,4 +44,9 @@ interface ApiService {
         @Query("size") size: Int,
         @Query("page") page: Int
     ) : ApiResponse<KomunitasResponse>
+
+    @POST("mager/login")
+    suspend fun login(
+        @Body loginBody: LoginBody
+    ) : ApiResponse<LoginResponse>
 }

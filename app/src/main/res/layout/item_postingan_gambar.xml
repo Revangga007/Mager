@@ -122,7 +122,7 @@
 
 
         <ImageView
-            android:id="@+id/btnLike"
+            android:id="@+id/btnLike1"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="12dp"
@@ -137,8 +137,8 @@
             android:layout_marginStart="4dp"
             android:text="612"
             android:textColor="@color/white_inactive"
-            app:layout_constraintStart_toEndOf="@id/btnLike"
-            app:layout_constraintTop_toTopOf="@id/btnLike" />
+            app:layout_constraintStart_toEndOf="@id/btnLike1"
+            app:layout_constraintTop_toTopOf="@id/btnLike1" />
 
         <TextView
             android:id="@+id/txtSuka"
@@ -157,7 +157,7 @@
             android:layout_marginStart="16dp"
             android:src="@drawable/ic_comment"
             app:layout_constraintStart_toEndOf="@id/txtSuka"
-            app:layout_constraintTop_toTopOf="@id/btnLike" />
+            app:layout_constraintTop_toTopOf="@id/btnLike1" />
 
         <TextView
             android:id="@+id/txtJmlKomen"
