@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mager.gamer.MainActivity
 import com.mager.gamer.base.BaseActivity
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.databinding.FragmentHomeBinding
 import com.mager.gamer.ui.login.LoginActivity
 import com.mager.gamer.ui.postingan.BuatPostinganActivity
@@ -58,25 +59,30 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.getAllPost()
         }
-        val i = Intent(requireContext(), LoginActivity::class.java)
-        startActivity(i)
     }
 
+    private fun intentToCreatePost(isImage: Boolean = false, isLive: Boolean = false) {
+        val isLogin = MagerSharedPref.isLoggedIn
+        if (!isLogin) {
+            val i = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(i)
+            return
+        }
+        val intent = Intent(requireContext(), BuatPostinganActivity::class.java)
+        if (isImage) intent.putExtra(BuatPostinganActivity.INTENT_IMAGE_MODE, true)
+        else if (isLive) intent.putExtra(BuatPostinganActivity.INTENT_LIVE_MODE, true)
+        startActivity(intent)
+    }
     private fun setupObserver() {
         binding.cardPost.setOnClickListener {
-            val intent = Intent(requireContext(), BuatPostinganActivity::class.java)
-            startActivity(intent)
+            intentToCreatePost()
         }
 
         binding.cardUpload.setOnClickListener {
-            val intent = Intent(requireContext(), BuatPostinganActivity::class.java)
-            intent.putExtra(BuatPostinganActivity.INTENT_IMAGE_MODE, true)
-            startActivity(intent)
+            intentToCreatePost(isImage = true)
         }
         binding.cardLive.setOnClickListener {
-            val intent = Intent(requireContext(), BuatPostinganActivity::class.java)
-            intent.putExtra(BuatPostinganActivity.INTENT_LIVE_MODE, true)
-            startActivity(intent)
+            intentToCreatePost(isLive = true)
         }
 
         viewModel.loading.observe(viewLifecycleOwner) {
