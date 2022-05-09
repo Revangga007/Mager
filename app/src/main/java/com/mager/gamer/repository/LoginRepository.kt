@@ -24,9 +24,10 @@ class LoginRepository @Inject constructor(
         onStart: () -> Unit,
         onComplete: () -> Unit,
         onError: (LoginErorResponse) -> Unit,
-        body: LoginBody,
+        username: String,
+        password: String
     ) = flow {
-        val response = apiService.login(body)
+        val response = apiService.login(username, password)
         response.suspendOnSuccess {
             emit(this.data)
         }.onError {
@@ -35,7 +36,7 @@ class LoginRepository @Inject constructor(
             Timber.e(this.message())
         }.onException {
             Timber.e(this.message())
-           // onError(this.message())
+            // onError(this.message())
         }
     }
         .onStart { onStart() }

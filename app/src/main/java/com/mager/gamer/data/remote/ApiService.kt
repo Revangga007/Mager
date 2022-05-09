@@ -45,8 +45,10 @@ interface ApiService {
         @Query("page") page: Int
     ) : ApiResponse<KomunitasResponse>
 
+    @FormUrlEncoded
     @POST("mager/login")
     suspend fun login(
-        @Body loginBody: LoginBody
+        @Field("username") username: String,
+        @Field("password") password: String
     ) : ApiResponse<LoginResponse>
 }

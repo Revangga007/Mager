@@ -2,6 +2,7 @@ package com.mager.gamer.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
@@ -76,8 +77,10 @@ class LoginActivity : BaseActivity() {
 //            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
         viewModel.succesData.observe(this) {
+            Toast.makeText(this@LoginActivity, "Berhasil masuk", Toast.LENGTH_SHORT).show()
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
+            finishAffinity()
         }
     }
 }

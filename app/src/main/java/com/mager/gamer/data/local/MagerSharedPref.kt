@@ -5,6 +5,7 @@ import com.orhanobut.hawk.Hawk
 
 object MagerSharedPref {
     private const val USER_TOKEN = "userToken"
+    private const val REFRESH_TOKEN = "refreshToken"
     private const val USER_ID = "userId"
     private const val USER_EMAIL = "userEmail"
     private const val IS_LOGIN = "isLogin"
@@ -17,6 +18,13 @@ object MagerSharedPref {
         get() = Hawk.get(USER_TOKEN)
         set(value) {
             Hawk.put(USER_TOKEN, value)
+            field = value
+        }
+
+    var refreshToken: String? = null
+        get() = Hawk.get(REFRESH_TOKEN)
+        set(value) {
+            Hawk.put(REFRESH_TOKEN, value)
             field = value
         }
 
