@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mager.gamer.R
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.databinding.ActivityDetailPostinganBinding
 import com.mager.gamer.databinding.DeleteDialogBinding
@@ -74,6 +75,14 @@ class DetailPostinganActivity : AppCompatActivity() {
                     false
                 )
                 adapter = KomentarAdapter(it.komentarBy.toMutableList()){sheetDialog.show()}
+            }
+
+            val idUser = MagerSharedPref.userId!!
+            it.likedBy.find {
+                like ->
+                like.user.id == idUser
+            }?.let {
+                binding.icLike.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_liked))
             }
         }
 

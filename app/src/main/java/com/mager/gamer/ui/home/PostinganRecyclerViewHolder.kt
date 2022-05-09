@@ -1,6 +1,7 @@
 package com.mager.gamer.ui.home
 
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
@@ -17,10 +18,19 @@ sealed class PostinganRecyclerViewHolder(
     class PostinganTextViewHolder(private val binding: ItemPostinganBinding) :
         PostinganRecyclerViewHolder(binding) {
         fun bind(
+            idUser: Int?,
             postingan: Data,
             onDetailClick: (Data, Int) -> Unit,
             onCopyClick: (String) -> Unit
         ) {
+            if (idUser != null) {
+                postingan.likedBy.find {
+                    like ->
+                    like.user.id == idUser
+                }?.let {
+                    binding.icLike.setImageDrawable(ContextCompat.getDrawable(binding.icLike.context, R.drawable.ic_liked))
+                }
+            }
             binding.txtPosting.text = postingan.postText
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
@@ -48,10 +58,19 @@ sealed class PostinganRecyclerViewHolder(
     class PostinganImageViewHolder(private val binding: ItemPostinganGambarBinding) :
         PostinganRecyclerViewHolder(binding) {
         fun bind(
+            idUser: Int?,
             postingan: Data,
             onDetailClick: (Data, Int) -> Unit,
             onCopyClick: (String) -> Unit
         ) {
+            if (idUser != null) {
+                postingan.likedBy.find {
+                        like ->
+                    like.user.id == idUser
+                }?.let {
+                    binding.icLike.setImageDrawable(ContextCompat.getDrawable(binding.icLike.context, R.drawable.ic_liked))
+                }
+            }
             binding.txtPosting.text = postingan.postText
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
@@ -92,10 +111,19 @@ sealed class PostinganRecyclerViewHolder(
     class PostinganVideoViewHolder(private val binding: ItemPostinganVideoBinding) :
         PostinganRecyclerViewHolder(binding) {
         fun bind(
+            idUser: Int?,
             postingan: Data,
             onDetailClick: (Data, Int) -> Unit,
             onCopyClick: (String) -> Unit
         ) {
+            if (idUser != null) {
+                postingan.likedBy.find {
+                        like ->
+                    like.user.id == idUser
+                }?.let {
+                    binding.icLike.setImageDrawable(ContextCompat.getDrawable(binding.icLike.context, R.drawable.ic_liked))
+                }
+            }
             binding.txtPosting.text = postingan.postText
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
