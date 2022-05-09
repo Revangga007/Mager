@@ -43,7 +43,7 @@
         android:layout_width="@dimen/profile"
         android:layout_height="@dimen/profile"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutHeader">
@@ -116,7 +116,7 @@
         android:id="@+id/txtPosting"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/nunito"
         android:text="@string/dummy_content"
         android:textColor="@color/white"
@@ -141,7 +141,7 @@
         android:id="@+id/lineUp"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="#66FAFAFA"
         app:layout_constraintEnd_toEndOf="@id/txtPosting"
         app:layout_constraintStart_toStartOf="@id/txtPosting"
@@ -158,7 +158,7 @@
         app:layout_constraintTop_toBottomOf="@id/lineUp">
 
         <LinearLayout
-            android:id="@+id/btnLike"
+            android:id="@+id/btnLike1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -229,17 +229,17 @@
         android:id="@+id/lineDown"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="44dp"
         android:background="#66FAFAFA"
         app:layout_constraintEnd_toEndOf="@id/lineUp"
         app:layout_constraintStart_toStartOf="@id/lineUp"
-        app:layout_constraintTop_toBottomOf="@id/linearBtn" />
+        app:layout_constraintTop_toBottomOf="@id/lineUp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardFoto2"
         android:layout_width="@dimen/foto_comment"
         android:layout_height="@dimen/foto_comment"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintStart_toStartOf="@id/cardFoto"
         app:layout_constraintTop_toBottomOf="@id/lineDown">
@@ -256,9 +256,9 @@
         android:id="@+id/edtKomen"
         android:layout_width="0dp"
         android:layout_height="42dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/backgrond_comment"
-        android:drawableEnd="@drawable/ic_send"
+        android:drawableEnd="@drawable/ic_send2"
         android:fontFamily="@font/nunito"
         android:hint="Tulis Komentar"
         android:padding="8dp"

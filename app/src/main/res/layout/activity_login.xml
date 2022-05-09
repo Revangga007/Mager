@@ -20,6 +20,7 @@
             android:layout_height="17dp"
             android:layout_marginStart="18.4dp"
             android:layout_marginTop="19.61dp"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/ic_arrow_left"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,112 +41,168 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/txtSelamatDatang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Selamat Datang"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@id/layoutHeader"
-        app:layout_constraintStart_toStartOf="@id/layoutHeader"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
-
-    <TextView
-        android:id="@+id/txtDeskripsi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Isi data berikut untuk masuk ke akunmu"
-        android:textColor="@color/white_inactive"
-        app:layout_constraintEnd_toEndOf="@id/txtSelamatDatang"
-        app:layout_constraintStart_toStartOf="@id/txtSelamatDatang"
-        app:layout_constraintTop_toBottomOf="@id/txtSelamatDatang"/>
-
-    <EditText
-        android:id="@+id/txtUsername"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        app:layout_constraintStart_toStartOf="@id/btnMasuk"
-        app:layout_constraintEnd_toEndOf="@id/btnMasuk"
-        app:layout_constraintTop_toBottomOf="@id/txtDeskripsi"
-        android:layout_marginTop="32dp"
-        android:paddingStart="16dp"
-        android:hint="Email atau username"
-        android:textColorHint="@color/white"
-        style="@style/input_data"/>
-
-    <EditText
-        android:id="@+id/txtPassword"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        app:layout_constraintStart_toStartOf="@id/btnMasuk"
-        app:layout_constraintEnd_toEndOf="@id/btnMasuk"
-        app:layout_constraintTop_toBottomOf="@id/txtUsername"
-        android:layout_marginTop="32dp"
-        android:paddingHorizontal="16dp"
-        android:hint="Katasandi"
-        android:inputType="textPassword"
-        android:drawableEnd="@drawable/ic_eye_inactive"
-        android:textColorHint="@color/white"
-        style="@style/input_data"/>
-
-    <CheckBox
-        android:id="@+id/cbIngatSaya"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Ingat saya"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@id/txtPassword" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnMasuk"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cbIngatSaya"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Masuk"
-        style="@style/button_gradient_primary"/>
-
-    <TextView
-        android:id="@+id/txtLupaPassword"
+    <ScrollView
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btnMasuk"
-        android:text="Lupa katasandi?"
-        android:textColor="@color/primary_400"
-        android:layout_marginTop="16dp"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader">
 
-    <TextView
-        android:id="@+id/txtBelumPunyaAkun"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Belum punya akun?"
-        app:layout_constraintTop_toBottomOf="@id/txtLupaPassword"
-        android:gravity="center"
-        android:fontFamily="@font/nunito_bold"
-        android:textSize="16sp"
-        android:textColor="@color/white_inactive"
-        android:layout_marginTop="64dp"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txtDaftarDisini"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Daftar disini"
-        android:textColor="@color/primary_400"
-        app:layout_constraintTop_toBottomOf="@id/txtBelumPunyaAkun"
-        android:gravity="center"
-        android:layout_marginTop="4dp"/>
+            <TextView
+                android:id="@+id/txtSelamatDatang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="116dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Selamat Datang"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/txtDeskripsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/nunito"
+                android:text="Isi data berikut untuk masuk ke akunmu"
+                android:textColor="@color/white_inactive"
+                app:layout_constraintEnd_toEndOf="@id/txtSelamatDatang"
+                app:layout_constraintStart_toStartOf="@id/txtSelamatDatang"
+                app:layout_constraintTop_toBottomOf="@id/txtSelamatDatang" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="Email atau username"
+                android:textColorHint="@color/white_inactive"
+                app:boxBackgroundColor="@color/dark_mode_3"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:errorEnabled="true"
+                app:errorTextColor="@color/dangers_red"
+                app:hintEnabled="true"
+                app:hintTextColor="#AFB9FF"
+                app:layout_constraintEnd_toEndOf="@id/btnMasuk"
+                app:layout_constraintStart_toStartOf="@id/btnMasuk"
+                app:layout_constraintTop_toBottomOf="@id/txtDeskripsi">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    tools:text="Sample" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Kata sandi"
+                android:textColorHint="@color/white_inactive"
+                app:boxBackgroundColor="@color/dark_mode_3"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:errorEnabled="true"
+                app:errorTextColor="@color/dangers_red"
+                app:hintEnabled="true"
+                app:hintTextColor="#AFB9FF"
+                app:layout_constraintEnd_toEndOf="@id/btnMasuk"
+                app:layout_constraintStart_toStartOf="@id/btnMasuk"
+                app:layout_constraintTop_toBottomOf="@id/textField"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white_inactive">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    tools:text="Sample" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <CheckBox
+                android:id="@+id/cbIngatSaya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="Ingat saya"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/txtPassword"
+                app:layout_constraintTop_toBottomOf="@id/txtPassword" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMasuk"
+                style="@style/button_gradient_primary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Masuk"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cbIngatSaya" />
+
+            <TextView
+                android:id="@+id/txtLupaPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:text="Lupa katasandi?"
+                android:textColor="@color/primary_400"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/btnMasuk" />
+
+            <TextView
+                android:id="@+id/txtBelumPunyaAkun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:fontFamily="@font/nunito"
+                android:gravity="center"
+                android:text="Belum punya akun?"
+                android:textColor="@color/white_inactive"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/txtLupaPassword" />
+
+            <TextView
+                android:id="@+id/txtDaftarDisini"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:text="Daftar"
+                android:textColor="@color/primary_400"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@id/txtBelumPunyaAkun" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

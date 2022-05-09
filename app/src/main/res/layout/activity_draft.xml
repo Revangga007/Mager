@@ -4,6 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_mode_1"
     tools:context=".ui.draft.DraftActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/dark_mode_2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgLeft"
+            android:layout_width="19dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="18.4dp"
+            android:layout_marginTop="19.61dp"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtDraft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18.4dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Draft"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/imgLeft"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

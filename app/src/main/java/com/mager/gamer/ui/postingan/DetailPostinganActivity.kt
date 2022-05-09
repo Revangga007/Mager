@@ -1,10 +1,14 @@
 package com.mager.gamer.ui.postingan
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -15,6 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mager.gamer.R
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.databinding.ActivityDetailPostinganBinding
+import com.mager.gamer.databinding.DeleteDialogBinding
 import com.mager.gamer.databinding.ItemSheetBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -25,6 +30,7 @@ class DetailPostinganActivity : AppCompatActivity() {
     private lateinit var postingan : Data
     private lateinit var sheetBinding: ItemSheetBinding
     private var like = 0
+    private lateinit var deleteDialogBinding: DeleteDialogBinding
 
     private lateinit var binding: ActivityDetailPostinganBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,9 +38,23 @@ class DetailPostinganActivity : AppCompatActivity() {
         binding = ActivityDetailPostinganBinding.inflate(layoutInflater)
         setContentView(binding.root)
         sheetBinding = ItemSheetBinding.inflate(layoutInflater)
+        deleteDialogBinding = DeleteDialogBinding.inflate(layoutInflater)
 
         val sheetDialog = BottomSheetDialog(this, R.style.backgroundSheet)
         sheetDialog.setContentView(sheetBinding.root)
+        val deleteDialog = Dialog(this)
+        deleteDialog.apply {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            setContentView(deleteDialogBinding.root)
+        }
+        sheetBinding.imgSampah.setOnClickListener{
+            deleteDialog.show()
+        }
+        sheetBinding.txtDel.setOnClickListener{
+            deleteDialog.show()
+        }
+
 
         intent.extras?.getParcelable<Data>("post")?.let {
             postingan = it
@@ -57,7 +77,7 @@ class DetailPostinganActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnLike.setOnClickListener {
+        binding.btnLike1.setOnClickListener {
             lifecycleScope.launch {
                 viewModel.likePostingan(postingan.id)
             }

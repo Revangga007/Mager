@@ -3,14 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable-v24/bottom_nav_icon_color_selector1.xml" value="0.153" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/backgrond_comment.xml" value="0.2115" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/background_content_post.xml" value="0.1" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/background_image_preview.xml" value="0.153" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/background_post.xml" value="0.2115" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/background_postingan.xml" value="0.1" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/background_select_menu.xml" value="0.1795" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/bgsheet.xml" value="0.153" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/gradient_blue_color.xml" value="0.1265" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/ic_arrow_left.xml" value="0.1265" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/drawable/ic_bell.xml" value="0.1265" />
@@ -36,25 +33,18 @@
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/font/poppins_semibold.xml" value="0.1" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_buat_posting.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_buat_postingan.xml" value="0.20416666666666666" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_detail_postingan.xml" value="0.20416666666666666" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_on_board.xml" value="0.33" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_on_boardctivity.xml" value="0.1" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/fragment_dashboard.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/fragment_komunitas.xml" value="0.17" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_komen.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_komunitas.xml" value="0.2578125" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_post_gambar.xml" value="0.25" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_post_text.xml" value="0.33" />
+        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_post_text.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_postingan.xml" value="0.25" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_postingan_foto.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_postingan_gambar.xml" value="0.25" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_postingan_video.xml" value="0.25" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_sheet.xml" value="0.20416666666666666" />
-        <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/item_sheet_non_user.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/layout/loading_dialog.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/menu/top_nav_menu.xml" value="0.22" />
@@ -67,18 +57,29 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/background_postingan.xml" value="0.1485" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/bg_dialog.xml" value="0.1485" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/bgsheet.xml" value="0.1485" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/bottom_nav_icon_color_selector1.xml" value="0.1" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/gradient_blue_color.xml" value="0.1485" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/ic_kom.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/ic_user.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/ic_user_inactive.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/menu_community.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/menu_home.xml" value="0.1" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/menu_user.xml" value="0.1" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/activity_buat_postingan.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/activity_detail_postingan.xml" value="0.3433652530779754" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/activity_draft.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/delete_dialog.xml" value="0.33" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/delete_post_dialog.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/delete_post_dialog.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/fragment_home.xml" value="0.14709193245778612" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/fragment_notifications.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_else.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_komen.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_post_text.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_postingan.xml" value="0.22" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_postingan.xml" value="0.33" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_postingan_gambar.xml" value="0.23262279888785914" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_postingan_video.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/layout/item_sheet.xml" value="0.25" />

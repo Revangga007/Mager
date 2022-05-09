@@ -88,12 +88,12 @@
             app:layout_constraintTop_toTopOf="@id/cardFoto" />
 
         <TextView
-            android:paddingVertical="4dp"
             android:id="@+id/txtPosting"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
+            android:paddingVertical="4dp"
+            android:layout_marginTop="12dp"
             android:lineHeight="24dp"
             android:fontFamily="@font/nunito"
             android:text="@string/dummy_content"
@@ -102,7 +102,7 @@
             app:layout_constraintTop_toBottomOf="@id/cardFoto" />
 
         <ImageView
-            android:id="@+id/btnLike"
+            android:id="@+id/btnLike1"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="12dp"
@@ -117,8 +117,8 @@
             android:layout_marginStart="4dp"
             android:text="0"
             android:textColor="@color/white_inactive"
-            app:layout_constraintStart_toEndOf="@id/btnLike"
-            app:layout_constraintTop_toTopOf="@id/btnLike" />
+            app:layout_constraintStart_toEndOf="@id/btnLike1"
+            app:layout_constraintTop_toTopOf="@id/btnLike1" />
 
         <TextView
             android:id="@+id/txtSuka"
@@ -137,7 +137,7 @@
             android:layout_marginStart="16dp"
             android:src="@drawable/ic_comment"
             app:layout_constraintStart_toEndOf="@id/txtSuka"
-            app:layout_constraintTop_toTopOf="@id/btnLike" />
+            app:layout_constraintTop_toTopOf="@id/btnLike1" />
 
         <TextView
             android:id="@+id/txtJmlKomen"
@@ -163,7 +163,7 @@
             android:id="@+id/lineUp"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:background="#66FAFAFA"
             app:layout_constraintStart_toStartOf="@id/cardFoto"
             app:layout_constraintEnd_toEndOf="@id/btnOption"
@@ -173,15 +173,14 @@
             android:id="@+id/linearBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="14dp"
             android:orientation="horizontal"
+            android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="@id/lineUp"
             app:layout_constraintEnd_toEndOf="@id/lineUp"
-            app:layout_constraintTop_toBottomOf="@id/lineUp"
-            app:layout_constraintBottom_toTopOf="@id/lineDown">
+            app:layout_constraintTop_toBottomOf="@id/lineUp" >
 
             <LinearLayout
+                android:id="@+id/btnLike2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -202,6 +201,7 @@
                     android:text="Suka"
                     android:textColor="@color/white_inactive" />
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -252,11 +252,11 @@
             android:id="@+id/lineDown"
             android:layout_width="0dp"
             android:layout_height="1dp"
+            android:layout_marginTop="44dp"
             android:background="#66FAFAFA"
-            android:layout_marginTop="14dp"
             app:layout_constraintStart_toStartOf="@id/lineUp"
             app:layout_constraintEnd_toEndOf="@id/lineUp"
-            app:layout_constraintTop_toBottomOf="@id/linearBtn" />
+            app:layout_constraintTop_toBottomOf="@id/lineUp" />
 
 
         <androidx.cardview.widget.CardView
