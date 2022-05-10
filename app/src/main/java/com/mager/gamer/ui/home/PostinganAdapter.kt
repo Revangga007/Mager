@@ -13,7 +13,7 @@ import com.mager.gamer.databinding.ItemPostinganVideoBinding
 class PostinganAdapter(
     var postingan: MutableList<Data>,
     private val onDetailClick: (Data, Int) -> Unit,
-    private val onCopyClick: (String) -> Unit
+    private val onCopyClick: (String) -> Unit,
 ) : RecyclerView.Adapter<PostinganRecyclerViewHolder>() {
 
     companion object {

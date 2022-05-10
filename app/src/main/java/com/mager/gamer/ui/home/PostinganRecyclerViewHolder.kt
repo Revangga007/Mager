@@ -44,9 +44,9 @@ sealed class PostinganRecyclerViewHolder(
                 binding.txtSemuaKomen.visibility = View.GONE
             }
 
-//            binding.btnCopy.setOnClickListener {
-//                onCopyClick(postingan.linkPostingan)
-//            }
+            binding.btnCopy.setOnClickListener {
+                onCopyClick(postingan.linkPostingan ?: "")
+            }
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan, adapterPosition)
             }
@@ -84,9 +84,9 @@ sealed class PostinganRecyclerViewHolder(
                 binding.txtSemuaKomen.visibility = View.GONE
             }
 
-//            binding.btnCopy.setOnClickListener {
-//                onCopyClick(postingan.linkPostingan)
-//            }
+            binding.btnCopy.setOnClickListener {
+                onCopyClick(postingan.linkPostingan ?: "")
+            }
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan, adapterPosition)
             }
@@ -134,9 +134,9 @@ sealed class PostinganRecyclerViewHolder(
                 binding.cardFoto3.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
             }
-//            binding.btnCopy.setOnClickListener {
-//                onCopyClick(postingan.linkPostingan)
-//            }
+            binding.btnCopy.setOnClickListener {
+                onCopyClick(postingan.linkPostingan ?: "")
+            }
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan, adapterPosition)
             }
