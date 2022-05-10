@@ -3,6 +3,7 @@ package com.mager.gamer.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.Data
 
 import com.mager.gamer.databinding.ItemPostinganBinding
@@ -21,6 +22,8 @@ class PostinganAdapter(
         const val POSTINGAN_VIDEO = 3
         const val POSTINGAN_LIVESTREAM = 4
     }
+
+    private val idUser= MagerSharedPref.userId
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostinganRecyclerViewHolder {
         return when (viewType) {
@@ -48,16 +51,19 @@ class PostinganAdapter(
         val post = postingan[position]
         when (holder) {
             is PostinganRecyclerViewHolder.PostinganTextViewHolder -> holder.bind(
+                idUser,
                 post,
                 onDetailClick,
                 onCopyClick
             )
             is PostinganRecyclerViewHolder.PostinganImageViewHolder -> holder.bind(
+                idUser,
                 post,
                 onDetailClick,
                 onCopyClick
             )
             is PostinganRecyclerViewHolder.PostinganVideoViewHolder -> holder.bind(
+                idUser,
                 post,
                 onDetailClick,
                 onCopyClick
