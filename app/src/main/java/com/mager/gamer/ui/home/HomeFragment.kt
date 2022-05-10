@@ -17,8 +17,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mager.gamer.MainActivity
-import com.mager.gamer.base.BaseActivity
 import com.mager.gamer.data.local.MagerSharedPref
+import com.mager.gamer.data.model.remote.postingan.get.LikedBy
 import com.mager.gamer.databinding.FragmentHomeBinding
 import com.mager.gamer.ui.login.LoginActivity
 import com.mager.gamer.ui.postingan.BuatPostinganActivity
@@ -29,21 +29,35 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private val viewModel : HomeViewModel by activityViewModels()
+    private val viewModel: HomeViewModel by activityViewModels()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val intentWithResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if ( it.resultCode == Activity.RESULT_OK ) {
-                println("Result OK")
-                val like = it.data?.getIntExtra("like", 0)!!
-                val position = it.data?.getIntExtra("position", 0)!!
-                (binding.recyclerPostingan.adapter as PostinganAdapter?)?.let {
-                    it.postingan[position].jumlahLike = like
-                    it.notifyItemChanged(position)
+            if (it.resultCode == Activity.RESULT_OK) {
+                if (lastPositionForUpdate != -1) {
+                    val newLike = it.data?.getIntExtra("like", 0)!!
+                    val data = it.data?.getParcelableExtra<LikedBy>("data")!!
+
+                    (binding.recyclerPostingan.adapter as PostinganAdapter?)?.let {
+                        val post = it.postingan[lastPositionForUpdate]
+                        if (post.jumlahLike > newLike) {
+                            /** unlike post **/
+                            post.likedBy.find { it.user.id == data.user.id }?.let {
+                                post.likedBy.remove(it)
+                            }
+                        } else {
+                            /** like post **/
+                            post.likedBy.add(data)
+                        }
+                        it.postingan[lastPositionForUpdate].jumlahLike = newLike
+                        it.notifyItemChanged(lastPositionForUpdate)
+                    }
                 }
             }
         }
+    private var lastPositionForUpdate = -1
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -73,6 +87,7 @@ class HomeFragment : Fragment() {
         else if (isLive) intent.putExtra(BuatPostinganActivity.INTENT_LIVE_MODE, true)
         startActivity(intent)
     }
+
     private fun setupObserver() {
         binding.cardPost.setOnClickListener {
             intentToCreatePost()
@@ -95,16 +110,18 @@ class HomeFragment : Fragment() {
         viewModel.postinganResult.observe(viewLifecycleOwner) {
             binding.recyclerPostingan.apply {
                 adapter = PostinganAdapter(it.toMutableList(), onDetailClick = { data, position ->
+                    lastPositionForUpdate = position
                     val intent = Intent(requireContext(), DetailPostinganActivity::class.java)
                     intent.putExtra("post", data)
-                    intent.putExtra("position", position)
                     intentWithResult.launch(intent)
                 }, onCopyClick = {
-                    val clipboard: ClipboardManager = (requireActivity()).getSystemService(Context.CLIPBOARD_SERVICE)
-                            as ClipboardManager
+                    val clipboard: ClipboardManager =
+                        (requireActivity()).getSystemService(Context.CLIPBOARD_SERVICE)
+                                as ClipboardManager
                     val clip = ClipData.newPlainText("link berhasil disalin", it)
                     clipboard.setPrimaryClip(clip)
-                    Toast.makeText(requireContext(), "Link berhasil disalin", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Link berhasil disalin", Toast.LENGTH_LONG)
+                        .show()
                 })
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             }

@@ -1,3 +1,4 @@
+
 package com.mager.gamer.ui.postingan
 
 import android.app.Activity
@@ -5,12 +6,11 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.Window
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,11 +24,12 @@ import com.mager.gamer.databinding.DeleteDialogBinding
 import com.mager.gamer.databinding.ItemSheetBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+
 @AndroidEntryPoint
 class DetailPostinganActivity : AppCompatActivity() {
 
-    private val viewModel : DetailPostinganViewModel by viewModels()
-    private lateinit var postingan : Data
+    private val viewModel: DetailPostinganViewModel by viewModels()
+    private lateinit var postingan: Data
     private lateinit var sheetBinding: ItemSheetBinding
     private var like = 0
     private lateinit var deleteDialogBinding: DeleteDialogBinding
@@ -49,10 +50,10 @@ class DetailPostinganActivity : AppCompatActivity() {
             window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             setContentView(deleteDialogBinding.root)
         }
-        sheetBinding.imgSampah.setOnClickListener{
+        sheetBinding.imgSampah.setOnClickListener {
             deleteDialog.show()
         }
-        sheetBinding.txtDel.setOnClickListener{
+        sheetBinding.txtDel.setOnClickListener {
             deleteDialog.show()
         }
 
@@ -60,7 +61,7 @@ class DetailPostinganActivity : AppCompatActivity() {
         intent.extras?.getParcelable<Data>("post")?.let {
             postingan = it
             like = it.jumlahLike
-            if(it.files != null) {
+            if (it.files != null) {
                 Glide.with(binding.imgPosting.context)
                     .load(it.files)
                     .error(R.drawable.logo_mager_1)
@@ -74,15 +75,14 @@ class DetailPostinganActivity : AppCompatActivity() {
                     RecyclerView.VERTICAL,
                     false
                 )
-                adapter = KomentarAdapter(it.komentarBy.toMutableList()){sheetDialog.show()}
+                adapter = KomentarAdapter(it.komentarBy.toMutableList()) { sheetDialog.show() }
             }
 
             val idUser = MagerSharedPref.userId!!
-            it.likedBy.find {
-                like ->
+            it.likedBy.find { like ->
                 like.user.id == idUser
             }?.let {
-                binding.icLike.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_liked))
+                binding.icLike.setImageResource(R.drawable.ic_liked)
             }
         }
 
@@ -98,25 +98,22 @@ class DetailPostinganActivity : AppCompatActivity() {
         setupObserver()
     }
 
-    private fun setupObserver(){
+    private fun setupObserver() {
         viewModel.likeResult.observe(this) {
             if (it.data.reaction) {
                 like++
-                binding.icLike.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_liked))
+                binding.icLike.setImageResource(R.drawable.ic_liked)
             } else {
                 like--
-                binding.icLike.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_like_outline))
+                binding.icLike.setImageResource(R.drawable.ic_like_outline)
             }
+            val i = Intent()
+            i.putExtra("like", like)
+            i.putExtra("data", it.data)
+            setResult(Activity.RESULT_OK, i)
         }
     }
 
-    override fun onDestroy() {
-        val i = Intent()
-        i.putExtra("like", like)
-        i.putExtra("position", intent.getIntExtra("position", 0))
-        setResult(Activity.RESULT_OK, i)
-        super.onDestroy()
-    }
-
-
 }
+
+

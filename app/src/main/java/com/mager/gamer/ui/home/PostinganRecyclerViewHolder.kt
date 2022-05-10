@@ -1,7 +1,6 @@
 package com.mager.gamer.ui.home
 
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
@@ -24,35 +23,35 @@ sealed class PostinganRecyclerViewHolder(
             onCopyClick: (String) -> Unit
         ) {
             if (idUser != null) {
-                postingan.likedBy.find {
-                    like ->
+                val find = postingan.likedBy.find { like ->
                     like.user.id == idUser
-                }?.let {
-                    binding.icLike.setImageDrawable(ContextCompat.getDrawable(binding.icLike.context, R.drawable.ic_liked))
                 }
+                binding.icLike.setImageResource(
+                    if (find != null) R.drawable.ic_liked
+                    else R.drawable.ic_like_outline
+                )
             }
-            binding.txtPosting.text = postingan.postText
+
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
-            if (postingan.createdBy != null) {
-                binding.txtNama.text = postingan.createdBy.nama
-                binding.txtUsername.text = postingan.createdBy.username
-            }
-            binding.txtWaktu.text = postingan.createdDate.toString()
+            binding.txtNama.text = postingan.createdBy.nama
+            binding.txtUsername.text = postingan.createdBy.username
+            binding.txtWaktu.text = postingan.createdDate
             if (postingan.jumlahKomentar == 0) {
                 binding.layoutKomen.visibility = View.GONE
                 binding.cardFoto3.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
             }
 
-//            binding.btnCopy.setOnClickListener {
-//                onCopyClick(postingan.linkPostingan)
-//            }
+            binding.btnCopy.setOnClickListener {
+                onCopyClick(postingan.linkPostingan ?: "")
+            }
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan, adapterPosition)
             }
         }
+
     }
 
     class PostinganImageViewHolder(private val binding: ItemPostinganGambarBinding) :
@@ -64,41 +63,39 @@ sealed class PostinganRecyclerViewHolder(
             onCopyClick: (String) -> Unit
         ) {
             if (idUser != null) {
-                postingan.likedBy.find {
-                        like ->
+                val find = postingan.likedBy.find { like ->
                     like.user.id == idUser
-                }?.let {
-                    binding.icLike.setImageDrawable(ContextCompat.getDrawable(binding.icLike.context, R.drawable.ic_liked))
                 }
+                binding.icLike.setImageResource(
+                    if (find != null) R.drawable.ic_liked
+                    else R.drawable.ic_like_outline
+                )
             }
-            binding.txtPosting.text = postingan.postText
+
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
-            if (postingan.createdBy != null) {
-                binding.txtNama.text = postingan.createdBy.nama
-                binding.txtUsername.text = postingan.createdBy.username
-            }
-            binding.txtWaktu.text = postingan.createdDate.toString()
+            binding.txtNama.text = postingan.createdBy.nama
+            binding.txtUsername.text = postingan.createdBy.username
+            binding.txtWaktu.text = postingan.createdDate
             if (postingan.jumlahKomentar == 0) {
                 binding.layoutKomen.visibility = View.GONE
                 binding.cardFoto3.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
             }
 
-//            binding.btnCopy.setOnClickListener {
-//                onCopyClick(postingan.linkPostingan)
-//            }
+            binding.btnCopy.setOnClickListener {
+                onCopyClick(postingan.linkPostingan ?: "")
+            }
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan, adapterPosition)
             }
 
-//            Glide untuk load gambar
-            if(postingan.files != null) {
-            Glide.with(binding.imgPosting.context)
-                .load(postingan.files)
-                .error(R.drawable.logo_mager_1)
-                .into(binding.imgPosting)
+            if (postingan.files != null) {
+                Glide.with(binding.imgPosting.context)
+                    .load(postingan.files)
+                    .error(R.drawable.logo_mager_1)
+                    .into(binding.imgPosting)
             } else if (postingan.linkLivestream != null) {
                 Glide.with(binding.imgPosting.context)
                     .load(postingan.linkLivestream)
@@ -117,33 +114,34 @@ sealed class PostinganRecyclerViewHolder(
             onCopyClick: (String) -> Unit
         ) {
             if (idUser != null) {
-                postingan.likedBy.find {
-                        like ->
+                val find = postingan.likedBy.find { like ->
                     like.user.id == idUser
-                }?.let {
-                    binding.icLike.setImageDrawable(ContextCompat.getDrawable(binding.icLike.context, R.drawable.ic_liked))
                 }
+                binding.icLike.setImageResource(
+                    if (find != null) R.drawable.ic_liked
+                    else R.drawable.ic_like_outline
+                )
             }
-            binding.txtPosting.text = postingan.postText
+
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
-            if (postingan.createdBy != null) {
-                binding.txtNama.text = postingan.createdBy.nama
-                binding.txtUsername.text = postingan.createdBy.username
-            }
-            binding.txtWaktu.text = postingan.createdDate.toString()
+            binding.txtNama.text = postingan.createdBy.nama
+            binding.txtUsername.text = postingan.createdBy.username
+            binding.txtWaktu.text = postingan.createdDate
             if (postingan.jumlahKomentar == 0) {
                 binding.layoutKomen.visibility = View.GONE
                 binding.cardFoto3.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
             }
-//            binding.btnCopy.setOnClickListener {
-//                onCopyClick(postingan.linkPostingan)
-//            }
+            binding.btnCopy.setOnClickListener {
+                onCopyClick(postingan.linkPostingan ?: "")
+            }
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan, adapterPosition)
             }
         }
     }
 }
+
+
