@@ -62,28 +62,46 @@ class BuatPostinganActivity : AppCompatActivity() {
         binding.layoutImage.setOnClickListener {
             requestAccessForFile()
         }
+        binding.imgClose.setOnClickListener {
+            showHideImagePreview(false)
+            selectedFiles.clear()
+            binding.imgPreview.setImageDrawable(null)
+        }
+    }
+
+    private fun showHideImagePreview(show: Boolean) {
+        if (show) {
+            binding.layoutImage.visibility = View.GONE
+            binding.imgPreview.visibility = View.VISIBLE
+            binding.imgClose.visibility = View.VISIBLE
+
+        } else {
+            binding.layoutImage.visibility = View.VISIBLE
+            binding.imgPreview.visibility = View.GONE
+            binding.imgClose.visibility = View.GONE
+        }
     }
 
     private fun showHideMode() {
-
-        if (isImageMode) {
-            binding.layoutImage.visibility = View.VISIBLE
-            binding.layoutLive.visibility = View.GONE
-            binding.txtLink.visibility = View.GONE
-            binding.edtStatus.setLines(10)
-            binding.imgClose.setOnClickListener {
-                binding.layoutImage.visibility = View.GONE
+        showHideImagePreview(false)
+        selectedFiles.clear()
+        binding.imgPreview.setImageDrawable(null)
+        when {
+            isImageMode -> {
+                binding.layoutImage.visibility = View.VISIBLE
+                binding.layoutLive.visibility = View.GONE
+                binding.txtLink.visibility = View.GONE
             }
-        } else if (isLiveMode) {
-            binding.layoutImage.visibility = View.GONE
-            binding.layoutLive.visibility = View.VISIBLE
-            binding.txtLink.visibility = View.VISIBLE
-            binding.edtStatus.setLines(11)
-        } else {
-            binding.layoutImage.visibility = View.GONE
-            binding.txtLink.visibility = View.GONE
-            binding.layoutLive.visibility = View.GONE
-            binding.edtStatus.setLines(15)
+            isLiveMode -> {
+                binding.layoutImage.visibility = View.GONE
+                binding.layoutLive.visibility = View.VISIBLE
+                binding.txtLink.visibility = View.VISIBLE
+            }
+            else -> {
+                binding.layoutImage.visibility = View.GONE
+                binding.txtLink.visibility = View.GONE
+                binding.layoutLive.visibility = View.GONE
+            }
         }
     }
 
@@ -123,8 +141,13 @@ class BuatPostinganActivity : AppCompatActivity() {
                 f?.let { files ->
                     selectedFiles.clear()
                     selectedFiles.addAll(files.map { File(it.mediaPath) })
-                    if (files.isNotEmpty())
-                        Glide.with(this).load(files[0].mediaPath).into(binding.imgPreview)
+                    if (files.isNotEmpty()) {
+                        Glide
+                            .with(this)
+                            .load(files[0].mediaPath)
+                            .into(binding.imgPreview)
+                        showHideImagePreview(true)
+                    }
                 }
             }
     }
