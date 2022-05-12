@@ -38,6 +38,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.AnilFurkanOkcun:UWMediaPicker-Android:1.3.3'
 
     // Hawk
     implementation 'com.orhanobut:hawk:2.0.1'
