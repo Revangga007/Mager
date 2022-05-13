@@ -1,20 +1,28 @@
 package com.mager.gamer.ui.postingan
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.anilokcun.uwmediapicker.UwMediaPicker
 import com.bumptech.glide.Glide
 import com.mager.gamer.databinding.ActivityBuatPostinganBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.FileOutputStream
 
 @AndroidEntryPoint
 class BuatPostinganActivity : AppCompatActivity() {
@@ -172,5 +180,50 @@ class BuatPostinganActivity : AppCompatActivity() {
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    private fun setupObserver() {
+        viewModel.loading.observe(this) {
+        }
+        viewModel.message.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        }
+    }
+    private fun createFileBeforeUpload(uri: Uri) {
+        lifecycleScope.launch {
+            kotlin.runCatching {
+                try {
+                    val targetOriginal =
+                        BitmapFactory.decodeStream(
+                            requireActivity().contentResolver.openInputStream(
+                                uri
+                            )
+                        )
+                    val bos = ByteArrayOutputStream()
+                    targetCompressed.compress(Bitmap.CompressFormat.JPEG, 0, bos)
+                    val bitmapData = bos.toByteArray()
+                    val file = File(
+                        requireActivity().filesDir.path,
+                        "${System.currentTimeMillis()}_compressed.jpeg"
+                    )
+                    file.createNewFile()
+                    val fos = FileOutputStream(file)
+                    fos.write(bitmapData)
+                    fos.flush()
+                    fos.close()
+
+                    // lempar file ke view model untuk diupload retrofit
+                    viewModel.uploadImageToServer(file)
+                } catch (e: Exception) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            Context(this@BuatPostinganActivity),
+                            "Terjadi kesalahan saat menulis file",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            }
+        }
     }
 }

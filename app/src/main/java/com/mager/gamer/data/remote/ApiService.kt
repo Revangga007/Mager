@@ -5,9 +5,13 @@ package com.mager.gamer.data.remote
 import com.mager.gamer.data.model.remote.komunitas.get.KomunitasResponse
 import com.mager.gamer.data.model.remote.login.LoginBody
 import com.mager.gamer.data.model.remote.login.LoginResponse
+import com.mager.gamer.data.model.remote.postingan.get.CreatedBy
 import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
 import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
+import com.mager.gamer.data.model.remote.postingan.post.CreatePostBody
+import com.mager.gamer.data.model.remote.upload.UploadResponse
 import com.skydoves.sandwich.ApiResponse
+import okhttp3.MultipartBody
 import retrofit2.http.*
 
 interface ApiService {
@@ -20,23 +24,24 @@ interface ApiService {
         @Query("tipeSort") tipeSort: String?,
         @Query("tipeData") tipeData: String?,
         @Query("idKomunitas") idKomunitas: Int?,
-        //@Header("Authorization") token: String?
     ) : ApiResponse<PostinganResponse>
 
-//    @Multipart
-//    @POST
-//    suspend fun createPostingan(
-//        @Url url: String,
-//        @Part("postingan") postingan: Postingan,
-//        @Part uploadFiles: MultipartBody.Part
-//    ):ApiResponse<PostinganResponse>
+    @POST("mager/postingan")
+    suspend fun createPostingan(
+        @Query("idUser") idUser: Int,
+        @Body body: CreatePostBody
+    ):ApiResponse<PostinganResponse>
+
+    @Multipart
+    @POST("mager/uploadFiles")
+    suspend fun uploadFiles(
+        @Part file: MultipartBody.Part
+    ): ApiResponse<UploadResponse>
 
     @POST("mager/like")
     suspend fun likePostingan(
         @Query("idPostingan") idPostingan: Int,
         @Query("idUser") idUser: Int,
-        //@Header("Authorization") token: String?
-
     ): ApiResponse<LikePostinganResponse>
 
     @GET("mager/komunitas")
