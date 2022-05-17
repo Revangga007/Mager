@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class CreatePostBody
     (
     @SerializedName("postText")
-    val postText: String,
+    val postText: String? =null,
     @SerializedName("linkLivestream")
     val linkLivestream: String? =null,
     @SerializedName("files")

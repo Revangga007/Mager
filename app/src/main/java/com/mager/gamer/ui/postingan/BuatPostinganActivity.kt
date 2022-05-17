@@ -1,28 +1,20 @@
 package com.mager.gamer.ui.postingan
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
 import com.anilokcun.uwmediapicker.UwMediaPicker
 import com.bumptech.glide.Glide
 import com.mager.gamer.databinding.ActivityBuatPostinganBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileOutputStream
 
 @AndroidEntryPoint
 class BuatPostinganActivity : AppCompatActivity() {
@@ -31,8 +23,12 @@ class BuatPostinganActivity : AppCompatActivity() {
         const val INTENT_LIVE_MODE = "INTENT_LIVE_MODE"
     }
 
+    private val File.size get() = if (!exists()) 0.0 else length().toDouble()
+    private val File.sizeInKb get() = size / 1024
+    private val File.sizeInMb get() = sizeInKb / 1024
+
     private lateinit var binding: ActivityBuatPostinganBinding
-    private val viewModel: DetailPostinganViewModel by viewModels()
+    private val viewModel: BuatPostinganViewModel by viewModels()
     private var isImageMode = false
     private var isLiveMode = false
     private var selectedFiles = mutableListOf<File>()
@@ -113,6 +109,8 @@ class BuatPostinganActivity : AppCompatActivity() {
         }
     }
 
+    private fun createPost
+
     private fun requestAccessForFile() {
         if (ContextCompat.checkSelfPermission(
                 this,
@@ -148,7 +146,12 @@ class BuatPostinganActivity : AppCompatActivity() {
             .launch { f ->
                 f?.let { files ->
                     selectedFiles.clear()
-                    selectedFiles.addAll(files.map { File(it.mediaPath) })
+                    files.forEach {
+                        val file = File(it.mediaPath)
+                        if (file.sizeInMb <= 5.0) {
+                            selectedFiles.add(File(it.mediaPath))
+                        }
+                    }
                     if (files.isNotEmpty()) {
                         Glide
                             .with(this)
@@ -189,41 +192,50 @@ class BuatPostinganActivity : AppCompatActivity() {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         }
     }
-    private fun createFileBeforeUpload(uri: Uri) {
-        lifecycleScope.launch {
-            kotlin.runCatching {
-                try {
-                    val targetOriginal =
-                        BitmapFactory.decodeStream(
-                            requireActivity().contentResolver.openInputStream(
-                                uri
-                            )
-                        )
-                    val bos = ByteArrayOutputStream()
-                    targetCompressed.compress(Bitmap.CompressFormat.JPEG, 0, bos)
-                    val bitmapData = bos.toByteArray()
-                    val file = File(
-                        requireActivity().filesDir.path,
-                        "${System.currentTimeMillis()}_compressed.jpeg"
-                    )
-                    file.createNewFile()
-                    val fos = FileOutputStream(file)
-                    fos.write(bitmapData)
-                    fos.flush()
-                    fos.close()
 
-                    // lempar file ke view model untuk diupload retrofit
-                    viewModel.uploadImageToServer(file)
-                } catch (e: Exception) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(
-                            Context(this@BuatPostinganActivity),
-                            "Terjadi kesalahan saat menulis file",
-                            Toast.LENGTH_LONG
-                        ).show()
+    private fun requestAccessForVideo() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                777
+            )
+        } else {
+            selectVideoUpload()
+        }
+    }
+
+    private fun selectVideoUpload() {
+        UwMediaPicker
+            .with(this)
+            .setGalleryMode(UwMediaPicker.GalleryMode.VideoGallery)
+            .setGridColumnCount(2)
+            .setMaxSelectableMediaCount(1)
+            .setLightStatusBar(true)
+            .setCancelCallback {
+                selectedFiles.clear()
+            }
+            .launch { f ->
+                f?.let { files ->
+                    selectedFiles.clear()
+                    files.forEach {
+                        val file = File(it.mediaPath)
+                        if (file.sizeInMb <= 10.0) {
+                            selectedFiles.add(File(it.mediaPath))
+                        }
+                    }
+                    if (files.isNotEmpty()) {
+                        Glide
+                            .with(this)
+                            .load(files[0].mediaPath)
+                            .into(binding.imgPreview)
+                        showHideImagePreview(true)
                     }
                 }
             }
-        }
     }
 }

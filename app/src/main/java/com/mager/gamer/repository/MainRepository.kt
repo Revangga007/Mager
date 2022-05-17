@@ -1,5 +1,6 @@
 package com.mager.gamer.repository
 
+import com.mager.gamer.data.model.remote.postingan.post.CreatePostBody
 import com.mager.gamer.data.remote.ApiService
 import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onError
@@ -44,6 +45,26 @@ class MainRepository @Inject constructor(
         idUser: Int
     ) = flow {
         val response = apiService.likePostingan(idPost, idUser)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun createPostingan(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idUser: Int,
+        body: CreatePostBody
+    ) = flow {
+        val response = apiService.createPostingan(idUser, body)
         response.suspendOnSuccess {
             emit(data)
         }.onError {
