@@ -123,7 +123,7 @@ class HomeFragment : Fragment() {
                     Toast.makeText(requireContext(), "Link berhasil disalin", Toast.LENGTH_LONG)
                         .show()
                 })
-                layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
             }
 
         }
