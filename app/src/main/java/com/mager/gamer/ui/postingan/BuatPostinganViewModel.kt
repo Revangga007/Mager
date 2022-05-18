@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.mager.gamer.base.BaseViewModel
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.create.CreatePostinganResponse
-import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
 import com.mager.gamer.data.model.remote.postingan.post.CreatePostBody
 import com.mager.gamer.data.model.remote.upload.UploadResponse
 import com.mager.gamer.repository.MainRepository
@@ -59,7 +58,6 @@ class BuatPostinganViewModel @Inject constructor(
         ).collect {
             createResponse.postValue(it)
         }
-
     }
 
     private fun getMimeType(path: String): String? {

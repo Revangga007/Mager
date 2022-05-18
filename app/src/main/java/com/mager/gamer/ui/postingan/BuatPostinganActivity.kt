@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import com.anilokcun.uwmediapicker.UwMediaPicker
 import com.bumptech.glide.Glide
 import com.mager.gamer.databinding.ActivityBuatPostinganBinding
+import com.mager.gamer.dialog.CustomLoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.File
@@ -217,7 +218,9 @@ class BuatPostinganActivity : AppCompatActivity() {
     }
 
     private fun setupObserver() {
+        val loading = CustomLoadingDialog(this)
         viewModel.loading.observe(this) {
+            if (it) loading.show() else loading.dismiss()
         }
         viewModel.message.observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
@@ -228,7 +231,7 @@ class BuatPostinganActivity : AppCompatActivity() {
                 viewModel.createPostingan(postText, null, null)
             }
         }
-        viewModel.postinganResponse.observe(this) {
+        viewModel.createResponse.observe(this) {
             Toast.makeText(this, "sukses buat post", Toast.LENGTH_SHORT).show()
             finish()
         }
