@@ -5,6 +5,7 @@ package com.mager.gamer.data.remote
 import com.mager.gamer.data.model.remote.komunitas.get.KomunitasResponse
 import com.mager.gamer.data.model.remote.login.LoginBody
 import com.mager.gamer.data.model.remote.login.LoginResponse
+import com.mager.gamer.data.model.remote.postingan.create.CreatePostinganResponse
 import com.mager.gamer.data.model.remote.postingan.get.CreatedBy
 import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
 import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
@@ -30,7 +31,7 @@ interface ApiService {
     suspend fun createPostingan(
         @Query("idUser") idUser: Int,
         @Body body: CreatePostBody
-    ):ApiResponse<PostinganResponse>
+    ):ApiResponse<CreatePostinganResponse>
 
     @Multipart
     @POST("mager/uploadFiles")
