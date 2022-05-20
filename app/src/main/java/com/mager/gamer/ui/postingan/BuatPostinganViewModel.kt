@@ -55,7 +55,7 @@ class BuatPostinganViewModel @Inject constructor(
             onError = { _message.postValue(it) },
             idUser,
             body
-        ).collect {
+        ).collect<CreatePostinganResponse> {
             createResponse.postValue(it)
         }
     }

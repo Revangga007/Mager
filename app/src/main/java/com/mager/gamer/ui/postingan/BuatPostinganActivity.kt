@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.anilokcun.uwmediapicker.UwMediaPicker
+import com.anilokcun.uwmediapicker.model.UwMediaPickerMediaType
 import com.bumptech.glide.Glide
 import com.mager.gamer.databinding.ActivityBuatPostinganBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
@@ -160,36 +161,52 @@ class BuatPostinganActivity : AppCompatActivity() {
     private fun selectFileUpload() {
         UwMediaPicker
             .with(this)
+            .setLightStatusBar(true)
+            .setMaxSelectableMediaCount(1)
             .setGalleryMode(UwMediaPicker.GalleryMode.ImageAndVideoGallery)
             .setGridColumnCount(2)
-            .setMaxSelectableMediaCount(1)
-            .setLightStatusBar(true)
+            .enableImageCompression(true)
             .setCompressFormat(Bitmap.CompressFormat.JPEG)
             .setCompressionMaxWidth(709F)
             .setCompressionMaxHeight(640F)
-            .enableImageCompression(true)
             .setCompressionQuality(50)
             .setCompressedFileDestinationPath(this@BuatPostinganActivity.filesDir.path)
-            .setCancelCallback {
-                selectedFiles.clear()
-            }
             .launch { f ->
                 f?.let { files ->
                     selectedFiles.clear()
                     files.forEach {
                         val file = File(it.mediaPath)
-                        if (file.sizeInMb <= 5.0 && file.name.endsWith(".jpeg", true)) {
-                            selectedFiles.add(File(it.mediaPath))
-                        } else if (file.sizeInMb <= 10.0 && file.name.endsWith(".mp4", true)) {
-                            selectedFiles.add(File(it.mediaPath))
+                        if (it.mediaType == UwMediaPickerMediaType.IMAGE) {
+                            if (file.sizeInMb <= 5.0) {
+                                selectedFiles.add(File(it.mediaPath))
+                                Glide
+                                    .with(this)
+                                    .load(it.mediaPath)
+                                    .into(binding.imgPreview)
+                                showHideImagePreview(true)
+                            } else {
+                                Toast.makeText(
+                                    this,
+                                    "Maksimum foto yang dipilih harus < 5 MB",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else if (it.mediaType == UwMediaPickerMediaType.VIDEO) {
+                            if (file.sizeInMb <= 10.0) {
+                                selectedFiles.add(File(it.mediaPath))
+                                Glide
+                                    .with(this)
+                                    .load(it.mediaPath)
+                                    .into(binding.imgPreview)
+                                showHideImagePreview(true)
+                            } else {
+                                Toast.makeText(
+                                    this,
+                                    "Maksimum video yang dipilih harus < 10 MB",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
-                    }
-                    if (files.isNotEmpty()) {
-                        Glide
-                            .with(this)
-                            .load(files[0].mediaPath)
-                            .into(binding.imgPreview)
-                        showHideImagePreview(true)
                     }
                 }
             }
@@ -228,58 +245,7 @@ class BuatPostinganActivity : AppCompatActivity() {
         viewModel.uploadResponse.observe(this) {
             lifecycleScope.launch {
                 val postText = binding.edtStatus.text.toString().trim()
-                viewModel.createPostingan(postText, null, null)
+                viewModel.createPostingan(postText, null, it.data)
             }
         }
-        viewModel.createResponse.observe(this) {
-            Toast.makeText(this, "sukses buat post", Toast.LENGTH_SHORT).show()
-            finish()
-        }
-    }
-
-//    private fun requestAccessForVideo() {
-//        if (ContextCompat.checkSelfPermission(
-//                this,
-//                Manifest.permission.READ_EXTERNAL_STORAGE
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            ActivityCompat.requestPermissions(
-//                this,
-//                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-//                777
-//            )
-//        } else {
-//            selectVideoUpload()
-//        }
-//    }
-
-//    private fun selectVideoUpload() {
-//        UwMediaPicker
-//            .with(this)
-//            .setGalleryMode(UwMediaPicker.GalleryMode.VideoGallery)
-//            .setGridColumnCount(2)
-//            .setMaxSelectableMediaCount(1)
-//            .setLightStatusBar(true)
-//            .setCancelCallback {
-//                selectedFiles.clear()
-//            }
-//            .launch { f ->
-//                f?.let { files ->
-//                    selectedFiles.clear()
-//                    files.forEach {
-//                        val file = File(it.mediaPath)
-//                        if (file.sizeInMb <= 10.0) {
-//                            selectedFiles.add(File(it.mediaPath))
-//                        }
-//                    }
-//                    if (files.isNotEmpty()) {
-//                        Glide
-//                            .with(this)
-//                            .load(files[0].mediaPath)
-//                            .into(binding.imgPreview)
-//                        showHideImagePreview(true)
-//                    }
-//                }
-//            }
-//    }
-}
+        viewModel.createResponse.observe(this)

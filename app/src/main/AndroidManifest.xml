@@ -27,6 +27,9 @@
             android:name=".ui.postingan.DetailPostinganActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.register.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.postingan.BuatPostinganActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />

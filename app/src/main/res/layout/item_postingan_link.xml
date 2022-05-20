@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemPosting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp"
+        android:background="@color/dark_mode_2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardFoto"
+            android:layout_width="@dimen/profile"
+            android:layout_height="@dimen/profile"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgFoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_user" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txtNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Ganang Rizqijaya"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/cardFoto"
+            app:layout_constraintTop_toBottomOf="@id/txtWaktu"
+            app:layout_constraintTop_toTopOf="@id/cardFoto"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ImageView
+            android:id="@+id/imgDot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/ic_dot"
+            app:layout_constraintBottom_toBottomOf="@id/txtNama"
+            app:layout_constraintStart_toEndOf="@id/txtNama"
+            app:layout_constraintTop_toTopOf="@id/txtNama" />
+
+        <TextView
+            android:id="@+id/txtUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/nunito"
+            android:text="ganangrz"
+            android:textColor="@color/white_inactive"
+            app:layout_constraintStart_toEndOf="@id/imgDot"
+            app:layout_constraintTop_toTopOf="@id/txtNama" />
+
+        <TextView
+            android:id="@+id/txtWaktu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="1 Jam"
+            android:textColor="@color/white_inactive"
+            app:layout_constraintBottom_toBottomOf="@id/cardFoto"
+            app:layout_constraintStart_toStartOf="@id/txtNama"
+            app:layout_constraintTop_toBottomOf="@id/txtNama" />
+
+        <ImageView
+            android:id="@+id/btnOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_option"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cardFoto" />
+
+        <TextView
+            android:id="@+id/txtPosting"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:paddingVertical="4dp"
+            android:layout_marginTop="12dp"
+            android:lineHeight="24dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/dummy_content"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/cardFoto" />
+
+        <TextView
+            android:id="@+id/txtLink"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:paddingVertical="4dp"
+            android:layout_marginTop="12dp"
+            android:lineHeight="24dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/dummy_content"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/txtPosting" />
+
+
+        <ImageView
+            android:id="@+id/btnLike1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_like"
+            app:layout_constraintStart_toStartOf="@id/txtLink"
+            app:layout_constraintTop_toBottomOf="@id/txtLink" />
+
+        <TextView
+            android:id="@+id/txtJmlSuka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="0"
+            android:textColor="@color/white_inactive"
+            app:layout_constraintStart_toEndOf="@id/btnLike1"
+            app:layout_constraintTop_toTopOf="@id/btnLike1" />
+
+        <TextView
+            android:id="@+id/txtSuka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="Suka"
+            android:textColor="@color/white_inactive"
+            app:layout_constraintStart_toEndOf="@id/txtJmlSuka"
+            app:layout_constraintTop_toTopOf="@id/txtJmlSuka" />
+
+        <ImageView
+            android:id="@+id/btnKomen"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_comment"
+            app:layout_constraintStart_toEndOf="@id/txtSuka"
+            app:layout_constraintTop_toTopOf="@id/btnLike1" />
+
+        <TextView
+            android:id="@+id/txtJmlKomen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="0"
+            android:textColor="@color/white_inactive"
+            app:layout_constraintStart_toEndOf="@id/btnKomen"
+            app:layout_constraintTop_toTopOf="@id/btnKomen" />
+
+        <TextView
+            android:id="@+id/txtKomen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="Komentar"
+            android:textColor="@color/white_inactive"
+            app:layout_constraintStart_toEndOf="@id/txtJmlKomen"
+            app:layout_constraintTop_toTopOf="@id/btnKomen" />
+
+        <View
+            android:id="@+id/lineUp"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="#66FAFAFA"
+            app:layout_constraintStart_toStartOf="@id/cardFoto"
+            app:layout_constraintEnd_toEndOf="@id/btnOption"
+            app:layout_constraintTop_toBottomOf="@id/btnKomen" />
+
+        <LinearLayout
+            android:id="@+id/linearBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="@id/lineUp"
+            app:layout_constraintEnd_toEndOf="@id/lineUp"
+            app:layout_constraintTop_toBottomOf="@id/lineUp" >
+
+            <LinearLayout
+                android:id="@+id/btnLike2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/icLike"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_like_outline" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Suka"
+                    android:textColor="@color/white_inactive" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_comment_outline" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Komentar"
+                    android:textColor="@color/white_inactive" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnCopy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_copy_outline" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Salin Link"
+                    android:textColor="@color/white_inactive" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/lineDown"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="44dp"
+            android:background="#66FAFAFA"
+            app:layout_constraintStart_toStartOf="@id/lineUp"
+            app:layout_constraintEnd_toEndOf="@id/lineUp"
+            app:layout_constraintTop_toBottomOf="@id/lineUp" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardFoto3"
+            android:layout_width="@dimen/foto_comment"
+            android:layout_height="@dimen/foto_comment"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="@id/lineDown"
+            app:layout_constraintTop_toBottomOf="@id/lineDown">
+
+            <ImageView
+                android:id="@+id/imgFoto3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_user" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutKomen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/backgrond_comment"
+            android:paddingBottom="4dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toTopOf="@id/txtSemuaKomen"
+            app:layout_constraintStart_toEndOf="@id/cardFoto3"
+            app:layout_constraintTop_toTopOf="@id/cardFoto3"
+            app:layout_constraintEnd_toEndOf="@id/lineDown">
+
+            <TextView
+                android:id="@+id/txtNamaKomentator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Atthala123"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtIsiKomen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:fontFamily="@font/nunito"
+                android:text="@string/example_comment"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/txtNamaKomentator"
+                tools:layout_editor_absoluteX="0dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txtSemuaKomen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Lihat komentar lainnya"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/layoutKomen"
+            app:layout_constraintTop_toBottomOf="@id/layoutKomen" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

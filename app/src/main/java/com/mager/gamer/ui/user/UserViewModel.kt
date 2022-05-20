@@ -1,4 +1,4 @@
-package com.mager.gamer.ui.notifications
+package com.mager.gamer.ui.user
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

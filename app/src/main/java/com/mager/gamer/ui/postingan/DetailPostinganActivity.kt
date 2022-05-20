@@ -69,6 +69,7 @@ class DetailPostinganActivity : AppCompatActivity() {
                 binding.imgPosting.visibility = View.VISIBLE
             }
             binding.txtPosting.text = it.postText
+            binding.txtLinkLive.text = it.linkLivestream
             binding.recyclerKomen.apply {
                 layoutManager = LinearLayoutManager(
                     context,
