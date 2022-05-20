@@ -49,6 +49,12 @@
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/menu/top_nav_menu.xml" value="0.22" />
         <entry key="..\:/Projects/Android/Android_Studio/Mager/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/kotlin/Mager/app/src/main/res/layout/activity_buat_postingan.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/kotlin/Mager/app/src/main/res/layout/activity_detail_postingan.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/kotlin/Mager/app/src/main/res/layout/activity_draft.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/kotlin/Mager/app/src/main/res/layout/activity_on_board.xml" value="0.11666666666666667" />
+        <entry key="..\:/Projects/Android/kotlin/Mager/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/Projects/Android/kotlin/Mager/app/src/main/res/layout/item_komunitas.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable-v24/bottom_nav_icon_color_selector1.xml" value="0.1485" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/backgrond_comment.xml" value="0.1485" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Mager/app/src/main/res/drawable/background_content_post.xml" value="0.1485" />

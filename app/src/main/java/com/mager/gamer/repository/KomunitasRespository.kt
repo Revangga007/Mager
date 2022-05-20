@@ -16,7 +16,7 @@ class KomunitasRespository @Inject constructor(
     private val apiService: ApiService,
     private val ioDispatcher: CoroutineDispatcher
 ) {
-    suspend fun getKomunitas(
+    suspend fun getRekomendasiKomunitas(
         onStart: () -> Unit,
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
@@ -33,4 +33,12 @@ class KomunitasRespository @Inject constructor(
         .onStart { onStart() }
         .onCompletion { onComplete() }
         .flowOn(ioDispatcher)
+
+//    suspend fun getKomunitasmu(
+//        onStart: () -> Unit,
+//        onComplete: () -> Unit,
+//        onError: (String?) -> Unit
+//    ) = flow {
+//        val response
+//    }
 }
