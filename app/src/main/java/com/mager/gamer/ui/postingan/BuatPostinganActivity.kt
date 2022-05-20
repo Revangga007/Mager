@@ -248,4 +248,8 @@ class BuatPostinganActivity : AppCompatActivity() {
                 viewModel.createPostingan(postText, null, it.data)
             }
         }
-        viewModel.createResponse.observe(this)
+        viewModel.createResponse.observe(this){
+
+        }
+    }
+}
