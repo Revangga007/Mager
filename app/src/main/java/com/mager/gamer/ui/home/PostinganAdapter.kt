@@ -8,6 +8,7 @@ import com.mager.gamer.data.model.remote.postingan.get.Data
 
 import com.mager.gamer.databinding.ItemPostinganBinding
 import com.mager.gamer.databinding.ItemPostinganGambarBinding
+import com.mager.gamer.databinding.ItemPostinganLinkBinding
 import com.mager.gamer.databinding.ItemPostinganVideoBinding
 
 class PostinganAdapter(
@@ -30,8 +31,15 @@ class PostinganAdapter(
             POSTINGAN_TEXT -> PostinganRecyclerViewHolder.PostinganTextViewHolder(
                 ItemPostinganBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             )
-            POSTINGAN_IMAGE, POSTINGAN_LIVESTREAM  -> PostinganRecyclerViewHolder.PostinganImageViewHolder(
+            POSTINGAN_IMAGE  -> PostinganRecyclerViewHolder.PostinganImageViewHolder(
                 ItemPostinganGambarBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+            POSTINGAN_LIVESTREAM -> PostinganRecyclerViewHolder.PostinganLinkViewHolder(
+                ItemPostinganLinkBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -63,6 +71,12 @@ class PostinganAdapter(
                 onCopyClick
             )
             is PostinganRecyclerViewHolder.PostinganVideoViewHolder -> holder.bind(
+                idUser,
+                post,
+                onDetailClick,
+                onCopyClick
+            )
+            is PostinganRecyclerViewHolder.PostinganLinkViewHolder -> holder.bind(
                 idUser,
                 post,
                 onDetailClick,

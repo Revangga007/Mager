@@ -8,6 +8,7 @@ import com.mager.gamer.R
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.databinding.ItemPostinganBinding
 import com.mager.gamer.databinding.ItemPostinganGambarBinding
+import com.mager.gamer.databinding.ItemPostinganLinkBinding
 import com.mager.gamer.databinding.ItemPostinganVideoBinding
 
 sealed class PostinganRecyclerViewHolder(
@@ -142,6 +143,47 @@ sealed class PostinganRecyclerViewHolder(
             }
         }
     }
+    class PostinganLinkViewHolder(private val binding: ItemPostinganLinkBinding) :
+        PostinganRecyclerViewHolder(binding) {
+        fun bind(
+            idUser: Int?,
+            postingan: Data,
+            onDetailClick: (Data, Int) -> Unit,
+            onCopyClick: (String) -> Unit
+        ) {
+            if (idUser != null) {
+                val find = postingan.likedBy.find { like ->
+                    like.user.id == idUser
+                }
+                binding.icLike.setImageResource(
+                    if (find != null) R.drawable.ic_liked
+                    else R.drawable.ic_like_outline
+                )
+            }
+
+            binding.txtPosting.text = postingan.postText
+            binding.txtLink.text = postingan.linkLivestream
+            binding.txtJmlSuka.text = postingan.jumlahLike.toString()
+            binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
+            binding.txtNama.text = postingan.createdBy.nama
+            binding.txtUsername.text = postingan.createdBy.username
+            binding.txtWaktu.text = postingan.createdDate
+            if (postingan.jumlahKomentar == 0) {
+                binding.layoutKomen.visibility = View.GONE
+                binding.cardFoto3.visibility = View.GONE
+                binding.txtSemuaKomen.visibility = View.GONE
+            }
+
+            binding.btnCopy.setOnClickListener {
+                onCopyClick(postingan.linkPostingan ?: "")
+            }
+            binding.itemPosting.setOnClickListener {
+                onDetailClick(postingan, adapterPosition)
+            }
+        }
+
+    }
+
 }
 
 

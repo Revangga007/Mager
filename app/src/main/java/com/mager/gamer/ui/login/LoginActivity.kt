@@ -10,6 +10,7 @@ import com.mager.gamer.MainActivity
 import com.mager.gamer.base.BaseActivity
 import com.mager.gamer.databinding.ActivityLoginBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
+import com.mager.gamer.ui.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -56,6 +57,11 @@ class LoginActivity : BaseActivity() {
                     binding.txtPw.text.toString().trim()
                 )
             }
+        }
+        binding.txtDaftarDisini.setOnClickListener {
+            val i = Intent(this, RegisterActivity::class.java)
+            startActivity(i)
+            finish()
         }
 
         setupObserver()

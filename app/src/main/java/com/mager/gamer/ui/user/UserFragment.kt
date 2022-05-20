@@ -1,4 +1,4 @@
-package com.mager.gamer.ui.notifications
+package com.mager.gamer.ui.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
