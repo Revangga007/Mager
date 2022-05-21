@@ -226,8 +226,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLaki"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="70dp"
+            android:layout_weight="1"
             android:backgroundTint="@color/dark_mode_3"
             android:fontFamily="@font/nunito"
             android:gravity="center"
@@ -237,10 +238,15 @@
             app:cornerRadius="8dp"
             app:icon="@drawable/ic_boy2" />
 
+        <View
+            android:layout_width="12dp"
+            android:layout_height="1dp" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGirl"
-            android:layout_width="165dp"
+            android:layout_width="0dp"
             android:layout_height="70dp"
+            android:layout_weight="1"
             android:backgroundTint="@color/dark_mode_3"
             android:fontFamily="@font/nunito"
             android:gravity="center"
