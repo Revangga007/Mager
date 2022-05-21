@@ -3,13 +3,13 @@ package com.mager.gamer.data.remote
 
 
 import com.mager.gamer.data.model.remote.komunitas.get.KomunitasResponse
-import com.mager.gamer.data.model.remote.login.LoginBody
 import com.mager.gamer.data.model.remote.login.LoginResponse
 import com.mager.gamer.data.model.remote.postingan.create.CreatePostinganResponse
-import com.mager.gamer.data.model.remote.postingan.get.CreatedBy
 import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
 import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
 import com.mager.gamer.data.model.remote.postingan.post.CreatePostBody
+import com.mager.gamer.data.model.remote.register.RegisterBody
+import com.mager.gamer.data.model.remote.register.RegisterResponse
 import com.mager.gamer.data.model.remote.upload.UploadResponse
 import com.skydoves.sandwich.ApiResponse
 import okhttp3.MultipartBody
@@ -57,4 +57,9 @@ interface ApiService {
         @Field("username") username: String,
         @Field("password") password: String
     ) : ApiResponse<LoginResponse>
+
+    @POST("mager/user")
+    suspend fun register(
+        @Body body: RegisterBody
+    ):ApiResponse<RegisterResponse>
 }

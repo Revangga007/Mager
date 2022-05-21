@@ -18,7 +18,7 @@ class KomunitasViewModel @Inject constructor(
 
     val komunitasResult = MutableLiveData<List<Data>>()
 
-    suspend fun getAllPost() {
+    suspend fun getAllKomunitas() {
         komunitasRespository.getKomunitas(
             onStart = {
                 _loading.postValue(true)
