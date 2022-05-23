@@ -1,6 +1,7 @@
 package com.mager.gamer.repository
 
 import com.mager.gamer.data.model.remote.postingan.create.CreatePostinganResponse
+import com.mager.gamer.data.model.remote.postingan.komentar.KomentarBody
 import com.mager.gamer.data.model.remote.postingan.post.CreatePostBody
 import com.mager.gamer.data.remote.ApiService
 import com.skydoves.sandwich.message
@@ -92,6 +93,27 @@ class MainRepository @Inject constructor(
             onError(this.message())
         }.onException {
             Timber.e(this.message())
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun komentar(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idUser: Int,
+        idPostingan: Int,
+        body: KomentarBody
+    ) = flow {
+        val response = apiService.komentar(idUser,idPostingan, body)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+            onError(this.message())
+        }.onException {
             onError(this.message())
         }
     }

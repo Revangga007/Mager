@@ -29,9 +29,6 @@ class KomentarAdapter(
             .load(komen.user.fotoProfile)
             .error(R.drawable.logo_mager_1)
             .into(holder.binding.imgFoto)
-        holder.binding.imgFoto.setOnClickListener {
-
-        }
         holder.binding.txtNamaKomentator.setOnClickListener {
 
         }

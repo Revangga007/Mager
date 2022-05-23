@@ -4,8 +4,12 @@ package com.mager.gamer.data.remote
 
 import com.mager.gamer.data.model.remote.komunitas.get.KomunitasResponse
 import com.mager.gamer.data.model.remote.login.LoginResponse
+import com.mager.gamer.data.model.remote.password.ForgetPassBody
+import com.mager.gamer.data.model.remote.password.ForgetPassResponse
 import com.mager.gamer.data.model.remote.postingan.create.CreatePostinganResponse
 import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
+import com.mager.gamer.data.model.remote.postingan.komentar.KomentarBody
+import com.mager.gamer.data.model.remote.postingan.komentar.KomentarPostinganResponse
 import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
 import com.mager.gamer.data.model.remote.postingan.post.CreatePostBody
 import com.mager.gamer.data.model.remote.register.RegisterBody
@@ -62,4 +66,16 @@ interface ApiService {
     suspend fun register(
         @Body body: RegisterBody
     ):ApiResponse<RegisterResponse>
+
+    @POST("mager/forget-password/register-tymeleaf")
+    suspend fun forgetPass(
+        @Body body: ForgetPassBody
+    ):ApiResponse<ForgetPassResponse>
+
+    @POST("mager/komentar")
+    suspend fun komentar(
+        @Query("idUser") idUser: Int,
+        @Query("idPostingan") idPostingan: Int,
+        @Body body : KomentarBody
+    ):ApiResponse<KomentarPostinganResponse>
 }

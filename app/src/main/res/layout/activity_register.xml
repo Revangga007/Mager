@@ -8,295 +8,265 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-    <TextView
-        android:id="@+id/txtBuatAkun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Buat Akun"
-        android:textColor="@color/white"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="25dp"
-        android:hint="Nama"
-        android:textColorHint="@color/white_inactive"
-        app:boxBackgroundColor="@color/dark_mode_3"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/dangers_red"
-        app:hintEnabled="true"
-        app:hintTextColor="#AFB9FF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtBuatAkun">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
-            android:inputType="text"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            tools:text="Sample" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:hint="Email"
-        android:textColorHint="@color/white_inactive"
-        app:boxBackgroundColor="@color/dark_mode_3"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/dangers_red"
-        app:hintEnabled="true"
-        app:hintTextColor="#AFB9FF"
-        app:layout_constraintEnd_toEndOf="@id/textField"
-        app:layout_constraintStart_toStartOf="@id/textField"
-        app:layout_constraintTop_toBottomOf="@id/textField">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            tools:text="Sample" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:hint="Username"
-        android:textColorHint="@color/white_inactive"
-        app:boxBackgroundColor="@color/dark_mode_3"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/dangers_red"
-        app:hintEnabled="true"
-        app:hintTextColor="#AFB9FF"
-        app:layout_constraintEnd_toEndOf="@id/textField1"
-        app:layout_constraintStart_toStartOf="@id/textField1"
-        app:layout_constraintTop_toBottomOf="@id/textField1">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
-            android:inputType="textPersonName"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            tools:text="Sample" />
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txtDesc1"
+            android:id="@+id/txtBuatAkun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Buat Akun"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="25dp"
+            android:hint="Nama"
+            android:textColorHint="@color/white_inactive"
+            app:boxBackgroundColor="@color/dark_mode_3"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/dangers_red"
+            app:hintEnabled="true"
+            app:hintTextColor="#AFB9FF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtBuatAkun">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Sample" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textField1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Email"
+            android:textColorHint="@color/white_inactive"
+            app:boxBackgroundColor="@color/dark_mode_3"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/dangers_red"
+            app:hintEnabled="true"
+            app:hintTextColor="#AFB9FF"
+            app:layout_constraintEnd_toEndOf="@id/textField"
+            app:layout_constraintStart_toStartOf="@id/textField"
+            app:layout_constraintTop_toBottomOf="@id/textField">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Sample" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textField2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Username"
+            android:textColorHint="@color/white_inactive"
+            app:boxBackgroundColor="@color/dark_mode_3"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/dangers_red"
+            app:hintEnabled="true"
+            app:hintTextColor="#AFB9FF"
+            app:layout_constraintEnd_toEndOf="@id/textField1"
+            app:layout_constraintStart_toStartOf="@id/textField1"
+            app:layout_constraintTop_toBottomOf="@id/textField1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Sample" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Kata sandi"
+            android:textColorHint="@color/white_inactive"
+            app:boxBackgroundColor="@color/dark_mode_3"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/dangers_red"
+            app:hintEnabled="true"
+            app:hintTextColor="#AFB9FF"
+            app:layout_constraintEnd_toEndOf="@id/textField2"
+            app:layout_constraintStart_toStartOf="@id/textField2"
+            app:layout_constraintTop_toBottomOf="@id/textField2"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/white_inactive">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Sample" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtKonfir"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Konfirmasi Kata sandi"
+            android:textColorHint="@color/white_inactive"
+            app:boxBackgroundColor="@color/dark_mode_3"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/dangers_red"
+            app:hintEnabled="true"
+            app:hintTextColor="#AFB9FF"
+            app:layout_constraintEnd_toEndOf="@id/textField2"
+            app:layout_constraintStart_toStartOf="@id/textField2"
+            app:layout_constraintTop_toBottomOf="@id/txtPassword"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/white_inactive">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtKonfirPw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Sample" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/lytGender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/textField2"
+            app:layout_constraintStart_toStartOf="@id/textField2"
+            app:layout_constraintTop_toBottomOf="@id/txtKonfir">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLaki"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/dark_mode_3"
+                android:fontFamily="@font/nunito"
+                android:gravity="center"
+                android:text="Laki- laki"
+                android:textAllCaps="false"
+                android:textColor="@color/white_inactive"
+                android:textSize="16sp"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_boy2"
+                app:iconTint="@color/white_inactive" />
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGirl"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/dark_mode_3"
+                android:fontFamily="@font/nunito"
+                android:gravity="center"
+                android:text="Perempuan"
+                android:textAllCaps="false"
+                android:textColor="@color/white_inactive"
+                android:textSize="16sp"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_girl"
+                app:iconTint="@color/white_inactive" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDaftar"
+            style="@style/button_gradient_primary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Daftar"
+            app:layout_constraintEnd_toEndOf="@id/textField2"
+            app:layout_constraintStart_toStartOf="@id/textField2"
+            app:layout_constraintTop_toBottomOf="@id/lytGender" />
+
+        <TextView
+            android:id="@+id/txtAsk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/nunito"
-            android:text="Username minimal 3 karakter dan maksimal 15 karakter "
+            android:text="Sudah punya akun?"
             android:textColor="@color/white_inactive"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@id/txtPassword"
-            app:layout_constraintTop_toBottomOf="@id/txtPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:hint="Kata sandi"
-        android:textColorHint="@color/white_inactive"
-        app:boxBackgroundColor="@color/dark_mode_3"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/dangers_red"
-        app:hintEnabled="true"
-        app:hintTextColor="#AFB9FF"
-        app:layout_constraintEnd_toEndOf="@id/textField2"
-        app:layout_constraintStart_toStartOf="@id/textField2"
-        app:layout_constraintTop_toBottomOf="@id/textField2"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/white_inactive">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtPw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
             android:textSize="16sp"
-            tools:text="Sample" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/txtDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito"
-        android:text="Kata sandi minimal 8 karakter kombinasi huruf dan angka"
-        android:textColor="@color/white_inactive"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@id/txtPassword" />
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtKonfir"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:hint="Konfirmasi Kata sandi"
-        android:textColorHint="@color/white_inactive"
-        app:boxBackgroundColor="@color/dark_mode_3"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp"
-        app:errorEnabled="true"
-        app:errorTextColor="@color/dangers_red"
-        app:hintEnabled="true"
-        app:hintTextColor="#AFB9FF"
-        app:layout_constraintEnd_toEndOf="@id/textField2"
-        app:layout_constraintStart_toStartOf="@id/textField2"
-        app:layout_constraintTop_toBottomOf="@id/txtDesc"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/white_inactive">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtKonfirPw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            tools:text="Sample" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/txtGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Jenis Kelamin"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@id/txtKonfir" />
-
-    <LinearLayout
-        android:id="@+id/lytGender"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/textField2"
-        app:layout_constraintStart_toStartOf="@id/textField2"
-        app:layout_constraintTop_toBottomOf="@id/txtGender">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLaki"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/dark_mode_3"
-            android:fontFamily="@font/nunito"
-            android:gravity="center"
-            android:text="Laki- laki"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            app:cornerRadius="8dp"
-            app:icon="@drawable/ic_boy2" />
-
-        <View
-            android:layout_width="12dp"
-            android:layout_height="1dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnGirl"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/dark_mode_3"
-            android:fontFamily="@font/nunito"
-            android:gravity="center"
-            android:text="Perempuan"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            app:cornerRadius="8dp"
-            app:icon="@drawable/ic_girl" />
-
-    </LinearLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnDaftar"
-        style="@style/button_gradient_primary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Daftar"
-        app:layout_constraintEnd_toEndOf="@id/textField2"
-        app:layout_constraintStart_toStartOf="@id/textField2"
-        app:layout_constraintTop_toBottomOf="@id/lytGender" />
-
-    <TextView
-        android:id="@+id/txtAsk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sudah punya akun?"
-        android:textColor="@color/white_inactive"
-        android:textSize="16sp"
-        android:fontFamily="@font/nunito"
-        app:layout_constraintTop_toBottomOf="@id/btnDaftar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="15dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnDaftar" />
 
         <TextView
             android:id="@+id/txtMasuk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masuk"
-            android:fontFamily="@font/nunito_bold"
-            android:textSize="16sp"
-            android:textColor="@color/primary_400"
-            app:layout_constraintTop_toBottomOf="@id/txtAsk"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="15dp" />
+            android:fontFamily="@font/nunito_bold"
+            android:text="Masuk"
+            android:textColor="@color/primary_400"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtAsk" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
