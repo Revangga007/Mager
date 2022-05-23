@@ -17,14 +17,13 @@ class RegisterViewModel @Inject constructor(
     val register = MutableLiveData<RegisterResponse>()
 
     suspend fun register(
-        biodata: String? = null,
         email: String,
         gender: String,
         nama: String,
         password: String,
         username: String
     ) {
-        val body = RegisterBody(biodata, email, gender, nama, password, username)
+        val body = RegisterBody("", email, gender, nama, password, username)
         registerRepository.register(
             onStart = { _loading.postValue(true) },
             onComplete = { _loading.postValue(false) },

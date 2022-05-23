@@ -3,6 +3,8 @@ package com.mager.gamer.repository
 import com.google.gson.Gson
 import com.mager.gamer.data.model.remote.login.LoginBody
 import com.mager.gamer.data.model.remote.login.LoginErorResponse
+import com.mager.gamer.data.model.remote.password.ForgetPassBody
+import com.mager.gamer.data.model.remote.register.RegisterBody
 import com.mager.gamer.data.remote.ApiService
 import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onError
@@ -13,6 +15,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
+import org.json.JSONObject
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -37,6 +40,25 @@ class LoginRepository @Inject constructor(
         }.onException {
             Timber.e(this.message())
             // onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun forgetPass(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        body: ForgetPassBody
+    ) = flow {
+        val response = apiService.forgetPass(body)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+                onError(this.message())
+        }.onException {
+            onError(this.message())
         }
     }
         .onStart { onStart() }

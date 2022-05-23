@@ -17,5 +17,7 @@
     <color name="light_blue">#009EF8</color>
     <color name="primary_400">#697AFF</color>
     <color name="dangers_red">#FF7565</color>
+    <color name="pink">#F900BF</color>
+
 
 </resources>

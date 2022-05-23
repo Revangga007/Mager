@@ -1,9 +1,6 @@
 package com.mager.gamer.repository
 
-import com.mager.gamer.data.model.remote.postingan.create.CreatePostinganResponse
-import com.mager.gamer.data.model.remote.postingan.post.CreatePostBody
 import com.mager.gamer.data.model.remote.register.RegisterBody
-import com.mager.gamer.data.model.remote.register.RegisterResponse
 import com.mager.gamer.data.remote.ApiService
 import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onError
@@ -14,7 +11,9 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
+import org.json.JSONObject
 import javax.inject.Inject
+
 
 class RegisterRepository @Inject constructor(
     private val apiService: ApiService,
@@ -31,7 +30,13 @@ class RegisterRepository @Inject constructor(
         response.suspendOnSuccess {
             emit(data)
         }.onError {
-            onError(this.message())
+            if (this.errorBody != null) {
+                val jsonObject = JSONObject(this.errorBody!!.string())
+                val message = jsonObject.getString("message")
+                onError(message)
+            } else {
+                onError(this.message())
+            }
         }.onException {
             onError(this.message())
         }

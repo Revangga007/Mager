@@ -56,6 +56,9 @@ class DetailPostinganActivity : AppCompatActivity() {
         sheetBinding.txtDel.setOnClickListener {
             deleteDialog.show()
         }
+        binding.imgSend.setOnClickListener {
+
+        }
 
 
         intent.extras?.getParcelable<Data>("post")?.let {

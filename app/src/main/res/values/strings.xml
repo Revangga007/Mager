@@ -16,4 +16,6 @@
     <string name="deskripsi_komunitas"><![CDATA[Komunitas Official Mobile Legends Indonesia Sharing info turnamen di seluruh Indonesia ! Sharing info update hero meta Rasis & Sara = Banned]]></string>
     <string name="masuk">Masuk</string>
     <string name="upload_deskripsi">Maks File = 1 Foto/Video\nMaks Size Foto = 5 MB\nMaks Size Video = 10 MB</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
