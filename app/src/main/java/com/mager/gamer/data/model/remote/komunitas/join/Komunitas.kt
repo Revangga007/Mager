@@ -1,12 +1,9 @@
-package com.mager.gamer.data.model.remote.komunitas.get
+package com.mager.gamer.data.model.remote.komunitas.join
 
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class Content(
+data class Komunitas(
     @SerializedName("acceptance")
     val acceptance: Boolean,
     @SerializedName("banner")
@@ -27,4 +24,4 @@ data class Content(
     val namaKomunitas: String,
     @SerializedName("updated_date")
     val updatedDate: String
-): Parcelable
+)

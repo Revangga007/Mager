@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mager">
         <activity
+            android:name=".ui.komunitas.DetailCommunityActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.onBoard.OnBoardctivity"
             android:exported="false" />
         <activity

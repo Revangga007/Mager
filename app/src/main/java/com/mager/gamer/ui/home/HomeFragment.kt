@@ -114,7 +114,6 @@ class HomeFragment : Fragment() {
         }
         viewModel.postinganResult.observe(viewLifecycleOwner) {
             binding.recyclerPostingan.apply {
-                adapter = KomentarAdapter()
                 adapter = PostinganAdapter(it.toMutableList(), onDetailClick = { data, position ->
                     lastPositionForUpdate = position
                     val intent = Intent(requireContext(), DetailPostinganActivity::class.java)
