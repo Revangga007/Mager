@@ -4,6 +4,7 @@ package com.mager.gamer.ui.postingan
 import androidx.lifecycle.MutableLiveData
 import com.mager.gamer.base.BaseViewModel
 import com.mager.gamer.data.local.MagerSharedPref
+import com.mager.gamer.data.model.remote.postingan.delete.DeleteResponse
 import com.mager.gamer.data.model.remote.postingan.komentar.KomentarBody
 import com.mager.gamer.data.model.remote.postingan.komentar.KomentarPostinganResponse
 import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
@@ -18,6 +19,7 @@ class DetailPostinganViewModel @Inject constructor(
 ) : BaseViewModel() {
     val likeResult = MutableLiveData<LikePostinganResponse>()
     val postComment = MutableLiveData<KomentarPostinganResponse>()
+    val deletePost = MutableLiveData<DeleteResponse>()
 
     suspend fun likePostingan(idPost: Int) {
         val idUser = MagerSharedPref.userId!!
@@ -44,15 +46,34 @@ class DetailPostinganViewModel @Inject constructor(
     ) {
         val idUser = MagerSharedPref.userId!!
         val body = KomentarBody(isiKomentar)
-        mainRepository.komentar(
+        mainRepository.createKomentar(
             onStart = { _loading.postValue(true) },
             onComplete = { _loading.postValue(false) },
             onError = { _message.postValue(it) },
-            idPostingan,
             idUser,
+            idPostingan,
             body
         ).collect {
             postComment.postValue(it)
+        }
+    }
+
+    suspend fun deleteThisPost(
+        idPost: Int
+    ) {
+        mainRepository.delPost(
+            onStart = {
+                showLoading()
+            },
+            onComplete = {
+                hideLoading()
+            },
+            onError = {
+                _message.postValue(it)
+            },
+            idPost,
+        ).collect {
+            deletePost.postValue(it)
         }
     }
 

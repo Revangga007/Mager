@@ -249,6 +249,8 @@ class BuatPostinganActivity : AppCompatActivity() {
             }
         }
         viewModel.createResponse.observe(this){
+            Toast.makeText(this, "sukses buat post", Toast.LENGTH_SHORT).show()
+            finish()
 
         }
     }

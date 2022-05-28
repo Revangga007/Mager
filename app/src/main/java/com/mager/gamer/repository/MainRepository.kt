@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import okhttp3.MultipartBody
 import timber.log.Timber
+import java.security.cert.CertPath
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(
@@ -100,7 +101,7 @@ class MainRepository @Inject constructor(
         .onCompletion { onComplete() }
         .flowOn(ioDispatcher)
 
-    suspend fun komentar(
+    suspend fun createKomentar(
         onStart: () -> Unit,
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
@@ -121,5 +122,42 @@ class MainRepository @Inject constructor(
         .onCompletion { onComplete() }
         .flowOn(ioDispatcher)
 
+    suspend fun delPost(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idPost: Int,
+    ) = flow {
+        val response = apiService.deletePost(idPost)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun userDetail(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idUser: Int
+    ) = flow {
+        val response = apiService.userDetail(idUser)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
 }
 

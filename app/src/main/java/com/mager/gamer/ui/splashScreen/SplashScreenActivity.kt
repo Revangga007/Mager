@@ -7,6 +7,7 @@ import android.os.Handler
 import com.mager.gamer.MainActivity
 import com.mager.gamer.databinding.ActivityMainBinding
 import com.mager.gamer.databinding.ActivitySplashScreenBinding
+import com.mager.gamer.ui.onBoard.OnBoardctivity
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class SplashScreenActivity : AppCompatActivity() {
         val handler = Handler()
         handler.postDelayed({
             val intent = Intent(
-                this@SplashScreenActivity, MainActivity::class.java)
+                this@SplashScreenActivity, OnBoardctivity::class.java)
             startActivity(intent)
             finish()
         }, 2000)

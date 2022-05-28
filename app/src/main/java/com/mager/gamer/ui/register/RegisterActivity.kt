@@ -12,6 +12,7 @@ import com.mager.gamer.databinding.ActivityRegisterBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.regex.Pattern
 
 @AndroidEntryPoint
 class RegisterActivity : BaseActivity() {
@@ -56,15 +57,21 @@ class RegisterActivity : BaseActivity() {
             validateButton()
         }
         binding.txtPw.doOnTextChanged { text, _, _, _ ->
+            val txt = text.toString().trim()
             when {
-                text.isNullOrEmpty() ->
+                txt.isEmpty() ->
                     binding.txtPassword.error = "Kata sandi tidak boleh kosong"
-                text.length < 8 || !text.toString().matches("[a-zA-Z0-9]+".toRegex()) ->
+                !isPasswordValid(txt) ->
                     binding.txtPassword.error =
                         "Kata sandi minimal 8 karakter kombinasi huruf dan angka"
-                !text.isNullOrEmpty() && text.toString() != binding.txtKonfirPw.text.toString() ->
+                txt != binding.txtKonfirPw.text.toString() -> {
                     binding.txtKonfir.error = "Konfirmasi kata sandi tidak sama"
-                else -> binding.txtPassword.error = null
+                    binding.txtPassword.error = null
+                }
+                else -> {
+                    binding.txtPassword.error = null
+                    binding.txtKonfir.error = null
+                }
             }
             validateButton()
         }
@@ -99,6 +106,14 @@ class RegisterActivity : BaseActivity() {
             }
         }
         setupObserver()
+    }
+
+    private fun isPasswordValid(password: String): Boolean {
+        val passwordPattern = "^(?=.*[0-9])(?=.*[a-z]).{8,}$"
+        val pattern = Pattern.compile(passwordPattern)
+        val matcher = pattern.matcher(password)
+
+        return matcher.matches()
     }
 
     private fun validateButton() {

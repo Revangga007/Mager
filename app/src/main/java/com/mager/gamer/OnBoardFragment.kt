@@ -16,7 +16,6 @@ class OnBoardFragment : Fragment() {
     private var param1: String? = null
     private var _binding: FragmentOnBoardBinding? = null
     private val binding get() = _binding!!
-    private lateinit var listener: (CharSequence) -> Unit
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +35,8 @@ class OnBoardFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, listener: (CharSequence) -> Unit) =
+        fun newInstance(param1: String) =
             OnBoardFragment().apply {
-                this.listener = listener
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                 }
