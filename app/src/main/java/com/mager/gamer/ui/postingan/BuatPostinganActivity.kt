@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.anilokcun.uwmediapicker.UwMediaPicker
 import com.anilokcun.uwmediapicker.model.UwMediaPickerMediaType
@@ -75,6 +76,12 @@ class BuatPostinganActivity : AppCompatActivity() {
             showHideImagePreview(false)
             selectedFiles.clear()
             binding.imgPreview.setImageDrawable(null)
+        }
+        binding.edtStatus.doAfterTextChanged {
+            if (!it.isNullOrEmpty()) {
+                val text = "${it.length}/300"
+                binding.txtKarakter.text = text
+            }
         }
         binding.btnSend.setOnClickListener {
             val postText = binding.edtStatus.text.toString().trim()
