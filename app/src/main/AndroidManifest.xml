@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mager">
         <activity
+            android:name=".ui.komunitas.DetailCommunityActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.onBoard.OnBoardctivity"
             android:exported="false" />
         <activity
@@ -35,8 +38,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name" />
+            android:exported="true" />
         <activity
             android:name=".ui.splashScreen.SplashScreenActivity"
             android:exported="true">

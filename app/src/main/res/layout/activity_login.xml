@@ -140,18 +140,6 @@
                     tools:text="Sample" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <CheckBox
-                android:id="@+id/cbIngatSaya"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito"
-                android:text="Ingat saya"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/txtPassword"
-                app:layout_constraintTop_toBottomOf="@id/txtPassword" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMasuk"
                 style="@style/button_gradient_primary"
@@ -162,7 +150,7 @@
                 android:text="Masuk"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cbIngatSaya" />
+                app:layout_constraintTop_toBottomOf="@id/txtPassword" />
 
             <TextView
                 android:id="@+id/txtLupaPassword"

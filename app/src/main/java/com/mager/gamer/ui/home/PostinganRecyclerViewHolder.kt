@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
 import com.mager.gamer.R
+import com.mager.gamer.TimeAgo.toTimeAgo
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.databinding.ItemPostinganBinding
 import com.mager.gamer.databinding.ItemPostinganGambarBinding
@@ -38,7 +39,7 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
-            binding.txtWaktu.text = postingan.createdDate
+            binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
             if (postingan.jumlahKomentar == 0) {
                 binding.layoutKomen.visibility = View.GONE
                 binding.cardFoto3.visibility = View.GONE
@@ -78,7 +79,7 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
-            binding.txtWaktu.text = postingan.createdDate
+            binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
             if (postingan.jumlahKomentar == 0) {
                 binding.layoutKomen.visibility = View.GONE
                 binding.cardFoto3.visibility = View.GONE
@@ -129,7 +130,7 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
-            binding.txtWaktu.text = postingan.createdDate
+            binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
             if (postingan.jumlahKomentar == 0) {
                 binding.layoutKomen.visibility = View.GONE
                 binding.cardFoto3.visibility = View.GONE
@@ -140,6 +141,17 @@ sealed class PostinganRecyclerViewHolder(
             }
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan, adapterPosition)
+            }
+            if (postingan.files != null) {
+                Glide.with(binding.imgPreview.context)
+                    .load(postingan.files)
+                    .error(R.drawable.logo_mager_1)
+                    .into(binding.imgPreview)
+            } else if (postingan.linkLivestream != null) {
+                Glide.with(binding.cardVideoPosting.context)
+                    .load(postingan.linkLivestream)
+                    .error(R.drawable.logo_mager_1)
+                    .into(binding.imgPreview)
             }
         }
     }
@@ -167,7 +179,7 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
-            binding.txtWaktu.text = postingan.createdDate
+            binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
             if (postingan.jumlahKomentar == 0) {
                 binding.layoutKomen.visibility = View.GONE
                 binding.cardFoto3.visibility = View.GONE

@@ -1,12 +1,11 @@
-package com.mager.gamer.data.model.remote.komunitas.get
+package com.mager.gamer.data.model.remote.user
 
 
 import com.google.gson.annotations.SerializedName
 
-
-data class KomunitasResponse(
+data class UserDetailResponse(
     @SerializedName("data")
-    val data: Data,
+    val `data`: Data,
     @SerializedName("message")
     val message: String,
     @SerializedName("status")

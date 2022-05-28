@@ -1,20 +1,19 @@
-package com.mager.gamer.data.model.remote.postingan.komentar
+package com.mager.gamer.data.model.remote.komunitas.join
 
 
 import com.google.gson.annotations.SerializedName
-import com.mager.gamer.data.model.remote.postingan.get.User
 
 data class Data(
     @SerializedName("created_date")
     val createdDate: String,
     @SerializedName("deleted_date")
-    val deletedDate: Any,
+    val deletedDate: String?,
     @SerializedName("id")
     val id: Int,
-    @SerializedName("isiKomentar")
-    val isiKomentar: String,
+    @SerializedName("komunitas")
+    val komunitas: Komunitas,
+    @SerializedName("komunitasRoles")
+    val komunitasRoles: KomunitasRoles,
     @SerializedName("updated_date")
     val updatedDate: String,
-    @SerializedName("user")
-    val user: User
 )

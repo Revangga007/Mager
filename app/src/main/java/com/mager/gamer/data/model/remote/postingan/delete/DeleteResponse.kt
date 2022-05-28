@@ -1,12 +1,11 @@
-package com.mager.gamer.data.model.remote.komunitas.get
+package com.mager.gamer.data.model.remote.postingan.delete
 
 
 import com.google.gson.annotations.SerializedName
 
-
-data class KomunitasResponse(
+data class DeleteResponse(
     @SerializedName("data")
-    val data: Data,
+    val `data`: Int,
     @SerializedName("message")
     val message: String,
     @SerializedName("status")

@@ -1,4 +1,3 @@
-
 package com.mager.gamer.ui.postingan
 
 import android.app.Activity
@@ -9,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.view.Window
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -19,9 +19,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mager.gamer.R
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.Data
+import com.mager.gamer.data.model.remote.postingan.get.KomentarBy
 import com.mager.gamer.databinding.ActivityDetailPostinganBinding
 import com.mager.gamer.databinding.DeleteDialogBinding
 import com.mager.gamer.databinding.ItemSheetBinding
+import com.mager.gamer.dialog.CustomLoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -33,6 +35,8 @@ class DetailPostinganActivity : AppCompatActivity() {
     private lateinit var sheetBinding: ItemSheetBinding
     private var like = 0
     private lateinit var deleteDialogBinding: DeleteDialogBinding
+    var idPost = 0
+    private var komentarAdapter: KomentarAdapter? = null
 
     private lateinit var binding: ActivityDetailPostinganBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,18 +54,22 @@ class DetailPostinganActivity : AppCompatActivity() {
             window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             setContentView(deleteDialogBinding.root)
         }
+        binding.btnOption.setOnClickListener {
+            sheetDialog.show()
+        }
         sheetBinding.imgSampah.setOnClickListener {
             deleteDialog.show()
         }
         sheetBinding.txtDel.setOnClickListener {
             deleteDialog.show()
         }
-        binding.imgSend.setOnClickListener {
 
-        }
 
 
         intent.extras?.getParcelable<Data>("post")?.let {
+            idPost = it.id
+            println(it.id)
+            komentarAdapter = KomentarAdapter(it.komentarBy.toMutableList()) { sheetDialog.show() }
             postingan = it
             like = it.jumlahLike
             if (it.files != null) {
@@ -79,7 +87,7 @@ class DetailPostinganActivity : AppCompatActivity() {
                     RecyclerView.VERTICAL,
                     false
                 )
-                adapter = KomentarAdapter(it.komentarBy.toMutableList()) { sheetDialog.show() }
+                adapter = komentarAdapter
             }
 
             val idUser = MagerSharedPref.userId!!
@@ -99,10 +107,23 @@ class DetailPostinganActivity : AppCompatActivity() {
         binding.imgLeft.setOnClickListener {
             finish()
         }
+        binding.imgSend.setOnClickListener {
+            val postText = binding.edtKoment.text.toString()
+            lifecycleScope.launch {
+                viewModel.komentarPostingan(idPost, postText)
+            }
+        }
         setupObserver()
     }
 
     private fun setupObserver() {
+        val loading = CustomLoadingDialog(this)
+        viewModel.loading.observe(this) {
+            if (it) loading.show() else loading.dismiss()
+        }
+        viewModel.message.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        }
         viewModel.likeResult.observe(this) {
             if (it.data.reaction) {
                 like++
@@ -116,8 +137,26 @@ class DetailPostinganActivity : AppCompatActivity() {
             i.putExtra("data", it.data)
             setResult(Activity.RESULT_OK, i)
         }
-    }
+        viewModel.postComment.observe(this) {
+            val comment = KomentarBy(it.data.createdDate, null,
+                it.data.id,it.data.isiKomentar, it.data.updatedDate, it.data.user)
 
+            komentarAdapter?.comments?.add(comment)
+            komentarAdapter?.notifyDataSetChanged()
+            binding.edtKoment.setText("")
+
+            viewModel.message.observe(this) {
+                Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+            }
+            deleteDialogBinding.btnHapusPost.setOnClickListener {
+                lifecycleScope.launch {
+                    viewModel.deleteThisPost(idPost)
+                }
+            }
+
+
+        }
+    }
 }
 
 

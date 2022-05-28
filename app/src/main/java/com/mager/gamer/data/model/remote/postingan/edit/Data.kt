@@ -1,46 +1,41 @@
-package com.mager.gamer.data.model.remote.postingan.get
+package com.mager.gamer.data.model.remote.postingan.edit
 
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-import java.util.*
-
-@Parcelize
 data class Data(
     @SerializedName("createdBy")
     val createdBy: CreatedBy,
     @SerializedName("created_date")
-    val createdDate: Date,
+    val createdDate: String,
     @SerializedName("deleted_date")
-    val deletedDate: Date?,
+    val deletedDate: Any,
     @SerializedName("draft")
     val draft: Boolean,
     @SerializedName("files")
-    val files: String?,
+    val files: String,
     @SerializedName("id")
     val id: Int,
     @SerializedName("jumlahKomentar")
     val jumlahKomentar: Int,
     @SerializedName("jumlahLike")
-    var jumlahLike: Int,
+    val jumlahLike: Int,
     @SerializedName("komentarBy")
-    val komentarBy: List<KomentarBy>,
+    val komentarBy: List<Any>,
     @SerializedName("likedBy")
-    val likedBy: MutableList<LikedBy>,
+    val likedBy: List<LikedBy>,
     @SerializedName("linkLivestream")
-    val linkLivestream: String?,
+    val linkLivestream: Any,
     @SerializedName("linkPostingan")
-    val linkPostingan: String?,
+    val linkPostingan: String,
     @SerializedName("postText")
     val postText: String,
     @SerializedName("postedIn")
-    val postedIn: PostedIn?,
+    val postedIn: Any,
     @SerializedName("tipePost")
-    val tipePost: String?,
+    val tipePost: String,
     @SerializedName("updated_date")
     val updatedDate: String,
     @SerializedName("visibility")
     val visibility: Boolean
-) : Parcelable
+)

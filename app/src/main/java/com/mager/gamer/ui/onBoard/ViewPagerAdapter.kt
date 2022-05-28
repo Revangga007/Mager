@@ -5,12 +5,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.mager.gamer.OnBoardFragment
 
-class ViewPagerAdapter (Fa: FragmentActivity, listener:(CharSequence)->Unit
+class ViewPagerAdapter (Fa: FragmentActivity,
 ): FragmentStateAdapter(Fa) {
     private val dataFragments= mutableListOf(
-        OnBoardFragment.newInstance("0",listener),
-        OnBoardFragment.newInstance("1",listener),
-        OnBoardFragment.newInstance("2",listener),
+        OnBoardFragment.newInstance("0"),
+        OnBoardFragment.newInstance("1"),
+        OnBoardFragment.newInstance("2"),
 
     )
     override fun getItemCount(): Int =3

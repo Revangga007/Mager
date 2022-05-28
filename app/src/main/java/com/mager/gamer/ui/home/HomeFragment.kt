@@ -23,6 +23,7 @@ import com.mager.gamer.databinding.FragmentHomeBinding
 import com.mager.gamer.ui.login.LoginActivity
 import com.mager.gamer.ui.postingan.BuatPostinganActivity
 import com.mager.gamer.ui.postingan.DetailPostinganActivity
+import com.mager.gamer.ui.postingan.KomentarAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
