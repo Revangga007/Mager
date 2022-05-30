@@ -27,8 +27,7 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
 
         binding.textField.requestFocus()
-//        binding.textField.error = "Email tidak boleh kosong"
-//        binding.txtPassword.error = "Password tidak boleh kosong"
+
 
         binding.txtUsername.doOnTextChanged { text, _, _, _ ->
             when {

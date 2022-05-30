@@ -51,6 +51,9 @@ class BuatPostinganActivity : AppCompatActivity() {
             isLiveMode = intentLive
             showHideMode()
         }
+        binding.imgLeft.setOnClickListener {
+            finish()
+        }
 
         binding.cardPhoto.setOnClickListener {
             isImageMode = true

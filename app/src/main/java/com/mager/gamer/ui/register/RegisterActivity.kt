@@ -1,5 +1,6 @@
 package com.mager.gamer.ui.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -10,6 +11,7 @@ import com.mager.gamer.R
 import com.mager.gamer.base.BaseActivity
 import com.mager.gamer.databinding.ActivityRegisterBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
+import com.mager.gamer.ui.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
@@ -104,6 +106,10 @@ class RegisterActivity : BaseActivity() {
                     gender = textGender
                 )
             }
+        }
+        binding.txtMasuk.setOnClickListener {
+            val i = Intent(this, LoginActivity::class.java)
+            startActivity(i)
         }
         setupObserver()
     }

@@ -9,9 +9,13 @@ import com.mager.gamer.data.model.remote.password.ForgetPassBody
 import com.mager.gamer.data.model.remote.password.ForgetPassResponse
 import com.mager.gamer.data.model.remote.postingan.create.CreatePostinganResponse
 import com.mager.gamer.data.model.remote.postingan.delete.DeleteResponse
+import com.mager.gamer.data.model.remote.postingan.edit.EditBody
+import com.mager.gamer.data.model.remote.postingan.edit.EditPostResponse
 import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
-import com.mager.gamer.data.model.remote.postingan.komentar.KomentarBody
-import com.mager.gamer.data.model.remote.postingan.komentar.KomentarPostinganResponse
+import com.mager.gamer.data.model.remote.postingan.komentar.del.KomentarDelResponse
+import com.mager.gamer.data.model.remote.postingan.komentar.get.GetKomenResponse
+import com.mager.gamer.data.model.remote.postingan.komentar.post.KomentarBody
+import com.mager.gamer.data.model.remote.postingan.komentar.post.KomentarPostinganResponse
 import com.mager.gamer.data.model.remote.postingan.like.LikePostinganResponse
 import com.mager.gamer.data.model.remote.postingan.post.CreatePostBody
 import com.mager.gamer.data.model.remote.register.RegisterBody
@@ -52,6 +56,13 @@ interface ApiService {
         @Query("idUser") idUser: Int,
     ): ApiResponse<LikePostinganResponse>
 
+    @PUT("mager/postingan/{idPostingan}")
+    suspend fun editPost(
+        @Query("idUser") idUser: Int,
+        @Path("idPostingan") idPostingan: Int,
+        @Body body: EditBody
+    ):ApiResponse<EditPostResponse>
+
     @GET("mager/komunitas/list")
     suspend fun getKomunitas(
         @Query("size") size: Int,
@@ -90,11 +101,21 @@ interface ApiService {
 
     @DELETE("mager/postingan")
     suspend fun deletePost(
-        @Query("idPostingan") idPostingan: Int
+        @Path("idPostingan") idPostingan: Int
     ):ApiResponse<DeleteResponse>
 
     @GET("mager/user/{idUser}")
     suspend fun userDetail(
         @Path("idUser") idUser: Int
     ):ApiResponse<UserDetailResponse>
+
+    @DELETE("mager/komentar/{idKomentar}")
+    suspend fun delKomentar(
+        @Path("idKomentar") idkomentar: Int
+    ):ApiResponse<KomentarDelResponse>
+
+    @GET("mager/komentar")
+    suspend fun getKomentar(
+        @Query("idPostingan") idPostingan: Int
+    ):ApiResponse<GetKomenResponse>
 }

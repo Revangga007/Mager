@@ -1,4 +1,4 @@
-package com.mager.gamer.data.model.remote.postingan.komentar
+package com.mager.gamer.data.model.remote.postingan.komentar.post
 
 
 import com.google.gson.annotations.SerializedName

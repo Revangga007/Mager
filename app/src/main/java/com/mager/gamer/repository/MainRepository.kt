@@ -1,7 +1,9 @@
 package com.mager.gamer.repository
 
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.create.CreatePostinganResponse
-import com.mager.gamer.data.model.remote.postingan.komentar.KomentarBody
+import com.mager.gamer.data.model.remote.postingan.edit.EditBody
+import com.mager.gamer.data.model.remote.postingan.komentar.post.KomentarBody
 import com.mager.gamer.data.model.remote.postingan.post.CreatePostBody
 import com.mager.gamer.data.remote.ApiService
 import com.skydoves.sandwich.message
@@ -15,7 +17,6 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import okhttp3.MultipartBody
 import timber.log.Timber
-import java.security.cert.CertPath
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(
@@ -126,9 +127,28 @@ class MainRepository @Inject constructor(
         onStart: () -> Unit,
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
-        idPost: Int,
+        idPostingan: Int,
     ) = flow {
-        val response = apiService.deletePost(idPost)
+        val response = apiService.deletePost(idPostingan)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun delKomentar(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idKomentar: Int,
+    ) = flow {
+        val response = apiService.delKomentar(idKomentar)
         response.suspendOnSuccess {
             emit(data)
         }.onError {
@@ -148,6 +168,45 @@ class MainRepository @Inject constructor(
         idUser: Int
     ) = flow {
         val response = apiService.userDetail(idUser)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun editPost(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idPostingan: Int,
+        body: EditBody
+    ) = flow {
+        val response = apiService.editPost(MagerSharedPref.userId!!,idPostingan,body)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun getKomenPost(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idPostingan: Int
+    ) = flow {
+        val response = apiService.getKomentar(idPostingan)
         response.suspendOnSuccess {
             emit(data)
         }.onError {

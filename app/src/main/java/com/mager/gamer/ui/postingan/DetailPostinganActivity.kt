@@ -22,6 +22,7 @@ import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.data.model.remote.postingan.get.KomentarBy
 import com.mager.gamer.databinding.ActivityDetailPostinganBinding
 import com.mager.gamer.databinding.DeleteDialogBinding
+import com.mager.gamer.databinding.DeletePostDialogBinding
 import com.mager.gamer.databinding.ItemSheetBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,6 +38,8 @@ class DetailPostinganActivity : AppCompatActivity() {
     private lateinit var deleteDialogBinding: DeleteDialogBinding
     var idPost = 0
     private var komentarAdapter: KomentarAdapter? = null
+    private lateinit var deletePostBinding: DeletePostDialogBinding
+    private var isComment = false
 
     private lateinit var binding: ActivityDetailPostinganBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +48,7 @@ class DetailPostinganActivity : AppCompatActivity() {
         setContentView(binding.root)
         sheetBinding = ItemSheetBinding.inflate(layoutInflater)
         deleteDialogBinding = DeleteDialogBinding.inflate(layoutInflater)
+        deletePostBinding = DeletePostDialogBinding.inflate(layoutInflater)
 
         val sheetDialog = BottomSheetDialog(this, R.style.backgroundSheet)
         sheetDialog.setContentView(sheetBinding.root)
@@ -52,16 +56,45 @@ class DetailPostinganActivity : AppCompatActivity() {
         deleteDialog.apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            setContentView(deleteDialogBinding.root)
         }
+
         binding.btnOption.setOnClickListener {
+            isComment = false
             sheetDialog.show()
         }
         sheetBinding.imgSampah.setOnClickListener {
-            deleteDialog.show()
+            if (isComment) {
+                deleteDialog.apply {
+                    setContentView(deleteDialogBinding.root)
+                    show()
+                }
+            }
+            else {
+                deleteDialog.apply{
+                    setContentView(deletePostBinding.root)
+                    show()
+                }
+            }
         }
         sheetBinding.txtDel.setOnClickListener {
-            deleteDialog.show()
+            if (isComment) {
+                deleteDialog.apply {
+                    setContentView(deleteDialogBinding.root)
+                    show()
+                }
+            }
+            else {
+                deleteDialog.apply{
+                    setContentView(deletePostBinding.root)
+                    show()
+                }
+            }
+        }
+
+        deletePostBinding.btnHapusPost.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.deleteThisPost(idPost)
+            }
         }
 
 
@@ -69,7 +102,16 @@ class DetailPostinganActivity : AppCompatActivity() {
         intent.extras?.getParcelable<Data>("post")?.let {
             idPost = it.id
             println(it.id)
-            komentarAdapter = KomentarAdapter(it.komentarBy.toMutableList()) { sheetDialog.show() }
+            komentarAdapter = KomentarAdapter(it.komentarBy.toMutableList()) { commentId ->
+                deleteDialogBinding.btnHapusPost.setOnClickListener {
+                    lifecycleScope.launch {
+                        viewModel.deleteKomentar(commentId)
+                        viewModel.getKomentarPostingan(idPost)
+                    }
+                }
+                isComment = true
+                sheetDialog.show()
+            }
             postingan = it
             like = it.jumlahLike
             if (it.files != null) {
@@ -148,13 +190,12 @@ class DetailPostinganActivity : AppCompatActivity() {
             viewModel.message.observe(this) {
                 Toast.makeText(this, it, Toast.LENGTH_LONG).show()
             }
-            deleteDialogBinding.btnHapusPost.setOnClickListener {
-                lifecycleScope.launch {
-                    viewModel.deleteThisPost(idPost)
-                }
-            }
-
-
+        }
+        viewModel.delKomen.observe(this){
+            Toast.makeText(this, "komentar telah dihapus", Toast.LENGTH_SHORT).show()
+        }
+        viewModel.deletePost.observe(this){
+            Toast.makeText(this, "postingan berhasil dihapus", Toast.LENGTH_SHORT).show()
         }
     }
 }
