@@ -22,7 +22,9 @@ class VideoActivity : AppCompatActivity() {
         val target =
             intent.getStringExtra(INTENT_VIDEO_URL) ?: intent.getStringExtra(INTENT_VIDEO_PATH)
         binding.exoPlayer.setSource(target!!)
-        binding.imgExit.setOnClickListener { finish() }
+        binding.imgExit.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onPause() {

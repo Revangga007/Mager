@@ -99,7 +99,7 @@ interface ApiService {
         @Body body : KomentarBody
     ):ApiResponse<KomentarPostinganResponse>
 
-    @DELETE("mager/postingan")
+    @DELETE("mager/postingan/{idPostingan}")
     suspend fun deletePost(
         @Path("idPostingan") idPostingan: Int
     ):ApiResponse<DeleteResponse>

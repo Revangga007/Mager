@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp">
@@ -24,7 +25,8 @@
                 android:id="@+id/imgFoto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/img_user" />
+                android:src="@drawable/img_user"
+                android:contentDescription="@null" />
 
         </androidx.cardview.widget.CardView>
 
@@ -35,9 +37,9 @@
             android:layout_marginStart="4dp"
             android:background="@drawable/backgrond_comment"
             android:paddingBottom="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cardFoto3"
-            app:layout_constraintTop_toTopOf="@id/cardFoto3"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toTopOf="@id/cardFoto3">
 
             <TextView
                 android:id="@+id/txtNamaKomentator"
@@ -46,10 +48,10 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/nunito_bold"
-                android:text="Atthala123"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Atthala123" />
 
             <TextView
                 android:id="@+id/txtIsiKomen"
@@ -57,9 +59,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:fontFamily="@font/nunito"
-                android:text="@string/example_comment"
                 android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/txtNamaKomentator" />
+                app:layout_constraintTop_toBottomOf="@id/txtNamaKomentator"
+                tools:text="@string/example_comment" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

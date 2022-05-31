@@ -62,7 +62,7 @@ class PostinganAdapter(
                 idUser,
                 post,
                 onDetailClick,
-                onCopyClick
+                onCopyClick,
             )
             is PostinganRecyclerViewHolder.PostinganImageViewHolder -> holder.bind(
                 idUser,
@@ -74,7 +74,8 @@ class PostinganAdapter(
                 idUser,
                 post,
                 onDetailClick,
-                onCopyClick
+                onCopyClick,
+
             )
             is PostinganRecyclerViewHolder.PostinganLinkViewHolder -> holder.bind(
                 idUser,
@@ -90,10 +91,6 @@ class PostinganAdapter(
 
     override fun getItemViewType(position: Int): Int {
         val post = postingan[position]
-//teks
-//foto
-//livestream
-//video
         return when (post.tipePost) {
             "foto" -> POSTINGAN_IMAGE
             "video" -> POSTINGAN_VIDEO

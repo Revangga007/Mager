@@ -1,9 +1,14 @@
 package com.mager.gamer.ui.home
 
+import android.content.Intent
 import android.view.View
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
+import com.commit.app.ui.homepage.VideoActivity
 import com.mager.gamer.R
 import com.mager.gamer.TimeAgo.toTimeAgo
 import com.mager.gamer.data.model.remote.postingan.get.Data
@@ -42,16 +47,23 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
             if (postingan.jumlahKomentar == 0) {
-                binding.layoutKomen.visibility = View.GONE
-                binding.cardFoto3.visibility = View.GONE
+                binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
+            } else {
+                binding.recyclerComment.apply {
+                    visibility = View.VISIBLE
+                    layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
+                    adapter = KomentarAdapter(postingan.komentarBy.toMutableList()) {
+                    }
+                }
+                binding.txtSemuaKomen.visibility = View.VISIBLE
             }
 
             binding.btnCopy.setOnClickListener {
                 onCopyClick(postingan.linkPostingan ?: "")
             }
             binding.itemPosting.setOnClickListener {
-                onDetailClick(postingan, adapterPosition)
+                onDetailClick(postingan, absoluteAdapterPosition)
             }
 
         }
@@ -83,16 +95,23 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
             if (postingan.jumlahKomentar == 0) {
-                binding.layoutKomen.visibility = View.GONE
-                binding.cardFoto3.visibility = View.GONE
+                binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
+            } else {
+                binding.recyclerComment.apply {
+                    visibility = View.VISIBLE
+                    layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
+                    adapter = KomentarAdapter(postingan.komentarBy.toMutableList()) {
+                    }
+                }
+                binding.txtSemuaKomen.visibility = View.VISIBLE
             }
 
             binding.btnCopy.setOnClickListener {
                 onCopyClick(postingan.linkPostingan ?: "")
             }
             binding.itemPosting.setOnClickListener {
-                onDetailClick(postingan, adapterPosition)
+                onDetailClick(postingan, absoluteAdapterPosition)
             }
 
             if (postingan.files != null) {
@@ -115,7 +134,8 @@ sealed class PostinganRecyclerViewHolder(
             idUser: Int?,
             postingan: Data,
             onDetailClick: (Data, Int) -> Unit,
-            onCopyClick: (String) -> Unit
+            onCopyClick: (String) -> Unit,
+
         ) {
             if (idUser != null) {
                 val find = postingan.likedBy.find { like ->
@@ -134,15 +154,27 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
             if (postingan.jumlahKomentar == 0) {
-                binding.layoutKomen.visibility = View.GONE
-                binding.cardFoto3.visibility = View.GONE
+                binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
+            } else {
+                binding.recyclerComment.apply {
+                    visibility = View.VISIBLE
+                    layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
+                    adapter = KomentarAdapter(postingan.komentarBy.toMutableList()) {
+                    }
+                }
+                binding.txtSemuaKomen.visibility = View.VISIBLE
             }
             binding.btnCopy.setOnClickListener {
                 onCopyClick(postingan.linkPostingan ?: "")
             }
             binding.itemPosting.setOnClickListener {
-                onDetailClick(postingan, adapterPosition)
+                onDetailClick(postingan, absoluteAdapterPosition)
+            }
+            binding.imgPreview.setOnClickListener {
+                val i = Intent(requireContext(), VideoActivity::class.java)
+                i.putExtra(VideoActivity.INTENT_VIDEO_URL, .[0].url)
+                startActivity(i)
             }
             if (postingan.files != null) {
                 Glide.with(binding.imgPreview.context)
@@ -183,16 +215,23 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
             if (postingan.jumlahKomentar == 0) {
-                binding.layoutKomen.visibility = View.GONE
-                binding.cardFoto3.visibility = View.GONE
+                binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
+            } else {
+                binding.recyclerComment.apply {
+                    visibility = View.VISIBLE
+                    layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
+                    adapter = KomentarAdapter(postingan.komentarBy.toMutableList()) {
+                    }
+                }
+                binding.txtSemuaKomen.visibility = View.VISIBLE
             }
 
             binding.btnCopy.setOnClickListener {
                 onCopyClick(postingan.linkPostingan ?: "")
             }
             binding.itemPosting.setOnClickListener {
-                onDetailClick(postingan, adapterPosition)
+                onDetailClick(postingan, absoluteAdapterPosition)
             }
         }
 

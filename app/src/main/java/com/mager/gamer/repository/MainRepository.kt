@@ -1,6 +1,9 @@
 package com.mager.gamer.repository
 
+import com.google.gson.Gson
 import com.mager.gamer.data.local.MagerSharedPref
+import com.mager.gamer.data.model.remote.login.LoginErorResponse
+import com.mager.gamer.data.model.remote.postingan.create.CreateErrorResponse
 import com.mager.gamer.data.model.remote.postingan.create.CreatePostinganResponse
 import com.mager.gamer.data.model.remote.postingan.edit.EditBody
 import com.mager.gamer.data.model.remote.postingan.komentar.post.KomentarBody
@@ -64,7 +67,7 @@ class MainRepository @Inject constructor(
     suspend fun createPostingan(
         onStart: () -> Unit,
         onComplete: () -> Unit,
-        onError: (String?) -> Unit,
+        onError: (CreateErrorResponse) -> Unit,
         idUser: Int,
         body: CreatePostBody
     ) = flow<CreatePostinganResponse> {
@@ -72,9 +75,11 @@ class MainRepository @Inject constructor(
         response.suspendOnSuccess {
             emit(data)
         }.onError {
-            onError(this.message())
+            val err: CreateErrorResponse = Gson().fromJson(errorBody?.string(), CreateErrorResponse::class.java)
+            onError(err)
+            Timber.e(this.message())
         }.onException {
-            onError(this.message())
+            Timber.e(this.message())
         }
     }
         .onStart { onStart() }

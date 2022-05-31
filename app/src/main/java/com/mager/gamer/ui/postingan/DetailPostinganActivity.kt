@@ -87,6 +87,7 @@ class DetailPostinganActivity : AppCompatActivity() {
         }
 
 
+
         val deleteDialog = Dialog(this)
         deleteDialog.apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -97,6 +98,7 @@ class DetailPostinganActivity : AppCompatActivity() {
             isComment = false
             sheetDialog.show()
         }
+
         sheetBinding.linearDelete.setOnClickListener {
             if (isComment) {
                 deleteDialog.apply {
@@ -195,6 +197,7 @@ class DetailPostinganActivity : AppCompatActivity() {
         }
         viewModel.deletePost.observe(this) {
             Toast.makeText(this, "postingan berhasil dihapus", Toast.LENGTH_SHORT).show()
+            finish()
         }
     }
 }
