@@ -11,10 +11,12 @@ import com.mager.gamer.databinding.ItemPostinganBinding
 import com.mager.gamer.databinding.ItemPostinganGambarBinding
 import com.mager.gamer.databinding.ItemPostinganLinkBinding
 import com.mager.gamer.databinding.ItemPostinganVideoBinding
+import com.mager.gamer.ui.postingan.KomentarAdapter
 
 sealed class PostinganRecyclerViewHolder(
     binding: ViewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
+
 
     class PostinganTextViewHolder(private val binding: ItemPostinganBinding) :
         PostinganRecyclerViewHolder(binding) {
@@ -33,7 +35,6 @@ sealed class PostinganRecyclerViewHolder(
                     else R.drawable.ic_like_outline
                 )
             }
-
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
@@ -52,6 +53,7 @@ sealed class PostinganRecyclerViewHolder(
             binding.itemPosting.setOnClickListener {
                 onDetailClick(postingan, adapterPosition)
             }
+
         }
 
     }

@@ -1,11 +1,11 @@
-package com.mager.gamer.data.model.remote.postingan.komentar
+package com.mager.gamer.data.model.remote.postingan.komentar.get
 
 
 import com.google.gson.annotations.SerializedName
 
 data class User(
     @SerializedName("biodata")
-    val biodata: Any,
+    val biodata: String,
     @SerializedName("created_date")
     val createdDate: String,
     @SerializedName("deleted_date")
@@ -13,15 +13,27 @@ data class User(
     @SerializedName("email")
     val email: String,
     @SerializedName("fotoHeader")
-    val fotoHeader: String?,
+    val fotoHeader: Any,
     @SerializedName("fotoProfile")
-    val fotoProfile: String?,
+    val fotoProfile: Any,
+    @SerializedName("gender")
+    val gender: String,
     @SerializedName("id")
     val id: Int,
+    @SerializedName("isVerified")
+    val isVerified: Boolean,
     @SerializedName("nama")
     val nama: String,
+    @SerializedName("otp")
+    val otp: Any,
+    @SerializedName("otpExpiredDate")
+    val otpExpiredDate: Any,
     @SerializedName("password")
     val password: String,
+    @SerializedName("preferensi")
+    val preferensi: List<Preferensi>,
+    @SerializedName("roles")
+    val roles: List<Role>,
     @SerializedName("updated_date")
     val updatedDate: String,
     @SerializedName("username")

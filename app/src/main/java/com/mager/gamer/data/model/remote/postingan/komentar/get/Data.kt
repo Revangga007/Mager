@@ -1,8 +1,7 @@
-package com.mager.gamer.data.model.remote.postingan.komentar
+package com.mager.gamer.data.model.remote.postingan.komentar.get
 
 
 import com.google.gson.annotations.SerializedName
-import com.mager.gamer.data.model.remote.postingan.get.User
 
 data class Data(
     @SerializedName("created_date")

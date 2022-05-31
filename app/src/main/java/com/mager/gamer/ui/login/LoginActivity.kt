@@ -27,9 +27,9 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
 
         binding.textField.requestFocus()
-//        binding.textField.error = "Email tidak boleh kosong"
-//        binding.txtPassword.error = "Password tidak boleh kosong"
-
+        binding.imgLeft.setOnClickListener {
+            finish()
+        }
         binding.txtUsername.doOnTextChanged { text, _, _, _ ->
             when {
                 text.toString().isEmpty() ->
@@ -61,7 +61,7 @@ class LoginActivity : BaseActivity() {
         binding.txtDaftarDisini.setOnClickListener {
             val i = Intent(this, RegisterActivity::class.java)
             startActivity(i)
-            finish()
+            finishAffinity()
         }
 
         setupObserver()

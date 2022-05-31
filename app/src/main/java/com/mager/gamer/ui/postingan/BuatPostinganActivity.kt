@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.anilokcun.uwmediapicker.UwMediaPicker
 import com.anilokcun.uwmediapicker.model.UwMediaPickerMediaType
@@ -50,6 +51,9 @@ class BuatPostinganActivity : AppCompatActivity() {
             isLiveMode = intentLive
             showHideMode()
         }
+        binding.imgLeft.setOnClickListener {
+            finish()
+        }
 
         binding.cardPhoto.setOnClickListener {
             isImageMode = true
@@ -75,6 +79,12 @@ class BuatPostinganActivity : AppCompatActivity() {
             showHideImagePreview(false)
             selectedFiles.clear()
             binding.imgPreview.setImageDrawable(null)
+        }
+        binding.edtStatus.doAfterTextChanged {
+            if (!it.isNullOrEmpty()) {
+                val text = "${it.length}/300"
+                binding.txtKarakter.text = text
+            }
         }
         binding.btnSend.setOnClickListener {
             val postText = binding.edtStatus.text.toString().trim()
@@ -248,8 +258,12 @@ class BuatPostinganActivity : AppCompatActivity() {
                 viewModel.createPostingan(postText, null, it.data)
             }
         }
-        viewModel.createResponse.observe(this){
-            Toast.makeText(this, "sukses buat post", Toast.LENGTH_SHORT).show()
+        viewModel.createResponse.observe(this) {
+            if (it.status == "200"){
+                Toast.makeText(this, "sukses buat post", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "gagal memposting karena server eror", Toast.LENGTH_SHORT).show()
+            }
             finish()
 
         }
