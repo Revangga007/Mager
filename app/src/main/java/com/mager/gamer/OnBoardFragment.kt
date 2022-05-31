@@ -57,7 +57,7 @@ class OnBoardFragment : Fragment() {
             }
             else -> {
                 binding.txtDesc.text = "Ayo gabung bersama ribuan \n Komunitas Gamers di Indonesia!"
-                binding.img1.setBackgroundResource(R.drawable.ic_2)
+                binding.img1.setBackgroundResource(R.drawable.ic_1)
             }
         }
     }

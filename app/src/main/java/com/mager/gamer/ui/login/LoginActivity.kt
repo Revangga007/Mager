@@ -27,8 +27,9 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
 
         binding.textField.requestFocus()
-
-
+        binding.imgLeft.setOnClickListener {
+            finish()
+        }
         binding.txtUsername.doOnTextChanged { text, _, _, _ ->
             when {
                 text.toString().isEmpty() ->
@@ -60,7 +61,7 @@ class LoginActivity : BaseActivity() {
         binding.txtDaftarDisini.setOnClickListener {
             val i = Intent(this, RegisterActivity::class.java)
             startActivity(i)
-            finish()
+            finishAffinity()
         }
 
         setupObserver()

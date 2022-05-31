@@ -20,6 +20,7 @@ class OnBoardctivity : AppCompatActivity() {
         binding = ActivityOnBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val dotSlide = binding.springDotsIndicator
         val pagerAdapter = ViewPagerAdapter(this)
         vp.adapter = pagerAdapter
@@ -28,12 +29,10 @@ class OnBoardctivity : AppCompatActivity() {
         binding.btnDaftar.setOnClickListener {
             val i = Intent(this, RegisterActivity::class.java)
             startActivity(i)
-            finish()
         }
         binding.btnMasuk.setOnClickListener {
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
-            finish()
         }
 
     }

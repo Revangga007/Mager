@@ -40,12 +40,12 @@
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/txtDescPost"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnHapusPost"
+        app:layout_constraintEnd_toStartOf="@id/btnHapusKomen"
         app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_marginTop="24dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnHapusPost"
+        android:id="@+id/btnHapusKomen"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:background="@drawable/gradient_blue_color"
@@ -60,9 +60,5 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/btnCanclePost"/>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -258,8 +258,12 @@ class BuatPostinganActivity : AppCompatActivity() {
                 viewModel.createPostingan(postText, null, it.data)
             }
         }
-        viewModel.createResponse.observe(this){
-            Toast.makeText(this, "sukses buat post", Toast.LENGTH_SHORT).show()
+        viewModel.createResponse.observe(this) {
+            if (it.status == "200"){
+                Toast.makeText(this, "sukses buat post", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "gagal memposting karena server eror", Toast.LENGTH_SHORT).show()
+            }
             finish()
 
         }

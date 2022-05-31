@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bgsheet"
@@ -11,54 +12,80 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:contentDescription="@null"
         android:src="@drawable/rectangle_143"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imgEdit1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearEdit"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_edit1"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="27dp"
+        android:paddingVertical="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgSheet" />
+        app:layout_constraintTop_toBottomOf="@+id/imgSheet"
+        tools:ignore="UnusedAttribute,UseCompoundDrawables">
 
-    <TextView
-        android:id="@+id/txtEdit1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Edit"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/imgEdit1"
-        app:layout_constraintStart_toEndOf="@id/imgEdit1"
-        app:layout_constraintTop_toTopOf="@id/imgEdit1" />
+        <ImageView
+            android:id="@+id/imgEdit1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_edit1" />
 
-    <ImageView
-        android:id="@+id/imgSampah"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/ic_sampah"
-        app:layout_constraintStart_toStartOf="@id/imgEdit1"
-        app:layout_constraintTop_toBottomOf="@id/imgEdit1" />
+        <TextView
+            android:id="@+id/txtEdit1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Edit"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtDel"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearDelete"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Hapus"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/imgSampah"
-        app:layout_constraintStart_toEndOf="@id/imgSampah"
-        app:layout_constraintTop_toTopOf="@id/imgSampah" />
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="27dp"
+        android:paddingVertical="10dp"
+        app:layout_constraintStart_toStartOf="@id/linearEdit"
+        app:layout_constraintTop_toBottomOf="@id/linearEdit"
+        tools:ignore="UnusedAttribute,UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/imgSampah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_sampah" />
+
+        <TextView
+            android:id="@+id/txtDel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Hapus"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/imgSampah"
+            app:layout_constraintStart_toEndOf="@id/imgSampah"
+            app:layout_constraintTop_toTopOf="@id/imgSampah" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
