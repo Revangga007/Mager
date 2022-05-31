@@ -22,6 +22,8 @@ class BuatPostinganViewModel @Inject constructor(
 ) : BaseViewModel() {
     val uploadResponse = MutableLiveData<UploadResponse>()
     val createResponse = MutableLiveData<CreatePostinganResponse>()
+    var error = MutableLiveData<String>()
+
 
 
     suspend fun uploadImageToServer(file: File) {
@@ -50,9 +52,12 @@ class BuatPostinganViewModel @Inject constructor(
         val idUser = MagerSharedPref.userId!!
         val body = CreatePostBody(postText, linkLivestream, files)
         mainRepository.createPostingan(
-            onStart = { _loading.postValue(true) },
-            onComplete = { _loading.postValue(false) },
-            onError = { _message.postValue(it) },
+            onStart = {
+                _loading.postValue(true) },
+            onComplete = {
+                _loading.postValue(false) },
+            onError = {
+                error.postValue(it.message) },
             idUser,
             body
         ).collect<CreatePostinganResponse> {
