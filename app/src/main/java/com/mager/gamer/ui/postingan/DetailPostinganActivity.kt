@@ -20,10 +20,7 @@ import com.mager.gamer.R
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.data.model.remote.postingan.get.KomentarBy
-import com.mager.gamer.databinding.ActivityDetailPostinganBinding
-import com.mager.gamer.databinding.DeleteDialogBinding
-import com.mager.gamer.databinding.DeletePostDialogBinding
-import com.mager.gamer.databinding.ItemSheetBinding
+import com.mager.gamer.databinding.*
 import com.mager.gamer.dialog.CustomLoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -38,6 +35,7 @@ class DetailPostinganActivity : AppCompatActivity() {
     private lateinit var deleteDialogBinding: DeleteDialogBinding
     private lateinit var sheetDialog: BottomSheetDialog
     private lateinit var deletePostBinding: DeletePostDialogBinding
+    private lateinit var sheetOtherBinding: ItemSheetNonUserBinding
     private var komentarAdapter = KomentarAdapter(mutableListOf()) {
         targetCommentId = it.id
         isComment = true
@@ -55,10 +53,12 @@ class DetailPostinganActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sheetBinding = ItemSheetBinding.inflate(layoutInflater)
+        sheetOtherBinding = ItemSheetNonUserBinding.inflate(layoutInflater)
         deleteDialogBinding = DeleteDialogBinding.inflate(layoutInflater)
         deletePostBinding = DeletePostDialogBinding.inflate(layoutInflater)
         sheetDialog = BottomSheetDialog(this, R.style.backgroundSheet)
         sheetDialog.setContentView(sheetBinding.root)
+        sheetDialog.setContentView(sheetOtherBinding.root)
 
         intent.extras?.getParcelable<Data>("post")?.let {
             postingan = it
@@ -92,6 +92,14 @@ class DetailPostinganActivity : AppCompatActivity() {
         deleteDialog.apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
+
+        val idUser = MagerSharedPref.userId
+        if (postingan.createdBy.id == idUser) {
+            sheetBinding.root
+        } else {
+            postingan.createdBy.id != idUser
+            sheetOtherBinding
         }
 
         binding.btnOption.setOnClickListener {

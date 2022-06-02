@@ -16,6 +16,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mager.gamer.ui.postingan.VideoActivity
 import com.mager.gamer.MainActivity
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.LikedBy
@@ -23,7 +24,6 @@ import com.mager.gamer.databinding.FragmentHomeBinding
 import com.mager.gamer.ui.login.LoginActivity
 import com.mager.gamer.ui.postingan.BuatPostinganActivity
 import com.mager.gamer.ui.postingan.DetailPostinganActivity
-import com.mager.gamer.ui.postingan.KomentarAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -114,6 +114,7 @@ class HomeFragment : Fragment() {
         }
         viewModel.postinganResult.observe(viewLifecycleOwner) {
             binding.recyclerPostingan.apply {
+                layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
                 adapter = PostinganAdapter(it.toMutableList(), onDetailClick = { data, position ->
                     lastPositionForUpdate = position
                     val intent = Intent(requireContext(), DetailPostinganActivity::class.java)
@@ -127,8 +128,11 @@ class HomeFragment : Fragment() {
                     clipboard.setPrimaryClip(clip)
                     Toast.makeText(requireContext(), "Link berhasil disalin", Toast.LENGTH_LONG)
                         .show()
+                }, onVideoClick = {
+                    val i = Intent(requireContext(), VideoActivity::class.java)
+                    i.putExtra(VideoActivity.INTENT_VIDEO_URL, it.files)
+                    startActivity(i)
                 })
-                layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
             }
 
         }

@@ -97,7 +97,20 @@ class MainRepository @Inject constructor(
             emit(this.data)
         }.onError {
             Timber.e(this.message())
-            onError(this.message())
+            when (raw.networkResponse?.code) {
+                403 -> {
+                    onError("Gagal upload file, server bermasalah")
+                }
+                404 -> {
+                    onError("Server tidak ditemukan")
+                }
+                500 -> {
+                    onError("Server bermasalah, silahkan coba lagi nanti")
+                }
+                else -> {
+                    onError(message())
+                }
+            }
         }.onException {
             Timber.e(this.message())
             onError(this.message())

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bgsheet"
+    android:paddingBottom="31dp">
+
+    <ImageView
+        android:id="@+id/imgSheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@null"
+        android:src="@drawable/rectangle_143"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgleft"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgSheet" />
+
+    <TextView
+        android:id="@+id/txtReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Laporan"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgSheet" />
+
+    <TextView
+        android:id="@+id/txtWhy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Kenapa kamu laporkan post ini ?"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/imgleft"
+        app:layout_constraintTop_toBottomOf="@id/txtReport" />
+
+    <TextView
+        android:id="@+id/txtYes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Laporan kamu akan dikirim ke sistem Markas Gamer"
+        android:textColor="@color/white_inactive"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/txtWhy"
+        app:layout_constraintTop_toBottomOf="@id/txtWhy" />
+
+    <RadioGroup
+        android:id="@+id/rgReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@id/txtYes"
+        app:layout_constraintTop_toBottomOf="@id/txtYes">
+
+        <RadioButton
+            android:id="@+id/rbSpam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="Spam"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rbKasar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="Kata-kata kasar"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rbBully"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="Bully atau pelecehan"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rbCheat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="Penipuan"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rbHard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="Kekerasan"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtOther"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/nunito"
+        android:text="Lainnya"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/rgReport"
+        app:layout_constraintTop_toBottomOf="@id/rgReport" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/button_gradient_primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Kirim"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtOther" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

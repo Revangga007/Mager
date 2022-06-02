@@ -1,4 +1,4 @@
-package com.commit.app.ui.homepage
+package com.mager.gamer.ui.postingan
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

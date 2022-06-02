@@ -1,14 +1,11 @@
 package com.mager.gamer.ui.home
 
-import android.content.Intent
 import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat.startActivity
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
-import com.commit.app.ui.homepage.VideoActivity
 import com.mager.gamer.R
 import com.mager.gamer.TimeAgo.toTimeAgo
 import com.mager.gamer.data.model.remote.postingan.get.Data
@@ -135,7 +132,7 @@ sealed class PostinganRecyclerViewHolder(
             postingan: Data,
             onDetailClick: (Data, Int) -> Unit,
             onCopyClick: (String) -> Unit,
-
+            onVideoClick: (Data) -> Unit
         ) {
             if (idUser != null) {
                 val find = postingan.likedBy.find { like ->
@@ -172,18 +169,19 @@ sealed class PostinganRecyclerViewHolder(
                 onDetailClick(postingan, absoluteAdapterPosition)
             }
             binding.imgPreview.setOnClickListener {
-                val i = Intent(requireContext(), VideoActivity::class.java)
-                i.putExtra(VideoActivity.INTENT_VIDEO_URL, .[0].url)
-                startActivity(i)
+                Toast.makeText(itemView.context, "Klik video", Toast.LENGTH_SHORT).show()
+                onVideoClick(postingan)
             }
             if (postingan.files != null) {
                 Glide.with(binding.imgPreview.context)
                     .load(postingan.files)
+                    .placeholder(R.drawable.logo_mager_1)
                     .error(R.drawable.logo_mager_1)
                     .into(binding.imgPreview)
             } else if (postingan.linkLivestream != null) {
-                Glide.with(binding.cardVideoPosting.context)
+                Glide.with(binding.imgPreview.context)
                     .load(postingan.linkLivestream)
+                    .placeholder(R.drawable.logo_mager_1)
                     .error(R.drawable.logo_mager_1)
                     .into(binding.imgPreview)
             }
