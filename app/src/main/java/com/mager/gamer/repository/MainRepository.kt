@@ -179,24 +179,6 @@ class MainRepository @Inject constructor(
         .onCompletion { onComplete() }
         .flowOn(ioDispatcher)
 
-    suspend fun userDetail(
-        onStart: () -> Unit,
-        onComplete: () -> Unit,
-        onError: (String?) -> Unit,
-        idUser: Int
-    ) = flow {
-        val response = apiService.userDetail(idUser)
-        response.suspendOnSuccess {
-            emit(data)
-        }.onError {
-            onError(this.message())
-        }.onException {
-            onError(this.message())
-        }
-    }
-        .onStart { onStart() }
-        .onCompletion { onComplete() }
-        .flowOn(ioDispatcher)
 
     suspend fun editPost(
         onStart: () -> Unit,

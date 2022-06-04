@@ -1,21 +1,24 @@
-package com.mager.gamer.data.model.remote.user
+package com.mager.gamer.data.model.remote.user.follow
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-data class Data(
+@Parcelize
+data class UserFollower(
     @SerializedName("biodata")
     val biodata: String,
     @SerializedName("created_date")
     val createdDate: String,
     @SerializedName("deleted_date")
-    val deletedDate: Any,
+    val deletedDate: String?,
     @SerializedName("email")
     val email: String,
     @SerializedName("fotoHeader")
-    val fotoHeader: Any,
+    val fotoHeader: String?,
     @SerializedName("fotoProfile")
-    val fotoProfile: Any,
+    val fotoProfile: String?,
     @SerializedName("gender")
     val gender: String,
     @SerializedName("id")
@@ -25,17 +28,17 @@ data class Data(
     @SerializedName("nama")
     val nama: String,
     @SerializedName("otp")
-    val otp: Any,
+    val otp: String?,
     @SerializedName("otpExpiredDate")
-    val otpExpiredDate: Any,
+    val otpExpiredDate: String?,
     @SerializedName("password")
     val password: String,
     @SerializedName("preferensi")
-    val preferensi: List<Any>,
+    val preferensi: List<Preferensi>,
     @SerializedName("roles")
     val roles: List<Role>,
     @SerializedName("updated_date")
     val updatedDate: String,
     @SerializedName("username")
     val username: String
-)
+): Parcelable

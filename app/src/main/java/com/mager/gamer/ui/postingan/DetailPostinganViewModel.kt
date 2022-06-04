@@ -25,7 +25,6 @@ class DetailPostinganViewModel @Inject constructor(
     val postComment = MutableLiveData<KomentarPostinganResponse>()
     val deletePost = MutableLiveData<DeleteResponse>()
     val delKomen = MutableLiveData<KomentarDelResponse>()
-    val editPost = MutableLiveData<EditPostResponse>()
     val getKomen = MutableLiveData<GetKomenResponse>()
 
     suspend fun likePostingan(idPost: Int) {
@@ -112,27 +111,6 @@ class DetailPostinganViewModel @Inject constructor(
             idPostingan
         ).collect {
             getKomen.postValue(it)
-        }
-    }
-
-    suspend fun editPost(
-        idPostingan: Int,
-        body: EditBody
-    ) {
-        mainRepository.editPost(
-            onStart = {
-                showLoading()
-            },
-            onComplete = {
-                hideLoading()
-            },
-            onError = {
-                _message.postValue(it)
-            },
-            idPostingan,
-            body
-        ).collect {
-            editPost.postValue(it)
         }
     }
 

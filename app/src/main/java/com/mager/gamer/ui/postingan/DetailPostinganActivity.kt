@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mager.gamer.R
+import com.mager.gamer.TimeAgo.toTimeAgo
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.data.model.remote.postingan.get.KomentarBy
@@ -38,7 +39,15 @@ class DetailPostinganActivity : AppCompatActivity() {
     private lateinit var sheetOtherBinding: ItemSheetNonUserBinding
     private var komentarAdapter = KomentarAdapter(mutableListOf()) {
         targetCommentId = it.id
-        isComment = true
+        val idUser = MagerSharedPref.userId
+        sheetDialog.apply {
+            isComment = true
+            setContentView(
+                if (postingan.createdBy.id == idUser) sheetBinding.root
+                else sheetOtherBinding.root
+            )
+            show()
+        }
         sheetDialog.show()
     }
 
@@ -57,8 +66,6 @@ class DetailPostinganActivity : AppCompatActivity() {
         deleteDialogBinding = DeleteDialogBinding.inflate(layoutInflater)
         deletePostBinding = DeletePostDialogBinding.inflate(layoutInflater)
         sheetDialog = BottomSheetDialog(this, R.style.backgroundSheet)
-        sheetDialog.setContentView(sheetBinding.root)
-        sheetDialog.setContentView(sheetOtherBinding.root)
 
         intent.extras?.getParcelable<Data>("post")?.let {
             postingan = it
@@ -70,12 +77,16 @@ class DetailPostinganActivity : AppCompatActivity() {
                     .into(binding.imgPosting)
                 binding.imgPosting.visibility = View.VISIBLE
             }
+            binding.txtNama.text = it.createdBy.nama
+            binding.txtUsername.text = it.createdBy.username
+            binding.txtWaktu.text = it.createdDate.toTimeAgo()
             binding.txtPosting.text = it.postText
             binding.txtLinkLive.text = it.linkLivestream
             binding.recyclerKomen.apply {
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
                 komentarAdapter.comments.addAll(it.komentarBy)
                 adapter = komentarAdapter
+
             }
 
             val idUser = MagerSharedPref.userId!!
@@ -87,7 +98,6 @@ class DetailPostinganActivity : AppCompatActivity() {
         }
 
 
-
         val deleteDialog = Dialog(this)
         deleteDialog.apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -95,17 +105,17 @@ class DetailPostinganActivity : AppCompatActivity() {
         }
 
         val idUser = MagerSharedPref.userId
-        if (postingan.createdBy.id == idUser) {
-            sheetBinding.root
-        } else {
-            postingan.createdBy.id != idUser
-            sheetOtherBinding
-        }
-
         binding.btnOption.setOnClickListener {
             isComment = false
-            sheetDialog.show()
+            sheetDialog.apply {
+                setContentView(
+                    if (postingan.createdBy.id == idUser) sheetBinding.root
+                    else sheetOtherBinding.root
+                )
+                show()
+            }
         }
+
 
         sheetBinding.linearDelete.setOnClickListener {
             if (isComment) {

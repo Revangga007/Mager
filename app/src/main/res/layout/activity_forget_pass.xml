@@ -40,78 +40,62 @@
 
 
     <TextView
-        android:id="@+id/txtAturUlang"
+        android:id="@+id/txtHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="Atur Ulang Kata Sandi"
+        android:text="Buat Kata Sandi Baru"
         android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtPassword"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/txtAturUlang"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="32dp"
-        android:hint="Buat Kata Sandi Baru"
-        android:textColorHint="@color/white_inactive"
-        app:boxBackgroundColor="@color/dark_mode_3"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp"
-        app:hintEnabled="true"
-        app:hintTextColor="#AFB9FF"
-        app:layout_constraintTop_toBottomOf="@id/txtAturUlang"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/white_inactive">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtPw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            tools:text="Sample" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito"
+        android:text="Masukkan email untuk mendapatkan link verifikasi"
+        android:textColor="@color/white_inactive"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtHeader" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtKonfir"
+        android:id="@+id/textField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Konfirmasi Kata Sandi Baru"
+        android:layout_marginTop="32dp"
+        android:hint="Username"
         android:textColorHint="@color/white_inactive"
         app:boxBackgroundColor="@color/dark_mode_3"
         app:boxCornerRadiusBottomEnd="8dp"
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopEnd="8dp"
         app:boxCornerRadiusTopStart="8dp"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/dangers_red"
         app:hintEnabled="true"
         app:hintTextColor="#AFB9FF"
-        app:layout_constraintEnd_toEndOf="@id/txtPassword"
-        app:layout_constraintStart_toStartOf="@id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@id/txtPassword"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/white_inactive">
+        app:layout_constraintEnd_toEndOf="@id/btnSimpan"
+        app:layout_constraintStart_toStartOf="@id/btnSimpan"
+        app:layout_constraintTop_toBottomOf="@id/txtAturUlang">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtPw2"
+            android:id="@+id/txtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:textColor="@color/white"
             android:textSize="16sp"
             tools:text="Sample" />
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSimpan"
@@ -120,10 +104,10 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:text="Simpan"
+        android:text="Kirim"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtKonfir" />
+        app:layout_constraintTop_toBottomOf="@id/textField" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

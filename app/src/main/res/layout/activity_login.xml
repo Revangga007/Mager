@@ -81,7 +81,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:hint="Email atau username"
+                android:hint="Username"
                 android:textColorHint="@color/white_inactive"
                 app:boxBackgroundColor="@color/dark_mode_3"
                 app:boxCornerRadiusBottomEnd="8dp"

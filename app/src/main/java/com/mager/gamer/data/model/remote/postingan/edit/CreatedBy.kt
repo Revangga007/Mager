@@ -1,21 +1,24 @@
 package com.mager.gamer.data.model.remote.postingan.edit
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class CreatedBy(
     @SerializedName("biodata")
     val biodata: String,
     @SerializedName("created_date")
     val createdDate: String,
     @SerializedName("deleted_date")
-    val deletedDate: Any,
+    val deletedDate: String?,
     @SerializedName("email")
     val email: String,
     @SerializedName("fotoHeader")
-    val fotoHeader: Any,
+    val fotoHeader: String?,
     @SerializedName("fotoProfile")
-    val fotoProfile: Any,
+    val fotoProfile: String?,
     @SerializedName("gender")
     val gender: String,
     @SerializedName("id")
@@ -25,9 +28,9 @@ data class CreatedBy(
     @SerializedName("nama")
     val nama: String,
     @SerializedName("otp")
-    val otp: Any,
+    val otp: String?,
     @SerializedName("otpExpiredDate")
-    val otpExpiredDate: Any,
+    val otpExpiredDate: String?,
     @SerializedName("password")
     val password: String,
     @SerializedName("preferensi")
@@ -38,4 +41,4 @@ data class CreatedBy(
     val updatedDate: String,
     @SerializedName("username")
     val username: String
-)
+): Parcelable
