@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mager.gamer.R
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.KomentarBy
 import com.mager.gamer.databinding.ItemKomenBinding
 

@@ -14,7 +14,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mager">
-        <activity android:name=".ui.postingan.VideoActivity"
+        <activity
+            android:name=".ui.user.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.edit.LocUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.edit.NameUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.edit.BioUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.UserSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.follow.FollowerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.follow.FollowingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.ForgotPassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.DoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.postingan.EditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.postingan.VideoActivity"
             android:theme="@style/Style.Translucent"
             android:exported="false" />
         <activity

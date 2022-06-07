@@ -35,8 +35,23 @@ class MainRepository @Inject constructor(
         response.suspendOnSuccess {
             emit(this.data)
         }.onError {
-            onError(this.message())
+            Timber.e(this.message())
+            when (raw.networkResponse?.code) {
+                403 -> {
+                    onError("Gagal menampilkan postingan, server bermasalah")
+                }
+                404 -> {
+                    onError("Server tidak ditemukan")
+                }
+                500 -> {
+                    onError("Server bermasalah, silahkan coba lagi nanti")
+                }
+                else -> {
+                    onError(message())
+                }
+            }
         }.onException {
+            Timber.e(this.message())
             onError(this.message())
         }
     }
@@ -179,24 +194,6 @@ class MainRepository @Inject constructor(
         .onCompletion { onComplete() }
         .flowOn(ioDispatcher)
 
-    suspend fun userDetail(
-        onStart: () -> Unit,
-        onComplete: () -> Unit,
-        onError: (String?) -> Unit,
-        idUser: Int
-    ) = flow {
-        val response = apiService.userDetail(idUser)
-        response.suspendOnSuccess {
-            emit(data)
-        }.onError {
-            onError(this.message())
-        }.onException {
-            onError(this.message())
-        }
-    }
-        .onStart { onStart() }
-        .onCompletion { onComplete() }
-        .flowOn(ioDispatcher)
 
     suspend fun editPost(
         onStart: () -> Unit,
@@ -205,7 +202,7 @@ class MainRepository @Inject constructor(
         idPostingan: Int,
         body: EditBody
     ) = flow {
-        val response = apiService.editPost(MagerSharedPref.userId!!,idPostingan,body)
+        val response = apiService.editPost(idPostingan, MagerSharedPref.userId!!, body)
         response.suspendOnSuccess {
             emit(data)
         }.onError {

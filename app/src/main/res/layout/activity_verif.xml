@@ -41,89 +41,54 @@
 
 
     <TextView
-        android:id="@+id/txtAturUlang"
+        android:id="@+id/txtCek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="140dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="Atur Ulang Kata Sandi"
+        android:text="Cek Email Kamu"
         android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtPassword"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/icLetter"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Buat Kata Sandi Baru"
-        android:textColorHint="@color/white_inactive"
-        app:boxBackgroundColor="@color/dark_mode_3"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp"
-        app:hintEnabled="true"
-        app:hintTextColor="#AFB9FF"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="32dp"
-        app:passwordToggleEnabled="true"
-        app:layout_constraintTop_toBottomOf="@id/txtAturUlang"
-        app:passwordToggleTint="@color/white_inactive">
+        android:src="@drawable/ic_letter"
+        app:layout_constraintTop_toBottomOf="@id/txtCek"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtPw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            tools:text="Sample" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtKonfir"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/txtHelp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Konfirmasi Kata Sandi Baru"
-        android:textColorHint="@color/white_inactive"
-        app:boxBackgroundColor="@color/dark_mode_3"
-        app:boxCornerRadiusBottomEnd="8dp"
-        app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp"
-        app:hintEnabled="true"
-        app:hintTextColor="#AFB9FF"
-        android:layout_marginTop="20dp"
-        app:passwordToggleEnabled="true"
-        app:layout_constraintTop_toBottomOf="@id/txtPassword"
-        app:layout_constraintStart_toStartOf="@id/txtPassword"
-        app:layout_constraintEnd_toEndOf="@id/txtPassword"
-        app:passwordToggleTint="@color/white_inactive">
+        android:text="Link verifikasi telah dikirimkan ke email kamu. \n Segera cek email dan klik link agar bisa melanjutkan \n proses lupa kata sandi."
+        android:textSize="14sp"
+        android:fontFamily="@font/nunito"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/icLetter"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtPw2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            tools:text="Sample" />
-    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSimpan"
         style="@style/button_gradient_primary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:text="Simpan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtKonfir" />
+        app:layout_constraintTop_toBottomOf="@id/txtHelp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

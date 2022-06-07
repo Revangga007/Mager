@@ -1,9 +1,9 @@
-package com.mager.gamer.data.model.remote.user
+package com.mager.gamer.data.model.remote.user.follow
 
 
 import com.google.gson.annotations.SerializedName
 
-data class UserDetailResponse(
+data class FollowResponse(
     @SerializedName("data")
     val `data`: Data,
     @SerializedName("message")

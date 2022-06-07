@@ -8,6 +8,7 @@ import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
 import com.mager.gamer.R
 import com.mager.gamer.TimeAgo.toTimeAgo
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.databinding.ItemPostinganBinding
 import com.mager.gamer.databinding.ItemPostinganGambarBinding
@@ -26,7 +27,8 @@ sealed class PostinganRecyclerViewHolder(
             idUser: Int?,
             postingan: Data,
             onDetailClick: (Data, Int) -> Unit,
-            onCopyClick: (String) -> Unit
+            onCopyClick: (String) -> Unit,
+            onLikeClick: (Data) -> Unit,
         ) {
             if (idUser != null) {
                 val find = postingan.likedBy.find { like ->
@@ -37,12 +39,22 @@ sealed class PostinganRecyclerViewHolder(
                     else R.drawable.ic_like_outline
                 )
             }
+            if (postingan.createdBy.fotoProfile == null) {
+                Glide.with(binding.imgFoto.context)
+                    .load(R.drawable.logo_mager_1)
+                    .into(binding.imgFoto)
+            } else {
+                Glide.with(binding.imgFoto.context)
+                    .load(postingan.createdBy.fotoProfile)
+                    .into(binding.imgFoto)
+            }
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
+//            binding.icLike.setImageResource(R.drawable.ic_liked)
             if (postingan.jumlahKomentar == 0) {
                 binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
@@ -73,8 +85,9 @@ sealed class PostinganRecyclerViewHolder(
             idUser: Int?,
             postingan: Data,
             onDetailClick: (Data, Int) -> Unit,
-            onCopyClick: (String) -> Unit
-        ) {
+            onCopyClick: (String) -> Unit,
+            onLikeClick: (Data) -> Unit,
+            ) {
             if (idUser != null) {
                 val find = postingan.likedBy.find { like ->
                     like.user.id == idUser
@@ -84,13 +97,22 @@ sealed class PostinganRecyclerViewHolder(
                     else R.drawable.ic_like_outline
                 )
             }
-
+            if (postingan.createdBy.fotoProfile == null) {
+                Glide.with(binding.imgFoto.context)
+                    .load(R.drawable.logo_mager_1)
+                    .into(binding.imgFoto)
+            } else {
+                Glide.with(binding.imgFoto.context)
+                    .load(postingan.createdBy.fotoProfile)
+                    .into(binding.imgFoto)
+            }
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
+//            binding.icLike.setImageResource(R.drawable.ic_liked)
             if (postingan.jumlahKomentar == 0) {
                 binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
@@ -132,8 +154,9 @@ sealed class PostinganRecyclerViewHolder(
             postingan: Data,
             onDetailClick: (Data, Int) -> Unit,
             onCopyClick: (String) -> Unit,
-            onVideoClick: (Data) -> Unit
-        ) {
+            onVideoClick: (Data) -> Unit,
+            onLikeClick: (Data) -> Unit,
+            ) {
             if (idUser != null) {
                 val find = postingan.likedBy.find { like ->
                     like.user.id == idUser
@@ -144,12 +167,22 @@ sealed class PostinganRecyclerViewHolder(
                 )
             }
 
+            if (postingan.createdBy.fotoProfile == null) {
+                Glide.with(binding.imgFoto.context)
+                    .load(R.drawable.logo_mager_1)
+                    .into(binding.imgFoto)
+            } else {
+                Glide.with(binding.imgFoto.context)
+                    .load(postingan.createdBy.fotoProfile)
+                    .into(binding.imgFoto)
+            }
             binding.txtPosting.text = postingan.postText
             binding.txtJmlSuka.text = postingan.jumlahLike.toString()
             binding.txtJmlKomen.text = postingan.jumlahKomentar.toString()
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
+//            binding.icLike.setImageResource(R.drawable.ic_liked)
             if (postingan.jumlahKomentar == 0) {
                 binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
@@ -169,7 +202,7 @@ sealed class PostinganRecyclerViewHolder(
                 onDetailClick(postingan, absoluteAdapterPosition)
             }
             binding.imgPreview.setOnClickListener {
-                Toast.makeText(itemView.context, "Klik video", Toast.LENGTH_SHORT).show()
+                Toast.makeText(itemView.context, "Membuka video", Toast.LENGTH_SHORT).show()
                 onVideoClick(postingan)
             }
             if (postingan.files != null) {
@@ -193,8 +226,9 @@ sealed class PostinganRecyclerViewHolder(
             idUser: Int?,
             postingan: Data,
             onDetailClick: (Data, Int) -> Unit,
-            onCopyClick: (String) -> Unit
-        ) {
+            onCopyClick: (String) -> Unit,
+            onLikeClick: (Data) -> Unit,
+            ) {
             if (idUser != null) {
                 val find = postingan.likedBy.find { like ->
                     like.user.id == idUser
@@ -204,6 +238,15 @@ sealed class PostinganRecyclerViewHolder(
                     else R.drawable.ic_like_outline
                 )
             }
+            if (postingan.createdBy.fotoProfile == null) {
+                Glide.with(binding.imgFoto.context)
+                    .load(R.drawable.logo_mager_1)
+                    .into(binding.imgFoto)
+            } else {
+                Glide.with(binding.imgFoto.context)
+                    .load(postingan.createdBy.fotoProfile)
+                    .into(binding.imgFoto)
+            }
 
             binding.txtPosting.text = postingan.postText
             binding.txtLink.text = postingan.linkLivestream
@@ -212,6 +255,7 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
+//            binding.icLike.setImageResource(R.drawable.ic_liked)
             if (postingan.jumlahKomentar == 0) {
                 binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE

@@ -21,7 +21,12 @@ import com.mager.gamer.data.model.remote.postingan.post.CreatePostBody
 import com.mager.gamer.data.model.remote.register.RegisterBody
 import com.mager.gamer.data.model.remote.register.RegisterResponse
 import com.mager.gamer.data.model.remote.upload.UploadResponse
-import com.mager.gamer.data.model.remote.user.UserDetailResponse
+import com.mager.gamer.data.model.remote.user.detail.UserDetailResponse
+import com.mager.gamer.data.model.remote.user.edit.EditUserBody
+import com.mager.gamer.data.model.remote.user.edit.EditUserResponse
+import com.mager.gamer.data.model.remote.user.follow.FollowResponse
+import com.mager.gamer.data.model.remote.user.getfollowers.GetFolResponse
+import com.mager.gamer.data.model.remote.user.getfollowing.GetFollowingResponse
 import com.skydoves.sandwich.ApiResponse
 import okhttp3.MultipartBody
 import retrofit2.http.*
@@ -58,8 +63,8 @@ interface ApiService {
 
     @PUT("mager/postingan/{idPostingan}")
     suspend fun editPost(
-        @Query("idUser") idUser: Int,
         @Path("idPostingan") idPostingan: Int,
+        @Query("idUser") idUser: Int,
         @Body body: EditBody
     ):ApiResponse<EditPostResponse>
 
@@ -118,4 +123,30 @@ interface ApiService {
     suspend fun getKomentar(
         @Query("idPostingan") idPostingan: Int
     ):ApiResponse<GetKomenResponse>
+
+    @POST("mager/user/{{idFollower}}/follow/{{idFollowing}}")
+    suspend fun postFollow(
+        @Path("idFollower") idFollower: Int,
+        @Path("idFollowing") idFollowing: Int
+    ):ApiResponse<FollowResponse>
+
+    @GET("mager/user/{idUser}/following")
+    suspend fun getFollowing(
+        @Path("idUser") idUser: Int,
+       @Query("size") size: Int,
+        @Query("page") page: Int
+    ):ApiResponse<GetFollowingResponse>
+
+    @GET("mager/user/{idUser}/follower")
+    suspend fun getFollower(
+        @Path("idUser") idUser: Int,
+       @Query("size") size: Int,
+        @Query("page") page: Int
+    ):ApiResponse<GetFolResponse>
+
+    @PUT("mager/user/{idUser)")
+    suspend fun editUser(
+        @Path("idUser") idUser: Int,
+        @Body body: EditUserBody
+    ): ApiResponse<EditUserResponse>
 }

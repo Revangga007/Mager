@@ -16,8 +16,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mager.gamer.ui.postingan.VideoActivity
 import com.mager.gamer.MainActivity
+import com.mager.gamer.R
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.LikedBy
 import com.mager.gamer.databinding.FragmentHomeBinding
@@ -68,8 +70,8 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         lifecycleScope.launch {
             viewModel.getAllPost()
         }
@@ -104,6 +106,9 @@ class HomeFragment : Fragment() {
         binding.cardLive.setOnClickListener {
             intentToCreatePost(isLive = true)
         }
+        viewModel.message.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+        }
 
         viewModel.loading.observe(viewLifecycleOwner) {
             if (it) {
@@ -112,10 +117,20 @@ class HomeFragment : Fragment() {
                 (requireActivity() as MainActivity).hideLoading()
             }
         }
+            if (MagerSharedPref.fotoProfile == null) {
+                Glide.with(this)
+                    .load(R.drawable.logo_mager_1)
+                    .into(binding.imgUser)
+            } else {
+                Glide.with(this)
+                    .load(MagerSharedPref.fotoProfile)
+                    .into(binding.imgUser)
+            }
         viewModel.postinganResult.observe(viewLifecycleOwner) {
             binding.recyclerPostingan.apply {
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
-                adapter = PostinganAdapter(it.toMutableList(), onDetailClick = { data, position ->
+                adapter = PostinganAdapter(it.toMutableList(),
+                    onDetailClick = { data, position ->
                     lastPositionForUpdate = position
                     val intent = Intent(requireContext(), DetailPostinganActivity::class.java)
                     intent.putExtra("post", data)
@@ -132,7 +147,13 @@ class HomeFragment : Fragment() {
                     val i = Intent(requireContext(), VideoActivity::class.java)
                     i.putExtra(VideoActivity.INTENT_VIDEO_URL, it.files)
                     startActivity(i)
-                })
+                }, onLikeClick = {
+                        val idUser = MagerSharedPref.userId!!
+                        it.likedBy.find { like ->
+                            like.user.id == idUser
+                        }
+                    }
+                )
             }
 
         }

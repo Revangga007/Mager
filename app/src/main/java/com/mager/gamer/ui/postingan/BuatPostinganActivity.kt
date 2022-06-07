@@ -15,6 +15,8 @@ import androidx.lifecycle.lifecycleScope
 import com.anilokcun.uwmediapicker.UwMediaPicker
 import com.anilokcun.uwmediapicker.model.UwMediaPickerMediaType
 import com.bumptech.glide.Glide
+import com.mager.gamer.R
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.databinding.ActivityBuatPostinganBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -111,8 +113,18 @@ class BuatPostinganActivity : AppCompatActivity() {
                     }
                 }
             }
-
         }
+        if (MagerSharedPref.fotoProfile == null) {
+            Glide.with(this)
+                .load(R.drawable.logo_mager_1)
+                .into(binding.imgFoto)
+        } else {
+            Glide.with(this)
+                .load(MagerSharedPref.fotoProfile)
+                .into(binding.imgFoto)
+        }
+        binding.txtNama.text = MagerSharedPref.fullName
+        binding.txtUsername.text = MagerSharedPref.username
         setupObserver()
     }
 
@@ -263,7 +275,7 @@ class BuatPostinganActivity : AppCompatActivity() {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
         viewModel.createResponse.observe(this) {
-            Toast.makeText(this, "sukses buat post" , Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "sukses buat post", Toast.LENGTH_SHORT).show()
             finish()
 
         }

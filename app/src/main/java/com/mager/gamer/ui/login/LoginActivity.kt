@@ -63,6 +63,10 @@ class LoginActivity : BaseActivity() {
             startActivity(i)
             finishAffinity()
         }
+        binding.txtLupaPassword.setOnClickListener {
+            val i = Intent(this, RegisterActivity::class.java)
+            startActivity(i)
+        }
 
         setupObserver()
     }

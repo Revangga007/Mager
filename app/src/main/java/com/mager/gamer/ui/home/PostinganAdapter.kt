@@ -16,6 +16,8 @@ class PostinganAdapter(
     private val onDetailClick: (Data, Int) -> Unit,
     private val onCopyClick: (String) -> Unit,
     private val onVideoClick: (Data) -> Unit,
+    private val onLikeClick: (Data) -> Unit,
+
 ) : RecyclerView.Adapter<PostinganRecyclerViewHolder>() {
 
     companion object {
@@ -64,25 +66,30 @@ class PostinganAdapter(
                 post,
                 onDetailClick,
                 onCopyClick,
+                onLikeClick,
             )
             is PostinganRecyclerViewHolder.PostinganImageViewHolder -> holder.bind(
                 idUser,
                 post,
                 onDetailClick,
-                onCopyClick
+                onCopyClick,
+                onLikeClick,
+
             )
             is PostinganRecyclerViewHolder.PostinganVideoViewHolder -> holder.bind(
                 idUser,
                 post,
                 onDetailClick,
                 onCopyClick,
-                onVideoClick
+                onVideoClick,
+                onLikeClick,
             )
             is PostinganRecyclerViewHolder.PostinganLinkViewHolder -> holder.bind(
                 idUser,
                 post,
                 onDetailClick,
-                onCopyClick
+                onCopyClick,
+                onLikeClick,
             )
 
         }
