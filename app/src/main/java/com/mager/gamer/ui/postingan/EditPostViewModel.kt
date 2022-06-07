@@ -13,12 +13,13 @@ import javax.inject.Inject
 class EditPostViewModel@Inject constructor(
     private val mainRepository: MainRepository
 ) : BaseViewModel() {
-    val editPost = MutableLiveData<EditPostResponse>()
+    val editPostResponse = MutableLiveData<EditPostResponse>()
 
     suspend fun editPost(
         idPostingan: Int,
-        body: EditBody
+        text: String
     ) {
+        val body = EditBody(text, true)
         mainRepository.editPost(
             onStart = {
                 showLoading()
@@ -32,7 +33,7 @@ class EditPostViewModel@Inject constructor(
             idPostingan,
             body
         ).collect {
-            editPost.postValue(it)
+            editPostResponse.postValue(it)
         }
     }
 }

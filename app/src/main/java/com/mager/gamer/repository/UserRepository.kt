@@ -1,5 +1,6 @@
 package com.mager.gamer.repository
 
+import com.mager.gamer.data.model.remote.user.edit.EditUserBody
 import com.mager.gamer.data.remote.ApiService
 import com.skydoves.sandwich.message
 import com.skydoves.sandwich.onError
@@ -30,7 +31,6 @@ class UserRepository @Inject constructor(
         }.onException {
             onError(this.message())
         }
-        idUser
     }
         .onStart { onStart() }
         .onCompletion { onComplete() }
@@ -42,7 +42,7 @@ class UserRepository @Inject constructor(
         onError: (String?) -> Unit,
         idUser: Int
     ) = flow {
-        val response = apiService.getFollowing(idUser, 100, 0)
+        val response = apiService.getFollowing(idUser, 1000, 0)
         response.suspendOnSuccess {
             emit(data)
         }.onError {
@@ -50,7 +50,6 @@ class UserRepository @Inject constructor(
         }.onException {
             onError(this.message())
         }
-        idUser
     }
         .onStart { onStart() }
         .onCompletion { onComplete() }
@@ -62,7 +61,7 @@ class UserRepository @Inject constructor(
         onError: (String?) -> Unit,
         idUser: Int
     ) = flow {
-        val response = apiService.getFollower(idUser, 100, 0)
+        val response = apiService.getFollower(idUser, 1000, 0)
         response.suspendOnSuccess {
             emit(data)
         }.onError {
@@ -70,7 +69,26 @@ class UserRepository @Inject constructor(
         }.onException {
             onError(this.message())
         }
-        idUser
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun userEdit(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idUser: Int,
+        body: EditUserBody
+    ) = flow {
+        val response = apiService.editUser(idUser, body)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
     }
         .onStart { onStart() }
         .onCompletion { onComplete() }

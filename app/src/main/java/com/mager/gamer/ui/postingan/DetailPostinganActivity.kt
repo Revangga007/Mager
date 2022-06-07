@@ -41,14 +41,13 @@ class DetailPostinganActivity : AppCompatActivity() {
         targetCommentId = it.id
         val idUser = MagerSharedPref.userId
         sheetDialog.apply {
-            isComment = true
-            setContentView(
-                if (postingan.createdBy.id == idUser) sheetBinding.root
-                else sheetOtherBinding.root
-            )
-            show()
+            if (postingan.createdBy.id == idUser) {
+                isComment = true
+                sheetBinding.linearEdit.visibility = View.GONE
+                setContentView(sheetBinding.root)
+                show()
+            }
         }
-        sheetDialog.show()
     }
 
     private var isComment = false
@@ -77,6 +76,13 @@ class DetailPostinganActivity : AppCompatActivity() {
                     .into(binding.imgPosting)
                 binding.imgPosting.visibility = View.VISIBLE
             }
+            if (it.files?.split(".")?.last() == "mp4") {
+                binding.imgPosting.setOnClickListener {
+                    val i = Intent(this, VideoActivity::class.java)
+                    i.putExtra(VideoActivity.INTENT_VIDEO_URL, postingan.files)
+                    startActivity(i)
+                }
+            }
             binding.txtNama.text = it.createdBy.nama
             binding.txtUsername.text = it.createdBy.username
             binding.txtWaktu.text = it.createdDate.toTimeAgo()
@@ -97,6 +103,15 @@ class DetailPostinganActivity : AppCompatActivity() {
             }
         }
 
+        if (postingan.createdBy.fotoProfile == null) {
+            Glide.with(binding.imgFoto.context)
+                .load(R.drawable.logo_mager_1)
+                .into(binding.imgFoto)
+        } else {
+            Glide.with(binding.imgFoto.context)
+                .load(postingan.createdBy.fotoProfile)
+                .into(binding.imgFoto)
+        }
 
         val deleteDialog = Dialog(this)
         deleteDialog.apply {
@@ -108,6 +123,7 @@ class DetailPostinganActivity : AppCompatActivity() {
         binding.btnOption.setOnClickListener {
             isComment = false
             sheetDialog.apply {
+                sheetBinding.linearEdit.visibility = View.VISIBLE
                 setContentView(
                     if (postingan.createdBy.id == idUser) sheetBinding.root
                     else sheetOtherBinding.root
@@ -131,6 +147,11 @@ class DetailPostinganActivity : AppCompatActivity() {
             }
             sheetDialog.dismiss()
         }
+        sheetBinding.linearEdit.setOnClickListener {
+            val intent = Intent(this, EditActivity::class.java)
+            intent.putExtra("post", postingan)
+            startActivity(intent)
+        }
         deleteDialogBinding.btnCanclePost.setOnClickListener {
             deleteDialog.dismiss()
         }
@@ -149,6 +170,7 @@ class DetailPostinganActivity : AppCompatActivity() {
             }
             deleteDialog.dismiss()
         }
+
         binding.btnLike1.setOnClickListener {
             lifecycleScope.launch {
                 viewModel.likePostingan(postingan.id)
@@ -163,6 +185,7 @@ class DetailPostinganActivity : AppCompatActivity() {
                 viewModel.komentarPostingan(postingan.id, postText)
             }
         }
+
         setupObserver()
     }
 

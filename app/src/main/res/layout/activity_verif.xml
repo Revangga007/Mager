@@ -41,17 +41,41 @@
 
 
     <TextView
-        android:id="@+id/txtAturUlang"
+        android:id="@+id/txtCek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="140dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="Atur Ulang Kata Sandi"
+        android:text="Cek Email Kamu"
         android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icLetter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_letter"
+        app:layout_constraintTop_toBottomOf="@id/txtCek"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txtHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Link verifikasi telah dikirimkan ke email kamu. \n Segera cek email dan klik link agar bisa melanjutkan \n proses lupa kata sandi."
+        android:textSize="14sp"
+        android:fontFamily="@font/nunito"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/icLetter"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -60,11 +84,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:text="Simpan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtKonfir" />
+        app:layout_constraintTop_toBottomOf="@id/txtHelp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,8 @@ class DetailCommunityActivity : BaseActivity() {
     private val postAdapter = PostinganAdapter(mutableListOf(),
         onDetailClick = { data, pos -> },
         onCopyClick = {},
-        onVideoClick = {}
+        onVideoClick = {},
+        onLikeClick = {},
     )
 
     @SuppressLint("SetTextI18n")

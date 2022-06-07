@@ -1,4 +1,4 @@
-package com.mager.gamer.data.model.remote.user.profile
+package com.mager.gamer.data.model.remote.user.edit
 
 
 import android.os.Parcelable
@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ProfileResponse(
+data class EditUserResponse(
     @SerializedName("data")
     val `data`: Data,
     @SerializedName("message")

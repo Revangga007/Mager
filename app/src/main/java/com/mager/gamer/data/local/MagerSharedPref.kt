@@ -7,6 +7,9 @@ object MagerSharedPref {
     private const val USER_TOKEN = "userToken"
     private const val REFRESH_TOKEN = "refreshToken"
     private const val USER_ID = "userId"
+    private const val USERNAME = "username"
+    private const val FULL_NAME = "fullName"
+    private const val FOTO_PROFILE = "fotoProfile"
     private const val USER_EMAIL = "userEmail"
     private const val IS_LOGIN = "isLogin"
 
@@ -39,6 +42,25 @@ object MagerSharedPref {
         get() = Hawk.get(USER_EMAIL)
         set(value) {
             Hawk.put(USER_EMAIL, value)
+            field = value
+        }
+    var username: String? = null
+        get() = Hawk.get(USERNAME)
+        set(value) {
+            Hawk.put(USERNAME, value)
+            field = value
+        }
+    var fullName: String? = null
+        get() = Hawk.get(FULL_NAME)
+        set(value) {
+            Hawk.put(FULL_NAME, value)
+            field = value
+        }
+
+    var fotoProfile: String? = null
+        get() = Hawk.get(FOTO_PROFILE)
+        set(value) {
+            Hawk.put(FOTO_PROFILE, value)
             field = value
         }
 

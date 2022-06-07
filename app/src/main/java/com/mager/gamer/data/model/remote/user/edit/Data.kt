@@ -1,4 +1,4 @@
-package com.mager.gamer.data.model.remote.user.profile
+package com.mager.gamer.data.model.remote.user.edit
 
 
 import android.os.Parcelable
@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Content(
+data class Data(
     @SerializedName("biodata")
     val biodata: String,
     @SerializedName("created_date")
@@ -18,13 +18,15 @@ data class Content(
     @SerializedName("fotoHeader")
     val fotoHeader: String?,
     @SerializedName("fotoProfile")
-    val fotoProfile: String?,
+    val fotoProfile: String,
     @SerializedName("gender")
     val gender: String,
     @SerializedName("id")
     val id: Int,
     @SerializedName("isVerified")
     val isVerified: Boolean,
+    @SerializedName("lokasi")
+    val lokasi: String,
     @SerializedName("nama")
     val nama: String,
     @SerializedName("otp")

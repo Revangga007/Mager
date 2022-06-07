@@ -2,6 +2,7 @@ package com.mager.gamer.ui.register
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -43,6 +44,8 @@ class RegisterActivity : BaseActivity() {
             when {
                 text.isNullOrEmpty() ->
                     binding.textField1.error = "Email tidak boleh kosong"
+                !Patterns.EMAIL_ADDRESS.matcher(text ?: "").matches() ->
+                    binding.textField.error = "Format email tidak valid"
                 else -> binding.textField1.error = null
             }
             validateButton()

@@ -9,8 +9,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.mager.gamer.R
-import com.mager.gamer.data.model.remote.postingan.edit.CreatedBy
-import com.mager.gamer.data.model.remote.postingan.edit.EditBody
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.databinding.ActivityEditPostBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
@@ -41,7 +40,6 @@ class EditActivity : AppCompatActivity() {
                 binding.txtKarakter.text = text
             }
         }
-        binding.edtStatus.setText(postingan.postText)
         intent.extras?.getParcelable<Data>("post")?.let {
             postingan = it
             if (it.files != null) {
@@ -56,7 +54,27 @@ class EditActivity : AppCompatActivity() {
                     .error(R.drawable.logo_mager_1)
                     .into(binding.imgPreview)
             }
+            binding.edtStatus.setText(it.postText)
         }
+
+        binding.btnSend.setOnClickListener {
+            lifecycleScope.launch {
+                val text = binding.edtStatus.text.toString().trim()
+                viewModel.editPost(postingan.id, text)
+            }
+        }
+        if (MagerSharedPref.fotoProfile == null) {
+            Glide.with(this)
+                .load(R.drawable.logo_mager_1)
+                .into(binding.imgFoto)
+        } else {
+            Glide.with(this)
+                .load(MagerSharedPref.fotoProfile)
+                .into(binding.imgFoto)
+        }
+        binding.txtNama.text = MagerSharedPref.fullName
+        binding.txtUsername.text = MagerSharedPref.username
+
         setupObserver()
     }
 
@@ -68,9 +86,9 @@ class EditActivity : AppCompatActivity() {
         viewModel.message.observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         }
-        viewModel.editPost.observe(this) {
-            Toast.makeText(this, "sukses edit post" , Toast.LENGTH_SHORT).show()
+        viewModel.editPostResponse.observe(this) {
+            Toast.makeText(this, "sukses edit post", Toast.LENGTH_SHORT).show()
             finish()
-            }
         }
     }
+}

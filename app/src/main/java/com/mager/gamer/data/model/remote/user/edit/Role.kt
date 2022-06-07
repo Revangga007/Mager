@@ -1,4 +1,4 @@
-package com.mager.gamer.data.model.remote.user.profile
+package com.mager.gamer.data.model.remote.user.edit
 
 
 import android.os.Parcelable

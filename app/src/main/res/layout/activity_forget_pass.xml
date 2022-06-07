@@ -70,7 +70,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="Username"
+        android:hint="Email"
         android:textColorHint="@color/white_inactive"
         app:boxBackgroundColor="@color/dark_mode_3"
         app:boxCornerRadiusBottomEnd="8dp"
@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@id/txtAturUlang">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtUsername"
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito"

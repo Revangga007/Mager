@@ -35,8 +35,23 @@ class MainRepository @Inject constructor(
         response.suspendOnSuccess {
             emit(this.data)
         }.onError {
-            onError(this.message())
+            Timber.e(this.message())
+            when (raw.networkResponse?.code) {
+                403 -> {
+                    onError("Gagal menampilkan postingan, server bermasalah")
+                }
+                404 -> {
+                    onError("Server tidak ditemukan")
+                }
+                500 -> {
+                    onError("Server bermasalah, silahkan coba lagi nanti")
+                }
+                else -> {
+                    onError(message())
+                }
+            }
         }.onException {
+            Timber.e(this.message())
             onError(this.message())
         }
     }
@@ -187,7 +202,7 @@ class MainRepository @Inject constructor(
         idPostingan: Int,
         body: EditBody
     ) = flow {
-        val response = apiService.editPost(MagerSharedPref.userId!!,idPostingan,body)
+        val response = apiService.editPost(idPostingan, MagerSharedPref.userId!!, body)
         response.suspendOnSuccess {
             emit(data)
         }.onError {

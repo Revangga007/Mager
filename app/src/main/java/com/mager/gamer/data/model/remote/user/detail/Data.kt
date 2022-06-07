@@ -19,6 +19,8 @@ data class Data(
     val fotoHeader: String?,
     @SerializedName("fotoProfile")
     val fotoProfile: String?,
+    @SerializedName("lokasi")
+    val lokasi: String?,
     @SerializedName("gender")
     val gender: String,
     @SerializedName("id")

@@ -52,6 +52,7 @@
         android:background="@color/dark_mode_2">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFollower"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/lytList"
