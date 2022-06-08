@@ -4,7 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import com.mager.gamer.base.BaseViewModel
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.Data
+import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
 import com.mager.gamer.data.model.remote.user.detail.UserDetailResponse
+import com.mager.gamer.data.model.remote.user.follow.FollowResponse
 import com.mager.gamer.data.model.remote.user.getfollowers.GetFolResponse
 import com.mager.gamer.data.model.remote.user.getfollowing.GetFollowingResponse
 import com.mager.gamer.repository.MainRepository
@@ -15,17 +17,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UserViewModel @Inject constructor(
-    private val userRepository: UserRepository,
-    private val mainRepository: MainRepository
+    private val userRepository: UserRepository
 ) : BaseViewModel() {
 
     val userDetail = MutableLiveData<UserDetailResponse>()
     val followingResponse = MutableLiveData<GetFollowingResponse>()
     val followerResponse = MutableLiveData<GetFolResponse>()
-    val postinganResult = MutableLiveData<List<Data>>()
+    val postinganResponse = MutableLiveData<PostinganResponse>()
+    val followResponse = MutableLiveData<FollowResponse>()
 
-    suspend fun getAllPost() {
-        mainRepository.getPostingan(
+    suspend fun getAllPost(
+        idUser: Int
+    ) {
+        userRepository.getAllPost(
             onStart = {
                 _loading.postValue(true)
             },
@@ -34,15 +38,16 @@ class UserViewModel @Inject constructor(
             },
             onError = {
                 _message.postValue(it)
-            }
+            },
+            idUser
         ).collect {
-            postinganResult.postValue(it.data)
+            postinganResponse.postValue(it)
         }
     }
 
     suspend fun getUserDetail(
+        idUser: Int
     ) {
-        val idUser = MagerSharedPref.userId!!
         userRepository.userDetail(
             onStart = {
                 _loading.postValue(true)
@@ -59,8 +64,9 @@ class UserViewModel @Inject constructor(
         }
     }
     suspend fun getAllFollowers(
+        idUser: Int
     ) {
-        val idUser = MagerSharedPref.userId!!
+
         userRepository.getFollower(
             onStart = {
                 _loading.postValue(true)
@@ -77,8 +83,8 @@ class UserViewModel @Inject constructor(
         }
     }
     suspend fun getAllFollowing(
+        idUser: Int
     ) {
-        val idUser = MagerSharedPref.userId!!
         userRepository.getFollowing(
             onStart = {
                 _loading.postValue(true)
@@ -92,6 +98,26 @@ class UserViewModel @Inject constructor(
             idUser
         ).collect {
             followingResponse.postValue(it)
+        }
+    }
+    suspend fun followUser(
+        idFollower: Int,
+        idFollowing: Int
+    ) {
+        userRepository.postFollow(
+            onStart = {
+                _loading.postValue(true)
+            },
+            onComplete = {
+                _loading.postValue(false)
+            },
+            onError = {
+                _message.postValue(it)
+            },
+            idFollower,
+                    idFollowing
+        ).collect {
+            followResponse.postValue(it)
         }
     }
 }

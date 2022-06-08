@@ -1,6 +1,7 @@
 package com.mager.gamer.ui.register
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
@@ -132,8 +133,10 @@ class RegisterActivity : BaseActivity() {
         val passOK = binding.txtPassword.error == null
         val konfirOK = binding.txtKonfir.error == null
         val genderOK = selectedGender != null // alias udah milih gender
+        val checkOK = binding.cbPolicy.isChecked
+
         binding.btnDaftar.isEnabled =
-            nameOK && emailOK && usernameOK && passOK && konfirOK && genderOK
+            nameOK && emailOK && usernameOK && passOK && konfirOK && genderOK && checkOK
     }
 
     override fun setupObserver() {

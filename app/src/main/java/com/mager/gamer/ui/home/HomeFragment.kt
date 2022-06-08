@@ -21,6 +21,7 @@ import com.mager.gamer.ui.postingan.VideoActivity
 import com.mager.gamer.MainActivity
 import com.mager.gamer.R
 import com.mager.gamer.data.local.MagerSharedPref
+import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.data.model.remote.postingan.get.LikedBy
 import com.mager.gamer.databinding.FragmentHomeBinding
 import com.mager.gamer.ui.login.LoginActivity
@@ -148,11 +149,8 @@ class HomeFragment : Fragment() {
                     i.putExtra(VideoActivity.INTENT_VIDEO_URL, it.files)
                     startActivity(i)
                 }, onLikeClick = {
-                        val idUser = MagerSharedPref.userId!!
-                        it.likedBy.find { like ->
-                            like.user.id == idUser
-                        }
                     }
+
                 )
             }
 

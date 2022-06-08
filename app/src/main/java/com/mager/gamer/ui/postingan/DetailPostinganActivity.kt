@@ -2,6 +2,9 @@ package com.mager.gamer.ui.postingan
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -36,6 +39,7 @@ class DetailPostinganActivity : AppCompatActivity() {
     private lateinit var deleteDialogBinding: DeleteDialogBinding
     private lateinit var sheetDialog: BottomSheetDialog
     private lateinit var deletePostBinding: DeletePostDialogBinding
+    private lateinit var reportBinding: ItemSheetReportBinding
     private lateinit var sheetOtherBinding: ItemSheetNonUserBinding
     private var komentarAdapter = KomentarAdapter(mutableListOf()) {
         targetCommentId = it.id
@@ -132,6 +136,17 @@ class DetailPostinganActivity : AppCompatActivity() {
             }
         }
 
+//        sheetOtherBinding.txtReport.setOnClickListener {
+//            sheetDialog.apply {
+//                setContentView(reportBinding.root)
+//                show()
+//            }
+//        }
+
+//        reportBinding.rgReport.setOnClickListener {
+//            lifecycleScope.launch {
+//            }
+//        }
 
         sheetBinding.linearDelete.setOnClickListener {
             if (isComment) {
@@ -184,6 +199,15 @@ class DetailPostinganActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 viewModel.komentarPostingan(postingan.id, postText)
             }
+        }
+        binding.btnCopy.setOnClickListener {
+            val clipboard: ClipboardManager =
+                (this).getSystemService(Context.CLIPBOARD_SERVICE)
+                        as ClipboardManager
+            val clip = ClipData.newPlainText("link berhasil disalin", postingan.linkPostingan)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this, "Link berhasil disalin", Toast.LENGTH_LONG)
+                .show()
         }
 
         setupObserver()

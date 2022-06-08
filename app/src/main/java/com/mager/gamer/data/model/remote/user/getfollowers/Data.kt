@@ -3,6 +3,7 @@ package com.mager.gamer.data.model.remote.user.getfollowers
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.mager.gamer.data.model.remote.user.Content
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

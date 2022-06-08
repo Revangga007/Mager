@@ -35,8 +35,6 @@ data class UserFollower(
     val password: String,
     @SerializedName("preferensi")
     val preferensi: List<Preferensi>,
-    @SerializedName("roles")
-    val roles: List<Role>,
     @SerializedName("updated_date")
     val updatedDate: String,
     @SerializedName("username")

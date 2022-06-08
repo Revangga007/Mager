@@ -1,4 +1,4 @@
-package com.mager.gamer.ui.user.follow
+package com.mager.gamer.ui.user.profile
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,20 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.user.Content
 import com.mager.gamer.databinding.ActivityFollowingBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
+import com.mager.gamer.ui.user.follow.FollowingViewModel
 import com.mager.gamer.ui.user.follow.adapter.FollowingAdapter
-import com.mager.gamer.ui.user.profile.ProfileActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class FollowingActivity : AppCompatActivity() {
-
+class ProfileFollowingActivity: AppCompatActivity() {
     private val viewModel: FollowingViewModel by viewModels()
     private var targetPosition = -1
+    private lateinit var idfollow: Content
     private lateinit var binding: ActivityFollowingBinding
     private var adapterFoll = FollowingAdapter(
         following = mutableListOf(),
@@ -37,7 +36,7 @@ class FollowingActivity : AppCompatActivity() {
             finish()
         }
         lifecycleScope.launch {
-            viewModel.getAllFollowing(MagerSharedPref.userId!!)
+            viewModel.getAllFollowing(idfollow.userFollowing.id)
         }
 
         setupObserver()
@@ -66,5 +65,4 @@ class FollowingActivity : AppCompatActivity() {
             }
         }
     }
-
 }

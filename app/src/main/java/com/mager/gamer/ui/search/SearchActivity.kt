@@ -28,9 +28,9 @@ class SearchActivity : BaseActivity() {
             binding.tbLayout ,
             binding.slideVP) { tab, position ->
             if (position == 0) {
-                tab.text = "Untuk Kamu"
+                tab.text = "Orang"
             } else {
-                tab.text = "Diikuti"
+                tab.text = "Komunitas"
             }
         }.attach()
     }

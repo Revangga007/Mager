@@ -17,7 +17,6 @@ class OnBoardFragment : Fragment() {
     private var _binding: FragmentOnBoardBinding? = null
     private val binding get() = _binding!!
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {

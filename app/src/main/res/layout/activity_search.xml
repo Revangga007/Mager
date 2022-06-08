@@ -67,6 +67,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutSearch"
             app:tabInlineLabel="true"
+            app:tabTextColor="@color/white"
             app:tabSelectedTextColor="@color/purple_700"
             app:tabTextAppearance="@style/TabTextAppearance" />
 

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
@@ -12,7 +13,9 @@ import androidx.core.content.ContextCompat
 import com.anilokcun.uwmediapicker.UwMediaPicker
 import com.anilokcun.uwmediapicker.model.UwMediaPickerMediaType
 import com.bumptech.glide.Glide
+import com.mager.gamer.R
 import com.mager.gamer.base.BaseActivity
+import com.mager.gamer.data.model.remote.user.detail.Data
 import com.mager.gamer.databinding.ActivityEditProfileBinding
 import com.mager.gamer.ui.user.edit.BioUserActivity
 import com.mager.gamer.ui.user.edit.LocUserActivity
@@ -24,6 +27,7 @@ import java.io.File
 class UserSettingActivity : BaseActivity() {
     private lateinit var binding: ActivityEditProfileBinding
     private val viewModel: SettingViewModel by viewModels()
+    private lateinit var userData: Data
     private var selectedFiles = mutableListOf<File>()
     private val File.size get() = if (!exists()) 0.0 else length().toDouble()
     private val File.sizeInKb get() = size / 1024
@@ -56,6 +60,17 @@ class UserSettingActivity : BaseActivity() {
         }
         binding.btnOut.setOnClickListener {
 
+        }
+        intent.extras?.getParcelable<Data>("data")?.let{
+            userData = it
+            if (it.fotoProfile != null) {
+                Glide.with(binding.imgPhoto.context)
+                    .load(it.fotoProfile)
+                    .error(R.drawable.logo_mager_1)
+                    .into(binding.imgPhoto)
+            }
+            binding.txtNama2.text = it.nama
+            binding.txtBio2.text = it.biodata
         }
     }
 

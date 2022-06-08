@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemCommunity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/dark_mode_2"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    tools:ignore="UnusedAttribute">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardPhoto"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_mode_3"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:fontFamily="@font/nunito_bold"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardPhoto"
+        app:layout_constraintTop_toTopOf="@id/cardPhoto"
+        tools:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/txtCategory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/nunito"
+        android:text="Kategori : -"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/txtName"
+        app:layout_constraintStart_toStartOf="@id/txtName"
+        app:layout_constraintTop_toBottomOf="@id/txtName" />
+
+    <LinearLayout
+        android:id="@+id/linearContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="13dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/txtCategory"
+        app:layout_constraintStart_toStartOf="@id/txtCategory"
+        app:layout_constraintTop_toBottomOf="@id/txtCategory">
+
+        <ImageView
+            android:id="@+id/imgMember"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_komunitas" />
+
+        <TextView
+            android:id="@+id/txtMember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            tools:text="0" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_dot" />
+
+        <ImageView
+            android:id="@+id/imgLocation"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_location" />
+
+
+
+        <TextView
+            android:id="@+id/txtLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            tools:text="@string/app_name" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

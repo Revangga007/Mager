@@ -93,4 +93,43 @@ class UserRepository @Inject constructor(
         .onStart { onStart() }
         .onCompletion { onComplete() }
         .flowOn(ioDispatcher)
+
+    suspend fun getAllPost(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idUser: Int
+    ) = flow {
+        val response = apiService.getPostingan(1000, 0, null, null, "profile", null, idUser)
+        response.suspendOnSuccess {
+            emit(this.data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun postFollow(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idFollower: Int,
+        idFollowing: Int
+    ) = flow {
+        val response = apiService.follow(idFollower, idFollowing)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
 }

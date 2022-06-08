@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Data(
     @SerializedName("content")
-    val content: List<Content>,
+    val content: List<Komunitas>,
     @SerializedName("empty")
     val empty: Boolean,
     @SerializedName("first")

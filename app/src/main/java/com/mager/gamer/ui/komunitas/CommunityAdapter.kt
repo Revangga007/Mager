@@ -6,27 +6,27 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mager.gamer.R
-import com.mager.gamer.data.model.remote.komunitas.get.Content
+import com.mager.gamer.data.model.remote.komunitas.get.Komunitas
 import com.mager.gamer.databinding.ItemKomunitasBinding
 
 class CommunityAdapter(
-    var community: MutableList<Content>,
-    private val onDetailClick: (Content, Int) -> Unit,
-    private val onJoinClick: (Content, Int) -> Unit
+    var community: MutableList<Komunitas>,
+    private val onDetailClick: (Komunitas, Int) -> Unit,
+    private val onJoinClick: (Komunitas, Int) -> Unit
 ) : RecyclerView.Adapter<CommunityAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemKomunitasBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            community: List<Content>,
-            onDetailClick: (Content, Int) -> Unit,
-            onJoinClick: (Content, Int) -> Unit
+            community: List<Komunitas>,
+            onDetailClick: (Komunitas, Int) -> Unit,
+            onJoinClick: (Komunitas, Int) -> Unit
         ) {
             val com = community[absoluteAdapterPosition]
             binding.txtName.text = com.namaKomunitas
             binding.txtMember.text = com.jumlahAnggota.toString()
             binding.txtLocation.text = com.lokasi
-            binding.btnJoin.visibility = if (com.acceptance) View.GONE else View.VISIBLE
+            binding.btnJoin.visibility = if (com.joined) View.GONE else View.VISIBLE
 
             Glide.with(binding.imgPhoto.context)
                 .load(com.banner)
