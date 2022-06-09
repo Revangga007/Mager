@@ -33,12 +33,19 @@ class FollowerActivity: AppCompatActivity() {
         binding = ActivityFollowBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val userId = intent.getIntExtra("userId", -1)
+        lifecycleScope.launch {
+            if (userId == -1) {
+                viewModel.getAllFollower(MagerSharedPref.userId!!)
+            } else {
+                viewModel.getAllFollower(userId)
+            }
+        }
+
         binding.imgLeft.setOnClickListener {
             finish()
         }
-        lifecycleScope.launch {
-            viewModel.getAllFollower(MagerSharedPref.userId!!)
-        }
+
         setupObserver()
     }
 //    private fun intentToDetail(content: Content, pos: Int) {

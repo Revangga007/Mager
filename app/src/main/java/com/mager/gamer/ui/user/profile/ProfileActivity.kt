@@ -123,17 +123,25 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
         viewModel.followingResponse.observe(this) {
-            binding.txtNumbFollowing.text = it.data.content.size.toString()
-            binding.linearFollowing.setOnClickListener {
-                val i = Intent(this, FollowingActivity::class.java)
-                startActivity(i)
+            val size = it.data.content.size
+            binding.txtNumbFollowing.text = size.toString()
+            if (size > 0) {
+                binding.linearFollowing.setOnClickListener {
+                    val i = Intent(this, FollowingActivity::class.java)
+                    i.putExtra("userId", dataFollow.id)
+                    startActivity(i)
+                }
             }
         }
         viewModel.followerResponse.observe(this) {
-            binding.txtNumbFollower.text = it.data.content.size.toString()
-            binding.linearFollower.setOnClickListener {
-                val i = Intent(this, FollowerActivity::class.java)
-                startActivity(i)
+            val size = it.data.content.size
+            binding.txtNumbFollower.text = size.toString()
+            if (size > 0) {
+                binding.linearFollower.setOnClickListener {
+                    val i = Intent(this, FollowerActivity::class.java)
+                    i.putExtra("userId", dataFollow.id)
+                    startActivity(i)
+                }
             }
         }
         viewModel.postinganResponse.observe(this) {
