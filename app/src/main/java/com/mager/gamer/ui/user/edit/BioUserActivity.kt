@@ -32,14 +32,14 @@ class BioUserActivity: AppCompatActivity() {
             dataUser = it
             binding.txtName.setText(it.biodata)
         }
-        binding.btnSimpan.setOnClickListener {
-            lifecycleScope.launch {
-                val bio = binding.txtName.text.toString()
-                val body = EditUserBody(null, bio, null)
-                viewModel.editUser(body)
-            }
-            
-        }
+//        binding.btnSimpan.setOnClickListener {
+//            lifecycleScope.launch {
+//                val bio = binding.txtName.text.toString()
+//                val body = EditUserBody(null, bio, null)
+//                viewModel.editUser(body)
+//            }
+//
+//        }
         setupObserver()
     }
     private fun setupObserver() {

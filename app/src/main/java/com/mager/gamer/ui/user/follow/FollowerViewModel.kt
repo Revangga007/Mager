@@ -7,6 +7,7 @@ import com.mager.gamer.repository.MainRepository
 import com.mager.gamer.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.collect
 
 @HiltViewModel
 class FollowerViewModel @Inject constructor(

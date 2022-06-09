@@ -35,8 +35,13 @@ class FollowingActivity : AppCompatActivity() {
         binding.imgLeft.setOnClickListener {
             finish()
         }
+        val userId = intent.getIntExtra("userId", -1)
         lifecycleScope.launch {
-            viewModel.getAllFollowing(MagerSharedPref.userId!!)
+            if (userId == -1) {
+                viewModel.getAllFollowing(MagerSharedPref.userId!!)
+            } else {
+                viewModel.getAllFollowing(userId)
+            }
         }
 
         setupObserver()

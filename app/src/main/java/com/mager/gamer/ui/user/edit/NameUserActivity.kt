@@ -32,13 +32,13 @@ class NameUserActivity: AppCompatActivity() {
             dataUser = it
             binding.txtName.setText(it.nama)
         }
-        binding.btnSimpan.setOnClickListener {
-            lifecycleScope.launch {
-                val name = binding.txtName.text.toString()
-                val body = EditUserBody(name, null, null)
-                viewModel.editUser(body)
-            }
-        }
+//        binding.btnSimpan.setOnClickListener {
+//            lifecycleScope.launch {
+//                val name = binding.txtName.text.toString()
+//                val body = EditUserBody(name, null, null)
+//                viewModel.editUser(body)
+//            }
+//        }
         setupObserver()
     }
     private fun setupObserver() {
