@@ -1,6 +1,7 @@
 package com.mager.gamer.ui.register
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
@@ -45,7 +46,7 @@ class RegisterActivity : BaseActivity() {
                 text.isNullOrEmpty() ->
                     binding.textField1.error = "Email tidak boleh kosong"
                 !Patterns.EMAIL_ADDRESS.matcher(text ?: "").matches() ->
-                    binding.textField.error = "Format email tidak valid"
+                    binding.textField1.error = "Format email tidak valid"
                 else -> binding.textField1.error = null
             }
             validateButton()
@@ -96,10 +97,12 @@ class RegisterActivity : BaseActivity() {
         binding.btnGirl.setOnClickListener {
             switchGender(false)
         }
+        binding.cbPolicy.setOnClickListener {
+            validateButton()
+        }
         binding.btnDaftar.setOnClickListener {
             val textGender = if (selectedGender!!) binding.btnLaki.text.toString()
             else binding.btnGirl.text.toString()
-
             lifecycleScope.launch {
                 viewModel.register(
                     nama = binding.txtName.text.toString(),
@@ -132,8 +135,10 @@ class RegisterActivity : BaseActivity() {
         val passOK = binding.txtPassword.error == null
         val konfirOK = binding.txtKonfir.error == null
         val genderOK = selectedGender != null // alias udah milih gender
+        val checkOK = binding.cbPolicy.isChecked
+
         binding.btnDaftar.isEnabled =
-            nameOK && emailOK && usernameOK && passOK && konfirOK && genderOK
+            nameOK && emailOK && usernameOK && passOK && konfirOK && genderOK && checkOK
     }
 
     override fun setupObserver() {

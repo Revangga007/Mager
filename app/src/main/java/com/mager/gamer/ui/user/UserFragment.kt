@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mager.gamer.R
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.user.detail.Data
 import com.mager.gamer.databinding.FragmentUserBinding
 import com.mager.gamer.ui.home.PostinganAdapter
-import com.mager.gamer.ui.login.LoginActivity
+import com.mager.gamer.ui.postingan.DetailPostinganActivity
 import com.mager.gamer.ui.user.follow.FollowerActivity
 import com.mager.gamer.ui.user.follow.FollowingActivity
-import com.mager.gamer.ui.user.profile.ProfileActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -28,28 +28,13 @@ class UserFragment : Fragment() {
     private val viewModel: UserViewModel by viewModels()
     private var _binding: FragmentUserBinding? = null
     private val binding get() = _binding!!
-    private lateinit var dataUser: Data
+    private var dataUser: Data? = null
     private val postUserAdapter = PostinganAdapter(mutableListOf(),
         onDetailClick = { data, pos -> },
         onCopyClick = {},
         onVideoClick = {},
         onLikeClick = {},
     )
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding.btnSetting.setOnClickListener {
-            val i = Intent(requireContext(), UserSettingActivity::class.java)
-            i.putExtra("data", dataUser)
-            startActivity(i)
-        }
-        lifecycleScope.launch {
-            viewModel.getUserDetail()
-            viewModel.getAllFollowers()
-            viewModel.getAllFollowing()
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,34 +47,41 @@ class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.recyclerPostingan.apply {
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            adapter = postUserAdapter
+        }
+        lifecycleScope.launch {
+            viewModel.getUserDetail(MagerSharedPref.userId!!)
+            viewModel.getAllFollowers(MagerSharedPref.userId!!)
+            viewModel.getAllFollowing(MagerSharedPref.userId!!)
+            viewModel.getAllPost(MagerSharedPref.userId!!)
+        }
         binding.btnSetting.setOnClickListener {
             val i = Intent(requireContext(), UserSettingActivity::class.java)
+            i.putExtra("data", dataUser)
             startActivity(i)
         }
-
         setupObserver()
     }
 
     private fun setupObserver() {
         viewModel.userDetail.observe(viewLifecycleOwner) {
+            dataUser = it.data
             if (it.status == "200") {
                 Glide.with(binding.imgPhoto.context)
                     .load(it.data.fotoProfile)
-                    .error(R.drawable.logo_mager_1)
+                    .error(R.drawable.logo_mager_3)
                     .into(binding.imgPhoto)
 
                 binding.txtName.text = it.data.nama
                 binding.txtUser.text = it.data.username
                 binding.txtBio.text = it.data.biodata
-                binding.txtLoc.text = "-"
+                binding.txtLoc.text = it.data.lokasi
                 if (it.data.gender.equals("Perempuan", true)) {
                     binding.icGender.setImageResource(R.drawable.ic_girl)
                 } else {
                     binding.icGender.setImageResource(R.drawable.ic_boy2)
-                }
-                binding.recyclerPostingan.apply {
-                    layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
                 }
             }
         }
@@ -107,7 +99,11 @@ class UserFragment : Fragment() {
                 startActivity(i)
             }
         }
-
+        viewModel.postinganResponse.observe(viewLifecycleOwner) {
+            postUserAdapter.postingan.clear()
+            postUserAdapter.postingan.addAll(it.data)
+            postUserAdapter.notifyDataSetChanged()
+        }
     }
 
 

@@ -42,5 +42,9 @@ data class Data(
     @SerializedName("updated_date")
     val updatedDate: String,
     @SerializedName("visibility")
-    val visibility: Boolean
+    val visibility: Boolean,
+    @SerializedName("lokasi")
+    val lokasi: String?,
+
+    val status: Boolean = false
 ) : Parcelable

@@ -64,7 +64,7 @@ class LoginActivity : BaseActivity() {
             finishAffinity()
         }
         binding.txtLupaPassword.setOnClickListener {
-            val i = Intent(this, RegisterActivity::class.java)
+            val i = Intent(this, ForgotPassActivity::class.java)
             startActivity(i)
         }
 

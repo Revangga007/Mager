@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 class EditUserBody (
     @SerializedName("nama")
-    val nama: String,
+    val nama: String?,
     @SerializedName("biodata")
-    val biodata: String,
+    val biodata: String?,
     @SerializedName("lokasi")
-    val lokasi: String,
+    val lokasi: String?,
 )

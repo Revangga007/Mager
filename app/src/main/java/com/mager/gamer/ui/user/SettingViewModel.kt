@@ -20,7 +20,8 @@ class SettingViewModel @Inject constructor(
         body: EditUserBody
     ) {
         val idUser = MagerSharedPref.userId!!
-        userRepository.userEdit(
+        userRepository.
+        userEdit(
             onStart = {
                 showLoading()
             },

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mager.gamer.R
-import com.mager.gamer.data.model.remote.user.getfollowing.Content
+import com.mager.gamer.data.model.remote.user.Content
 import com.mager.gamer.databinding.ItemUserBinding
 
 class FollowingAdapter(
@@ -20,12 +20,12 @@ class FollowingAdapter(
             onDetailClick: (Content, Int) -> Unit
         ) {
             val userFollowing = following[absoluteAdapterPosition]
-            Glide.with(binding.imgUser)
+            binding.txtName.text = userFollowing.userFollowing.nama
+            binding.txtUsername.text = userFollowing.userFollowing.username
+            Glide.with(binding.imgUser.context)
                 .load(userFollowing.userFollowing.fotoProfile)
                 .error(R.drawable.logo_mager_1)
                 .into(binding.imgUser)
-            binding.txtName.text = userFollowing.userFollowing.nama
-            binding.txtUsername.text = userFollowing.userFollowing.username
             binding.itemUser.setOnClickListener {
                 onDetailClick(userFollowing, absoluteAdapterPosition)
             }

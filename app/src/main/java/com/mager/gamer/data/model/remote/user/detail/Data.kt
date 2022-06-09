@@ -42,5 +42,7 @@ data class Data(
     @SerializedName("updated_date")
     val updatedDate: String,
     @SerializedName("username")
-    val username: String
-):Parcelable
+    val username: String,
+    //android
+    val status: Boolean = false
+    ):Parcelable

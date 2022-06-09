@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mager.gamer.data.local.MagerSharedPref
-import com.mager.gamer.data.model.remote.user.getfollowing.Content
+import com.mager.gamer.data.model.remote.user.Content
 import com.mager.gamer.databinding.ActivityFollowingBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
 import com.mager.gamer.ui.user.follow.adapter.FollowingAdapter
@@ -21,11 +21,10 @@ import kotlinx.coroutines.launch
 class FollowingActivity : AppCompatActivity() {
 
     private val viewModel: FollowingViewModel by viewModels()
-    private var targetPosition = -1
     private lateinit var binding: ActivityFollowingBinding
     private var adapterFoll = FollowingAdapter(
         following = mutableListOf(),
-        onDetailClick = {data, pos -> intentToDetail(data, pos)})
+        onDetailClick = {data, pos -> })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +42,6 @@ class FollowingActivity : AppCompatActivity() {
         setupObserver()
     }
 
-    private fun intentToDetail(content: Content, pos: Int) {
-        targetPosition = pos
-        val i = Intent(this, ProfileActivity::class.java)
-        i.putExtra("data", content)
-        startActivity(i)
-    }
     private fun setupObserver() {
         val loading = CustomLoadingDialog(this)
         viewModel.loading.observe(this) {

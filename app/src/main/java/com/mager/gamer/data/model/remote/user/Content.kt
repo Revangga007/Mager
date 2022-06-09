@@ -1,8 +1,10 @@
-package com.mager.gamer.data.model.remote.user.getfollowers
+package com.mager.gamer.data.model.remote.user
 
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.mager.gamer.data.model.remote.user.getfollowing.UserFollower
+import com.mager.gamer.data.model.remote.user.getfollowing.UserFollowing
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -14,7 +16,7 @@ data class Content(
     @SerializedName("id")
     val id: Int,
     @SerializedName("status")
-    val status: Boolean,
+    val status: Boolean = false,
     @SerializedName("updated_date")
     val updatedDate: String,
     @SerializedName("userFollower")

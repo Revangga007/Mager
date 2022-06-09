@@ -54,7 +54,6 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
-//            binding.icLike.setImageResource(R.drawable.ic_liked)
             if (postingan.jumlahKomentar == 0) {
                 binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
@@ -68,6 +67,9 @@ sealed class PostinganRecyclerViewHolder(
                 binding.txtSemuaKomen.visibility = View.VISIBLE
             }
 
+//            binding.icLike.setOnClickListener {
+//                onLikeClick()
+//            }
             binding.btnCopy.setOnClickListener {
                 onCopyClick(postingan.linkPostingan ?: "")
             }
@@ -112,7 +114,6 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
-//            binding.icLike.setImageResource(R.drawable.ic_liked)
             if (postingan.jumlahKomentar == 0) {
                 binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
@@ -182,7 +183,12 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
-//            binding.icLike.setImageResource(R.drawable.ic_liked)
+            val idUser = MagerSharedPref.userId!!
+            postingan.likedBy.find { like ->
+                like.user.id == idUser
+            }?.let {
+                binding.icLike.setImageResource(R.drawable.ic_liked)
+            }
             if (postingan.jumlahKomentar == 0) {
                 binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE
@@ -255,7 +261,12 @@ sealed class PostinganRecyclerViewHolder(
             binding.txtNama.text = postingan.createdBy.nama
             binding.txtUsername.text = postingan.createdBy.username
             binding.txtWaktu.text = postingan.createdDate.toTimeAgo()
-//            binding.icLike.setImageResource(R.drawable.ic_liked)
+            val idUser = MagerSharedPref.userId!!
+            postingan.likedBy.find { like ->
+                like.user.id == idUser
+            }?.let {
+                binding.icLike.setImageResource(R.drawable.ic_liked)
+            }
             if (postingan.jumlahKomentar == 0) {
                 binding.recyclerComment.visibility = View.GONE
                 binding.txtSemuaKomen.visibility = View.GONE

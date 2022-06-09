@@ -1,7 +1,6 @@
 package com.mager.gamer.ui.komunitas
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mager.gamer.base.BaseActivity
-import com.mager.gamer.data.model.remote.komunitas.get.Content
+import com.mager.gamer.data.model.remote.komunitas.get.Komunitas
 import com.mager.gamer.databinding.ActivityDetailCommunityBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
 import com.mager.gamer.ui.home.PostinganAdapter
@@ -23,13 +22,14 @@ class DetailCommunityActivity : BaseActivity() {
 
     private lateinit var binding: ActivityDetailCommunityBinding
     private val viewModel: DetailCommunityViewModel by viewModels()
-    private lateinit var communityData: Content
+    private lateinit var communityData: Komunitas
     private val postAdapter = PostinganAdapter(mutableListOf(),
         onDetailClick = { data, pos -> },
         onCopyClick = {},
         onVideoClick = {},
-        onLikeClick = {},
+        onLikeClick = {}
     )
+    private var lastJoined = false
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,11 +38,12 @@ class DetailCommunityActivity : BaseActivity() {
         binding = ActivityDetailCommunityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        intent.extras?.getParcelable<Content>("data")?.let {
+        intent.extras?.getParcelable<Komunitas>("data")?.let {
             communityData = it
+            lastJoined = it.joined
             binding.txtName.text = it.namaKomunitas
             binding.txtMember.text = "${it.jumlahAnggota} Anggota"
-            if (it.acceptance) {
+            if (it.joined) {
                 binding.btnJoined.visibility = View.VISIBLE
                 binding.btnJoin.visibility = View.GONE
                 binding.constraintPost.visibility = View.VISIBLE
@@ -64,6 +65,11 @@ class DetailCommunityActivity : BaseActivity() {
                 viewModel.joinCommunity(communityData.id)
             }
         }
+        binding.btnJoined.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.joinCommunity(communityData.id)
+            }
+        }
 
         setupObserver()
 
@@ -78,10 +84,16 @@ class DetailCommunityActivity : BaseActivity() {
             if (it) loadingUI.show() else loadingUI.dismiss()
         }
         viewModel.joinResponse.observe(this) {
-            Toast.makeText(this, "Berhasil bergabung", Toast.LENGTH_SHORT).show()
-
-            binding.btnJoin.visibility = View.GONE
-            binding.btnJoined.visibility = View.VISIBLE
+            lastJoined = !lastJoined
+            if (lastJoined) {
+                Toast.makeText(this, "Berhasil bergabung", Toast.LENGTH_SHORT).show()
+                binding.btnJoin.visibility = View.GONE
+                binding.btnJoined.visibility = View.VISIBLE
+            } else {
+                Toast.makeText(this, "Berhasil keluar", Toast.LENGTH_SHORT).show()
+                binding.btnJoin.visibility = View.VISIBLE
+                binding.btnJoined.visibility = View.GONE
+            }
             setResult(RESULT_OK)
         }
         viewModel.postResponse.observe(this) {

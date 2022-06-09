@@ -1,4 +1,4 @@
-package com.mager.gamer.ui.user.follow
+package com.mager.gamer.ui.user.profile
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,24 +8,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.user.Content
 import com.mager.gamer.databinding.ActivityFollowBinding
+import com.mager.gamer.databinding.ActivityFollowingBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
+import com.mager.gamer.ui.user.follow.FollowerViewModel
+import com.mager.gamer.ui.user.follow.FollowingViewModel
 import com.mager.gamer.ui.user.follow.adapter.FollowerAdapter
-import com.mager.gamer.ui.user.profile.ProfileActivity
+import com.mager.gamer.ui.user.follow.adapter.FollowingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class FollowerActivity: AppCompatActivity() {
-
-    private lateinit var binding: ActivityFollowBinding
+class ProfileFollowerActivity: AppCompatActivity() {
     private val viewModel: FollowerViewModel by viewModels()
-    private var targetPosition = -1
-    private var adapterFoll = FollowerAdapter(mutableListOf(),
-    onDetailClick = {data, pos -> })
-
+    //    private var targetPosition = -1
+    private lateinit var idfollow: Content
+    private lateinit var binding: ActivityFollowBinding
+    private var adapterFoll = FollowerAdapter(
+        follower = mutableListOf(),
+        onDetailClick = {data, pos -> })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +39,13 @@ class FollowerActivity: AppCompatActivity() {
             finish()
         }
         lifecycleScope.launch {
-            viewModel.getAllFollower(MagerSharedPref.userId!!)
+            viewModel.getAllFollower(idfollow.userFollower.id)
         }
+
         setupObserver()
     }
-//    private fun intentToDetail(content: Content, pos: Int) {
+
+    //    private fun intentToDetail(content: Content, pos: Int) {
 //        targetPosition = pos
 //        val i = Intent(this, ProfileActivity::class.java)
 //        i.putExtra("data", content)

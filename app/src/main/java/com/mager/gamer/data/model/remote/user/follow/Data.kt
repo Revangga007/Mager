@@ -14,7 +14,7 @@ data class Data(
     @SerializedName("id")
     val id: Int,
     @SerializedName("status")
-    val status: Boolean,
+    val status: Boolean = false,
     @SerializedName("updated_date")
     val updatedDate: String,
     @SerializedName("userFollower")

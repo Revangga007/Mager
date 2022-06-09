@@ -1,5 +1,6 @@
 package com.mager.gamer.repository
 
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.user.edit.EditUserBody
 import com.mager.gamer.data.remote.ApiService
 import com.skydoves.sandwich.message
@@ -82,6 +83,45 @@ class UserRepository @Inject constructor(
         body: EditUserBody
     ) = flow {
         val response = apiService.editUser(idUser, body)
+        response.suspendOnSuccess {
+            emit(data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun getAllPost(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idUser: Int
+    ) = flow {
+        val response = apiService.getPostingan(1000, 0, null, null, "user", null, idUser)
+        response.suspendOnSuccess {
+            emit(this.data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
+    suspend fun postFollow(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idFollower: Int,
+        idFollowing: Int
+    ) = flow {
+        val response = apiService.follow(idFollower, idFollowing)
         response.suspendOnSuccess {
             emit(data)
         }.onError {

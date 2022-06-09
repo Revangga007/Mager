@@ -3,6 +3,7 @@ package com.mager.gamer.data.remote
 
 
 import com.mager.gamer.data.model.remote.komunitas.get.KomunitasResponse
+import com.mager.gamer.data.model.remote.komunitas.getjoined.JoinedResponse
 import com.mager.gamer.data.model.remote.komunitas.join.JoinCommunityResponse
 import com.mager.gamer.data.model.remote.login.LoginResponse
 import com.mager.gamer.data.model.remote.password.ForgetPassBody
@@ -41,6 +42,7 @@ interface ApiService {
         @Query("tipeSort") tipeSort: String?,
         @Query("tipeData") tipeData: String?,
         @Query("idKomunitas") idKomunitas: Int?,
+        @Query("idUser") idUser: Int?,
     ) : ApiResponse<PostinganResponse>
 
     @POST("mager/postingan")
@@ -71,8 +73,15 @@ interface ApiService {
     @GET("mager/komunitas/list")
     suspend fun getKomunitas(
         @Query("size") size: Int,
-        @Query("page") page: Int
+        @Query("page") page: Int,
     ) : ApiResponse<KomunitasResponse>
+
+    @GET("mager/komunitas/joined/{idUser}")
+    suspend fun getJoinedKomunitas(
+        @Path("idUser") idUser: Int,
+        @Query("size") size: Int = 100,
+        @Query("page") page: Int = 0
+    ) : ApiResponse<JoinedResponse>
 
     @POST("mager/komunitas/join/{idUser}/{idCommunity}")
     suspend fun joinCommunity(
@@ -149,4 +158,11 @@ interface ApiService {
         @Path("idUser") idUser: Int,
         @Body body: EditUserBody
     ): ApiResponse<EditUserResponse>
+
+    @POST("mager/user/{idFollower}/follow/{idFollowing}")
+    suspend fun follow(
+        @Path("idFollower") idFollower: Int,
+        @Path("idFollowing") idFollowing: Int
+    ): ApiResponse<FollowResponse>
+
 }

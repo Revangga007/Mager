@@ -34,6 +34,25 @@ class KomunitasRespository @Inject constructor(
         .onCompletion { onComplete() }
         .flowOn(ioDispatcher)
 
+    suspend fun getJoinedCommunity(
+        onStart: () -> Unit,
+        onComplete: () -> Unit,
+        onError: (String?) -> Unit,
+        idUser: Int,
+    ) = flow {
+        val response = apiService.getJoinedKomunitas(idUser)
+        response.suspendOnSuccess {
+            emit(this.data)
+        }.onError {
+            onError(this.message())
+        }.onException {
+            onError(this.message())
+        }
+    }
+        .onStart { onStart() }
+        .onCompletion { onComplete() }
+        .flowOn(ioDispatcher)
+
     suspend fun joinCommunity(
         onStart: () -> Unit,
         onComplete: () -> Unit,
@@ -60,7 +79,7 @@ class KomunitasRespository @Inject constructor(
         onError: (String?) -> Unit,
         idCommunity: Int
     ) = flow {
-        val response = apiService.getPostingan(1000, 0, null, null, "komunitas", idCommunity)
+        val response = apiService.getPostingan(1000, 0, null, null, "komunitas", idCommunity, null)
         response.suspendOnSuccess {
             emit(this.data)
         }.onError {

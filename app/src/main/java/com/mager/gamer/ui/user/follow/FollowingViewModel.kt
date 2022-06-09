@@ -2,7 +2,6 @@ package com.mager.gamer.ui.user.follow
 
 import androidx.lifecycle.MutableLiveData
 import com.mager.gamer.base.BaseViewModel
-import com.mager.gamer.data.model.remote.user.getfollowing.Content
 import com.mager.gamer.data.model.remote.user.getfollowing.GetFollowingResponse
 import com.mager.gamer.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
