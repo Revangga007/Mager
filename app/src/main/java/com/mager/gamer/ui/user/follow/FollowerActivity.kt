@@ -22,7 +22,6 @@ class FollowerActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityFollowBinding
     private val viewModel: FollowerViewModel by viewModels()
-    private var targetPosition = -1
     private var adapterFoll = FollowerAdapter(mutableListOf(),
     onDetailClick = {data, pos -> })
 

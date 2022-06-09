@@ -6,14 +6,11 @@
     android:layout_height="match_parent"
     android:background="#18191A">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UseCompoundDrawables">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/lytProfil"
@@ -24,8 +21,7 @@
             android:orientation="vertical"
             android:paddingHorizontal="16dp"
             android:paddingBottom="12dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/recyclerPostingan">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardPhoto"
@@ -183,7 +179,7 @@
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/backgrond_comment"
                 android:fontFamily="@font/nunito_bold"
-                android:text="Pengaturan"
+                android:text="Keluar"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -194,10 +190,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/lytProfil"
             tools:itemCount="4"
             tools:listitem="@layout/item_postingan" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>
 
 

@@ -48,6 +48,7 @@ interface ApiService {
     @POST("mager/postingan")
     suspend fun createPostingan(
         @Query("idUser") idUser: Int,
+        @Query("idKomunitas") idKomunitas: Int?,
         @Body body: CreatePostBody
     ):ApiResponse<CreatePostinganResponse>
 
