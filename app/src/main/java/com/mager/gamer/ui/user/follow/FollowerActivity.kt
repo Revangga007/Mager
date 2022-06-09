@@ -24,7 +24,7 @@ class FollowerActivity: AppCompatActivity() {
     private val viewModel: FollowerViewModel by viewModels()
     private var targetPosition = -1
     private var adapterFoll = FollowerAdapter(mutableListOf(),
-    onDetailClick = {data, pos -> intentToDetail(data, pos)})
+    onDetailClick = {data, pos -> })
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,12 +41,12 @@ class FollowerActivity: AppCompatActivity() {
         }
         setupObserver()
     }
-    private fun intentToDetail(content: Content, pos: Int) {
-        targetPosition = pos
-        val i = Intent(this, ProfileActivity::class.java)
-        i.putExtra("data", content)
-        startActivity(i)
-    }
+//    private fun intentToDetail(content: Content, pos: Int) {
+//        targetPosition = pos
+//        val i = Intent(this, ProfileActivity::class.java)
+//        i.putExtra("data", content)
+//        startActivity(i)
+//    }
     private fun setupObserver() {
         val loading = CustomLoadingDialog(this)
         viewModel.loading.observe(this) {

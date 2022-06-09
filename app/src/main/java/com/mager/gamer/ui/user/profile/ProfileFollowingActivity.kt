@@ -19,12 +19,12 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class ProfileFollowingActivity: AppCompatActivity() {
     private val viewModel: FollowingViewModel by viewModels()
-    private var targetPosition = -1
+//    private var targetPosition = -1
     private lateinit var idfollow: Content
     private lateinit var binding: ActivityFollowingBinding
     private var adapterFoll = FollowingAdapter(
         following = mutableListOf(),
-        onDetailClick = {data, pos -> intentToDetail(data, pos)})
+        onDetailClick = {data, pos -> })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,12 +42,12 @@ class ProfileFollowingActivity: AppCompatActivity() {
         setupObserver()
     }
 
-    private fun intentToDetail(content: Content, pos: Int) {
-        targetPosition = pos
-        val i = Intent(this, ProfileActivity::class.java)
-        i.putExtra("data", content)
-        startActivity(i)
-    }
+//    private fun intentToDetail(content: Content, pos: Int) {
+//        targetPosition = pos
+//        val i = Intent(this, ProfileActivity::class.java)
+//        i.putExtra("data", content)
+//        startActivity(i)
+//    }
     private fun setupObserver() {
         val loading = CustomLoadingDialog(this)
         viewModel.loading.observe(this) {

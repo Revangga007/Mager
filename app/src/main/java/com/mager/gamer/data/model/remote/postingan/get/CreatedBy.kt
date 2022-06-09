@@ -29,5 +29,7 @@ data class CreatedBy(
     @SerializedName("updated_date")
     val updatedDate: String,
     @SerializedName("username")
-    val username: String
+    val username: String,
+
+    val lokasi: String?
 ) : Parcelable

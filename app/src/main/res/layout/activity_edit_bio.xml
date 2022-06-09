@@ -52,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:hint="Nama"
+            android:hint="Bio"
             android:textColorHint="@color/white_inactive"
             app:boxBackgroundColor="@color/dark_mode_3"
             app:boxCornerRadiusBottomEnd="8dp"
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="16dp"
-            android:text="Masuk"
+            android:text="Simpan"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

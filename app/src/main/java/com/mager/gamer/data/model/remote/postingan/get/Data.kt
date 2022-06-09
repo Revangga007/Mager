@@ -45,4 +45,6 @@ data class Data(
     val visibility: Boolean,
     @SerializedName("lokasi")
     val lokasi: String?,
+
+    val status: Boolean = false
 ) : Parcelable
