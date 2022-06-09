@@ -8,7 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/itemPosting"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp"
         android:background="@drawable/background_content_post"
         app:layout_constraintTop_toTopOf="parent">
 

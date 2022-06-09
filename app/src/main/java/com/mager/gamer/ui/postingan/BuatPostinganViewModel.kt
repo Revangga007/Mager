@@ -45,6 +45,7 @@ class BuatPostinganViewModel @Inject constructor(
     }
 
     suspend fun createPostingan(
+        idKomunitas: Int? = null,
         postText: String? = null,
         linkLivestream: String? = null,
         files: String? = null
@@ -59,6 +60,7 @@ class BuatPostinganViewModel @Inject constructor(
             onError = {
                 error.postValue(it.message) },
             idUser,
+            idKomunitas,
             body
         ).collect {
             createResponse.postValue(it)

@@ -9,4 +9,6 @@ class EditUserBody (
     val biodata: String?,
     @SerializedName("lokasi")
     val lokasi: String?,
+    @SerializedName("fotoProfile")
+    val fotoProfile: String,
 )

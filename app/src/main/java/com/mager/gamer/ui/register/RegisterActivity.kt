@@ -69,7 +69,7 @@ class RegisterActivity : BaseActivity() {
                     binding.txtPassword.error = "Kata sandi tidak boleh kosong"
                 !isPasswordValid(txt) ->
                     binding.txtPassword.error =
-                        "Kata sandi minimal 8 karakter kombinasi huruf dan angka"
+                        "Kata sandi minimal 8 karakter dengan kombinasi huruf, angka dan satu huruf kapital"
                 txt != binding.txtKonfirPw.text.toString() -> {
                     binding.txtKonfir.error = "Konfirmasi kata sandi tidak sama"
                     binding.txtPassword.error = null
@@ -150,8 +150,14 @@ class RegisterActivity : BaseActivity() {
             showMessageDialog(it)
         }
         viewModel.register.observe(this) {
-            Toast.makeText(this@RegisterActivity, "Berhasil Daftar", Toast.LENGTH_LONG).show()
-            finish()
+            if (it.status == "200") {
+                Toast.makeText(this@RegisterActivity, "Berhasil Registrasi", Toast.LENGTH_LONG).show()
+                val i = Intent(this, LoginActivity::class.java)
+                startActivity(i)
+                finish()
+            } else {
+                Toast.makeText(this@RegisterActivity, "Gagal Registrasi, Cek kembali data anda", Toast.LENGTH_LONG).show()
+            }
         }
     }
 

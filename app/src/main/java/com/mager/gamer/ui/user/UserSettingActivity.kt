@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.anilokcun.uwmediapicker.UwMediaPicker
 import com.anilokcun.uwmediapicker.model.UwMediaPickerMediaType
 import com.bumptech.glide.Glide
@@ -17,12 +18,14 @@ import com.mager.gamer.R
 import com.mager.gamer.base.BaseActivity
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.user.detail.Data
+import com.mager.gamer.data.model.remote.user.edit.EditUserBody
 import com.mager.gamer.databinding.ActivityEditProfileBinding
 import com.mager.gamer.ui.login.LoginActivity
 import com.mager.gamer.ui.user.edit.BioUserActivity
 import com.mager.gamer.ui.user.edit.LocUserActivity
 import com.mager.gamer.ui.user.edit.NameUserActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.io.File
 
 @AndroidEntryPoint
@@ -42,9 +45,6 @@ class UserSettingActivity : BaseActivity() {
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.imgLeft.setOnClickListener {
-            finish()
-        }
         binding.btnEdit.setOnClickListener {
             requestAccessForFile()
         }
@@ -77,6 +77,16 @@ class UserSettingActivity : BaseActivity() {
             }
             binding.txtNama2.text = it.nama
             binding.txtBio2.text = it.biodata
+        }
+        binding.imgLeft.setOnClickListener {
+//            lifecycleScope.launch {
+//                Glide.with(binding.imgPhoto.context)
+//                    .load(userData.fotoProfile)
+//                    .error(R.drawable.logo_mager_1)
+//                    .into(binding.imgPhoto)
+//                viewModel.editUser()
+//            }
+            finish()
         }
     }
 

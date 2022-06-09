@@ -1,6 +1,7 @@
 package com.mager.gamer.ui.postingan
 
 import android.Manifest
+import android.app.Activity
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -28,6 +29,7 @@ class BuatPostinganActivity : AppCompatActivity() {
     companion object {
         const val INTENT_IMAGE_MODE = "INTENT_IMAGE_MODE"
         const val INTENT_LIVE_MODE = "INTENT_LIVE_MODE"
+        const val INTENT_ID_COMMUNITY = "INTENT_ID_COMMUNITY"
     }
 
     private val File.size get() = if (!exists()) 0.0 else length().toDouble()
@@ -39,7 +41,7 @@ class BuatPostinganActivity : AppCompatActivity() {
     private var isImageMode = false
     private var isLiveMode = false
     private var selectedFiles = mutableListOf<File>()
-
+    private var idKomunitas: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +53,8 @@ class BuatPostinganActivity : AppCompatActivity() {
             isImageMode = intentImage
             val intentLive = it.getBoolean(INTENT_LIVE_MODE, false)
             isLiveMode = intentLive
+            val idKom = it.getInt(INTENT_ID_COMMUNITY, -1)
+            if (idKom != -1) idKomunitas = idKom
             showHideMode()
         }
         binding.imgLeft.setOnClickListener {
@@ -106,10 +110,10 @@ class BuatPostinganActivity : AppCompatActivity() {
                         }
                     }
                     isLiveMode -> {
-                        viewModel.createPostingan(postText, linkStream, null)
+                        viewModel.createPostingan(idKomunitas, postText, linkStream, null)
                     }
                     else -> {
-                        viewModel.createPostingan(postText, null, null)
+                        viewModel.createPostingan(idKomunitas, postText, null, null)
                     }
                 }
             }
@@ -267,7 +271,7 @@ class BuatPostinganActivity : AppCompatActivity() {
         viewModel.uploadResponse.observe(this) {
             lifecycleScope.launch {
                 val postText = binding.edtStatus.text.toString().trim()
-                viewModel.createPostingan(postText, null, it.data)
+                viewModel.createPostingan(idKomunitas, postText, null, it.data)
             }
         }
 
@@ -276,8 +280,8 @@ class BuatPostinganActivity : AppCompatActivity() {
         }
         viewModel.createResponse.observe(this) {
             Toast.makeText(this, "sukses buat post", Toast.LENGTH_SHORT).show()
+            setResult(Activity.RESULT_OK)
             finish()
-
         }
     }
 }

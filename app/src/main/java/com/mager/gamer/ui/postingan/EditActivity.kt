@@ -1,5 +1,6 @@
 package com.mager.gamer.ui.postingan
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -13,6 +14,7 @@ import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.databinding.ActivityEditPostBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
+import com.mager.gamer.ui.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

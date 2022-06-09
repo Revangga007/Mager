@@ -68,7 +68,7 @@ class DetailCommunityActivity : BaseActivity() {
                 Glide.with(this).load(it.banner).into(binding.imgPhoto)
         }
         binding.recyclerPost.apply {
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
             adapter = postAdapter
         }
         binding.btnJoin.setOnClickListener {
@@ -89,6 +89,14 @@ class DetailCommunityActivity : BaseActivity() {
         }
     }
 
+    private val intentCreatePost =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                lifecycleScope.launch {
+                    viewModel.getAllPost(communityData.id)
+                }
+            }
+        }
     private fun intentToCreatePost(isImage: Boolean = false, isLive: Boolean = false) {
         val isLogin = MagerSharedPref.isLoggedIn
         if (!isLogin) {
@@ -97,9 +105,10 @@ class DetailCommunityActivity : BaseActivity() {
             return
         }
         val intent = Intent(this, BuatPostinganActivity::class.java)
+        intent.putExtra(BuatPostinganActivity.INTENT_ID_COMMUNITY, communityData.id)
         if (isImage) intent.putExtra(BuatPostinganActivity.INTENT_IMAGE_MODE, true)
         else if (isLive) intent.putExtra(BuatPostinganActivity.INTENT_LIVE_MODE, true)
-        startActivity(intent)
+        intentCreatePost.launch(intent)
     }
 
     private fun intentToDetail(content: Data, pos: Int) {
@@ -165,19 +174,19 @@ class DetailCommunityActivity : BaseActivity() {
                 Toast.makeText(this, "Berhasil bergabung", Toast.LENGTH_SHORT).show()
                 binding.btnJoin.visibility = View.GONE
                 binding.btnJoined.visibility = View.VISIBLE
+                binding.constraintPost.visibility = View.VISIBLE
             } else {
                 Toast.makeText(this, "Berhasil keluar", Toast.LENGTH_SHORT).show()
                 binding.btnJoin.visibility = View.VISIBLE
                 binding.btnJoined.visibility = View.GONE
+                binding.constraintPost.visibility = View.GONE
             }
             setResult(RESULT_OK)
         }
         viewModel.postResponse.observe(this) {
-            val lastPos = postAdapter.postingan.size - 1
             postAdapter.postingan.clear()
-            postAdapter.notifyItemRangeRemoved(0, lastPos)
             postAdapter.postingan.addAll(it)
-            postAdapter.notifyItemRangeInserted(0, it.size - 1)
+            postAdapter.notifyDataSetChanged()
         }
     }
 }

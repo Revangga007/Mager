@@ -19,7 +19,7 @@ class EditPostViewModel@Inject constructor(
         idPostingan: Int,
         text: String
     ) {
-        val body = EditBody(text, true)
+        val body = EditBody(text, false)
         mainRepository.editPost(
             onStart = {
                 showLoading()
