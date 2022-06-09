@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.mager.gamer.base.BaseViewModel
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.komunitas.join.JoinCommunityResponse
+import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.data.model.remote.postingan.get.PostinganResponse
 import com.mager.gamer.repository.KomunitasRespository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +17,7 @@ class DetailCommunityViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     val joinResponse = MutableLiveData<JoinCommunityResponse>()
-    val postResponse = MutableLiveData<PostinganResponse>()
+    val postResponse = MutableLiveData<List<Data>>()
 
     suspend fun joinCommunity(idCommunity: Int) {
         val idUser = MagerSharedPref.userId ?: -1
@@ -38,7 +39,7 @@ class DetailCommunityViewModel @Inject constructor(
             onError = { _message.postValue(it) },
             idCommunity
         ).collect {
-            postResponse.postValue(it)
+            postResponse.postValue(it.data)
         }
     }
 
