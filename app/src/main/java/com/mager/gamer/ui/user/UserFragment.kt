@@ -67,6 +67,7 @@ class UserFragment : Fragment() {
 
     private fun setupObserver() {
         viewModel.userDetail.observe(viewLifecycleOwner) {
+            dataUser = it.data
             if (it.status == "200") {
                 Glide.with(binding.imgPhoto.context)
                     .load(it.data.fotoProfile)

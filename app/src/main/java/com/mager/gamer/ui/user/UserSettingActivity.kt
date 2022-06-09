@@ -15,8 +15,10 @@ import com.anilokcun.uwmediapicker.model.UwMediaPickerMediaType
 import com.bumptech.glide.Glide
 import com.mager.gamer.R
 import com.mager.gamer.base.BaseActivity
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.user.detail.Data
 import com.mager.gamer.databinding.ActivityEditProfileBinding
+import com.mager.gamer.ui.login.LoginActivity
 import com.mager.gamer.ui.user.edit.BioUserActivity
 import com.mager.gamer.ui.user.edit.LocUserActivity
 import com.mager.gamer.ui.user.edit.NameUserActivity
@@ -59,7 +61,11 @@ class UserSettingActivity : BaseActivity() {
             startActivity(i)
         }
         binding.btnOut.setOnClickListener {
-
+            MagerSharedPref.clear()
+            Toast.makeText(this, "Berhasil logout", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finishAffinity()
         }
         intent.extras?.getParcelable<Data>("data")?.let{
             userData = it

@@ -40,5 +40,7 @@ data class UserFollowing(
     @SerializedName("updated_date")
     val updatedDate: String,
     @SerializedName("username")
-    val username: String
+    val username: String,
+    @SerializedName("lokasi")
+    val lokasi: String?,
 ): Parcelable

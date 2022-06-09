@@ -46,7 +46,7 @@ class RegisterActivity : BaseActivity() {
                 text.isNullOrEmpty() ->
                     binding.textField1.error = "Email tidak boleh kosong"
                 !Patterns.EMAIL_ADDRESS.matcher(text ?: "").matches() ->
-                    binding.textField.error = "Format email tidak valid"
+                    binding.textField1.error = "Format email tidak valid"
                 else -> binding.textField1.error = null
             }
             validateButton()
@@ -97,10 +97,12 @@ class RegisterActivity : BaseActivity() {
         binding.btnGirl.setOnClickListener {
             switchGender(false)
         }
+        binding.cbPolicy.setOnClickListener {
+            validateButton()
+        }
         binding.btnDaftar.setOnClickListener {
             val textGender = if (selectedGender!!) binding.btnLaki.text.toString()
             else binding.btnGirl.text.toString()
-
             lifecycleScope.launch {
                 viewModel.register(
                     nama = binding.txtName.text.toString(),

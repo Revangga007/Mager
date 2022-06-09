@@ -11,12 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mager.gamer.R
-import com.mager.gamer.data.model.remote.komunitas.get.Komunitas
-import com.mager.gamer.data.model.remote.user.Content
-import com.mager.gamer.data.model.remote.user.detail.Data
-import com.mager.gamer.data.model.remote.user.follow.FollowResponse
-import com.mager.gamer.databinding.ActivityDetailCommunityBinding
-import com.mager.gamer.databinding.ActivityFollowingBinding
+import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.databinding.ActivityProfileBinding
 import com.mager.gamer.ui.home.PostinganAdapter
 import com.mager.gamer.ui.user.UserViewModel
@@ -26,13 +21,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ProfileActivity: AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
     private val viewModel: UserViewModel by viewModels()
     private lateinit var binding: ActivityProfileBinding
-    private lateinit var userData: Content
+    private lateinit var dataFollow: Data
+    private var userData: com.mager.gamer.data.model.remote.user.follow.Data? = null
     private var donefollow = false
-    private lateinit var isfollow: com.mager.gamer.data.model.remote.user.follow.Data
-    private val postUserAdapter = PostinganAdapter(mutableListOf(),
+    private val postUserAdapter = PostinganAdapter(
+        mutableListOf(),
         onDetailClick = { data, pos -> },
         onCopyClick = {},
         onVideoClick = {},
@@ -44,35 +40,39 @@ class ProfileActivity: AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        intent.getParcelableExtra<Content?>("data")?.let {
-            userData = it
-            lifecycleScope.launch {
-                viewModel.getAllFollowers(it.id)
-                viewModel.getAllFollowing(it.id)
-                viewModel.getUserDetail(it.id)
-                viewModel.getAllPost(it.id)
-            }
+        intent.extras?.getParcelable<Data>("post")?.let {
+            dataFollow = it
+            binding.txtName.text = it.createdBy.nama
+            binding.txtUser.text = it.createdBy.username
+            binding.txtBio.text = it.createdBy.biodata
+//            binding.txtLoc.text = it.createdBy.lokasi
+            Glide.with(binding.imgPhoto.context)
+                .load(it.createdBy.fotoProfile)
+                .error(R.drawable.logo_mager_1)
+                .into(binding.imgPhoto)
         }
+            lifecycleScope.launch {
+                viewModel.getAllFollowers(userData?.userFollowing?.id!!)
+                viewModel.getAllFollowing(userData?.userFollower?.id!!)
+                viewModel.getUserDetail(userData?.userFollower?.id!!)
+                viewModel.getAllPost(userData?.userFollower?.id!!)
+            }
 
         binding.recyclerPostingan.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = postUserAdapter
         }
-        binding.btnIkuti.setOnClickListener {
-            lifecycleScope.launch {
-                viewModel.followUser(isfollow.userFollower.id,isfollow.userFollowing.id)
-            }
-        }
+
         setupObserver()
     }
-    private fun setupObserver(){
+
+    private fun setupObserver() {
         viewModel.userDetail.observe(this) {
             if (it.status == "200") {
                 Glide.with(binding.imgPhoto.context)
                     .load(it.data.fotoProfile)
                     .error(R.drawable.logo_mager_1)
                     .into(binding.imgPhoto)
-
                 binding.txtName.text = it.data.nama
                 binding.txtUser.text = it.data.username
                 binding.txtBio.text = it.data.biodata
@@ -102,14 +102,20 @@ class ProfileActivity: AppCompatActivity() {
             }
         }
         viewModel.postinganResponse.observe(this) {
-            val lastPos = postUserAdapter.postingan.size - 1
             postUserAdapter.postingan.clear()
-            postUserAdapter.notifyItemRangeRemoved(0, lastPos)
             postUserAdapter.postingan.addAll(it.data)
-            postUserAdapter.notifyItemRangeInserted(0, it.data.size - 1)
         }
-        viewModel.followResponse.observe(this){
+        viewModel.followResponse.observe(this) {
+            userData = it.data
+            donefollow = it.data.status
             donefollow = !donefollow
+            binding.btnIkuti.setOnClickListener {
+                lifecycleScope.launch {
+                    viewModel.followUser(
+                       userData?.userFollower?.id!! , userData?.userFollowing?.id!!
+                    )
+                }
+            }
             if (donefollow) {
                 Toast.makeText(this, "Diikuti", Toast.LENGTH_SHORT).show()
                 binding.btnIkuti.visibility = View.GONE

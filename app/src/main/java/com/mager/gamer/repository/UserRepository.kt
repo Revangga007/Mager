@@ -1,5 +1,6 @@
 package com.mager.gamer.repository
 
+import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.user.edit.EditUserBody
 import com.mager.gamer.data.remote.ApiService
 import com.skydoves.sandwich.message
@@ -100,7 +101,7 @@ class UserRepository @Inject constructor(
         onError: (String?) -> Unit,
         idUser: Int
     ) = flow {
-        val response = apiService.getPostingan(1000, 0, null, null, "profile", null, idUser)
+        val response = apiService.getPostingan(1000, 0, null, null, "user", null, idUser)
         response.suspendOnSuccess {
             emit(this.data)
         }.onError {

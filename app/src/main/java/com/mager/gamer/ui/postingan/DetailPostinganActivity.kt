@@ -26,6 +26,7 @@ import com.mager.gamer.data.model.remote.postingan.get.Data
 import com.mager.gamer.data.model.remote.postingan.get.KomentarBy
 import com.mager.gamer.databinding.*
 import com.mager.gamer.dialog.CustomLoadingDialog
+import com.mager.gamer.ui.user.profile.ProfileActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -136,17 +137,16 @@ class DetailPostinganActivity : AppCompatActivity() {
             }
         }
 
-//        sheetOtherBinding.txtReport.setOnClickListener {
-//            sheetDialog.apply {
-//                setContentView(reportBinding.root)
-//                show()
-//            }
-//        }
-
-//        reportBinding.rgReport.setOnClickListener {
-//            lifecycleScope.launch {
-//            }
-//        }
+       binding.txtNama.setOnClickListener {
+           val i = Intent(this, ProfileActivity::class.java)
+           i.putExtra("post", postingan)
+           startActivity(i)
+       }
+        binding.txtUsername.setOnClickListener {
+           val i = Intent(this, ProfileActivity::class.java)
+           i.putExtra("post", postingan)
+           startActivity(i)
+       }
 
         sheetBinding.linearDelete.setOnClickListener {
             if (isComment) {
