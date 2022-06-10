@@ -47,7 +47,7 @@ class OnBoardFragment : Fragment() {
         when (param1) {
             "2" -> {
                 binding.txtDesc.text =
-                    "Bagikan pengalaman, tips dan trick & game dengan gamers lainnya"
+                    "Bagikan pengalaman, tips trick & game dengan gamers lainnya"
                 binding.img1.setBackgroundResource(R.drawable.ic_3)
             }
             "1" -> {
