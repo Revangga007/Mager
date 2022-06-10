@@ -107,6 +107,16 @@ class DetailPostinganActivity : AppCompatActivity() {
                 binding.icLike.setImageResource(R.drawable.ic_liked)
             }
         }
+        if (MagerSharedPref.fotoProfile == null) {
+            Glide.with(this)
+                .load(R.drawable.logo_mager_1)
+                .into(binding.imgFoto2)
+        } else {
+            Glide.with(this)
+                .load(MagerSharedPref.fotoProfile)
+                .into(binding.imgFoto2
+                )
+        }
 
         if (postingan.createdBy.fotoProfile == null) {
             Glide.with(binding.imgFoto.context)

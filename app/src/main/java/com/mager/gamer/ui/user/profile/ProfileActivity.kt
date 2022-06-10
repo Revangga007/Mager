@@ -1,9 +1,11 @@
 package com.mager.gamer.ui.user.profile
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -13,9 +15,12 @@ import com.bumptech.glide.Glide
 import com.mager.gamer.R
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.postingan.get.Data
+import com.mager.gamer.data.model.remote.postingan.get.LikedBy
 import com.mager.gamer.data.model.remote.user.Content
 import com.mager.gamer.databinding.ActivityProfileBinding
+import com.mager.gamer.dialog.CustomLoadingDialog
 import com.mager.gamer.ui.home.PostinganAdapter
+import com.mager.gamer.ui.postingan.DetailPostinganActivity
 import com.mager.gamer.ui.user.UserViewModel
 import com.mager.gamer.ui.user.follow.FollowerActivity
 import com.mager.gamer.ui.user.follow.FollowingActivity
@@ -30,11 +35,13 @@ class ProfileActivity : AppCompatActivity() {
     private var donefollow = false
     private val postUserAdapter = PostinganAdapter(
         mutableListOf(),
-        onDetailClick = { data, pos -> },
+        onDetailClick = { data, pos -> intentToDetail(data, pos)},
         onCopyClick = {},
         onVideoClick = {},
         onLikeClick = {},
     )
+    private var lastPositionForUpdate = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -87,8 +94,50 @@ class ProfileActivity : AppCompatActivity() {
 
         setupObserver()
     }
+    private fun intentToDetail(
+        content: Data,
+        pos: Int
+    ) {
+        lastPositionForUpdate = pos
+        val i = Intent(this, DetailPostinganActivity::class.java)
+        i.putExtra("post", content)
+        intentWithResult.launch(i)
+    }
+
+    private val intentWithResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                if (lastPositionForUpdate != -1) {
+                    val newLike = it.data?.getIntExtra("like", 0)!!
+                    val data = it.data?.getParcelableExtra<LikedBy>("data")!!
+
+                    (binding.recyclerPostingan.adapter as PostinganAdapter?)?.let {
+                        val post = it.postingan[lastPositionForUpdate]
+                        if (post.jumlahLike > newLike) {
+                            /** unlike post **/
+                            post.likedBy.find { it.user.id == data.user.id }?.let {
+                                post.likedBy.remove(it)
+                            }
+                        } else {
+                            /** like post **/
+                            post.likedBy.add(data)
+                        }
+                        it.postingan[lastPositionForUpdate].jumlahLike = newLike
+                        it.notifyItemChanged(lastPositionForUpdate)
+                    }
+                }
+            }
+        }
+
 
     private fun setupObserver() {
+        val loading = CustomLoadingDialog(this)
+        viewModel.loading.observe(this) {
+            if (it) loading.show() else loading.dismiss()
+        }
+//        viewModel.message.observe(this) {
+//            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+//        }
         viewModel.followResponse.observe(this) {
             donefollow = !donefollow
             if (donefollow) {

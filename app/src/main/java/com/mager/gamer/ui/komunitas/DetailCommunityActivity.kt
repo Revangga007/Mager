@@ -17,6 +17,7 @@ import com.mager.gamer.base.BaseActivity
 import com.mager.gamer.data.local.MagerSharedPref
 import com.mager.gamer.data.model.remote.komunitas.get.Komunitas
 import com.mager.gamer.data.model.remote.postingan.get.Data
+import com.mager.gamer.data.model.remote.postingan.get.KomentarBy
 import com.mager.gamer.data.model.remote.postingan.get.LikedBy
 import com.mager.gamer.databinding.ActivityDetailCommunityBinding
 import com.mager.gamer.dialog.CustomLoadingDialog
@@ -24,6 +25,7 @@ import com.mager.gamer.ui.home.PostinganAdapter
 import com.mager.gamer.ui.login.LoginActivity
 import com.mager.gamer.ui.postingan.BuatPostinganActivity
 import com.mager.gamer.ui.postingan.DetailPostinganActivity
+import com.mager.gamer.ui.postingan.KomentarAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -91,7 +93,7 @@ class DetailCommunityActivity : BaseActivity() {
 
     private val intentCreatePost =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == Activity.RESULT_OK) {
+            if (it.resultCode == RESULT_OK) {
                 lifecycleScope.launch {
                     viewModel.getAllPost(communityData.id)
                 }
@@ -120,7 +122,7 @@ class DetailCommunityActivity : BaseActivity() {
 
     private val intentWithResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode == Activity.RESULT_OK) {
+            if (it.resultCode == RESULT_OK) {
                 if (lastPositionForUpdate != -1) {
                     val newLike = it.data?.getIntExtra("like", 0)!!
                     val data = it.data?.getParcelableExtra<LikedBy>("data")!!
@@ -129,10 +131,12 @@ class DetailCommunityActivity : BaseActivity() {
                         val post = it.postingan[lastPositionForUpdate]
                         if (post.jumlahLike > newLike) {
                             /** unlike post **/
+                            /** unlike post **/
                             post.likedBy.find { it.user.id == data.user.id }?.let {
                                 post.likedBy.remove(it)
                             }
                         } else {
+                            /** like post **/
                             /** like post **/
                             post.likedBy.add(data)
                         }
